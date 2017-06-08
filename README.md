@@ -1,26 +1,10 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# OCEANTRUM DIGITAL ASIA PROJECT
 
-## How to use this template
+1. MOBILE APPS (IONIC 3)
+2. WEBAPPS FOR CONTROL PANEL (ANGULAR 4)
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Team
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+1. DWI YOGA WIBAWA AS A BACKEND DEVELOPER
+2. GUNTUR PUTRA P AS A FRONTEND DEVELOPER
+3. HENDRIK AS A SYSTEM ANALYST
