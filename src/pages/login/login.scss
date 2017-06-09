@@ -1,0 +1,38 @@
+page-login {
+
+}
+
+.background {
+    background-image: url('../assets/img/Login-image.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+ion-label, h1 {
+    color: white;
+}
+// warna untuk latar input
+.item.item-input {
+    background-color: rgba(178,178,178,0.2);
+    border-radius: 15px;
+}
+.btn-css {
+    position: fixed;
+}
+.listing {
+    margin-top: 300px;
+}
+// warna untuk place holder
+.text-input::-moz-placeholder {
+  color: white;
+  text-align: center;
+}
+
+.text-input:-ms-input-placeholder {
+  color: white;
+  text-align: center;
+}
+
+.text-input::-webkit-input-placeholder {
+  color: white;
+  text-align: center;
+}
