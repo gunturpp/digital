@@ -1,3 +1,71 @@
-page-home {
+.bg {
+    background-image: url('../assets/img/Home-image-Cover.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.list {
+    margin-top: 180px;
+}
+ion-label.text {
+    text-align: center;
+    color: #000;
+}
+.black {
+    background-color: #000;
+}
+.slider-pager 
+{
+ color: #000;
+}
+.slider-pager-page.active
+{
+color: #f90;
+}
+.scroll-y, .card-scroll-y {
+    height:500px;
+    width:auto;
+    overflow:auto;
+} 
+.scroll-y {
+    margin-top: 60px;
+ }
+ .swiper-pagination-progress .swiper-pagination-progressbar {
+  background:red;
+  margin: 3px;
 
 }
+.logoHaikers {
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cards {
+    background:transparent;
+    height: auto;
+    width: auto;
+}
+.card-detail {
+    background : #fff;
+    padding : 10px 15px; 
+    border-radius: 10px;
+}
+button.btn-color {
+    background-color: #149f35;
+}
+.card-image {
+    max-height: 50%;
+    max-width: 60%;
+}
+
+// GOOGLE MAPS
+.ios, .md {
+         .scroll {
+        height: 100%
+      }
+         #map {
+        width:40%;
+        height: 40%;
+      }
+ }
+//-------------------

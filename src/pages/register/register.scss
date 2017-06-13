@@ -1,0 +1,22 @@
+
+.listing {
+    margin-top: 50px;
+}
+.background {
+    background-color: #000;
+}
+// warna untuk place holder
+.text-input::-moz-placeholder, img, .register, ion-label {
+  color: white;
+  text-align: center;
+}
+
+.text-input:-ms-input-placeholder {
+  color: white;
+  text-align: center;
+}
+
+.text-input::-webkit-input-placeholder {
+  color: white;
+  text-align: center;
+}
