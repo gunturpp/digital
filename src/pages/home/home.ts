@@ -1,6 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { IonicPage, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -15,10 +17,25 @@ declare var google;
 })
 export class HomePage {
   
-  @ViewChild('map') mapElement: ElementRef;
-  map: any;
+ @ViewChild('map') mapElement: ElementRef;
+    @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
  
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public geolocation: Geolocation) {
+    latitude: number;
+    longitude: number;
+    autocompleteService: any;
+    placesService: any;
+    query: string = '';
+    places: any = [];
+    searchDisabled: boolean;
+    saveDisabled: boolean;
+    location: any;  
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
+        this.searchDisabled = true;
+        this.saveDisabled = true;
+        
+        
   }
   reviews = [
     {
@@ -77,28 +94,83 @@ export class HomePage {
     },
    
   ];
-  ionViewDidLoad() {
-     this.loadMap();
-  }
-   loadMap(){
+     ionViewDidLoad(): void {
  
- this.geolocation.getCurrentPosition().then((position) => {
+       let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
+
+            this.autocompleteService = new google.maps.places.AutocompleteService();
+            this.placesService = new google.maps.places.PlacesService(this.maps.map);
+            this.searchDisabled = false;
  
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        }); 
+    }
  
-      let mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+    selectPlace(place){
  
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+        this.places = [];
  
-    }, (err) => {
-      console.log(err);
-    });
-  
-  }
+        let location = {
+            lat: null,
+            lng: null,
+            name: place.name
+        };
+ 
+        this.placesService.getDetails({placeId: place.place_id}, (details) => {
+ 
+            this.zone.run(() => {
+ 
+                location.name = details.name;
+                location.lat = details.geometry.location.lat();
+                location.lng = details.geometry.location.lng();
+                this.saveDisabled = false;
+ 
+                this.maps.map.setCenter({lat: location.lat, lng: location.lng}); 
+ 
+                this.location = location;
+ 
+            });
+ 
+        });
+ 
+    }
+ 
+    searchPlace(){
+ 
+        this.saveDisabled = true;
+ 
+        if(this.query.length > 0 && !this.searchDisabled) {
+ 
+            let config = {
+                types: ['geocode'],
+                input: this.query
+            }
+ 
+            this.autocompleteService.getPlacePredictions(config, (predictions, status) => {
+ 
+                if(status == google.maps.places.PlacesServiceStatus.OK && predictions){
+ 
+                    this.places = [];
+ 
+                    predictions.forEach((prediction) => {
+                        this.places.push(prediction);
+                    });
+                }
+ 
+            });
+ 
+        } else {
+            this.places = [];
+        }
+ 
+    }
+ 
+    save(){
+        this.viewCtrl.dismiss(this.location);
+    }
+ 
+    close(){
+        this.viewCtrl.dismiss();
+    }
   moreInfo() {
     console.log('ionViewDidLoad HomePage');
   }
