@@ -5,6 +5,14 @@
 .background {
     background-color: #000;
 }
+// time picker
+.css-datetime {
+
+}
+ion-datetime, ion-label, .css-datetime {
+  border-radius: 5px;
+  color: rgba(0,0,0,1);
+}
 // warna untuk place holder
 .text-input::-moz-placeholder, img, .register, ion-label {
   color: white;
@@ -14,6 +22,11 @@
 .text-input:-ms-input-placeholder {
   color: white;
   text-align: center;
+}
+.cobaa {
+  background-color: red;
+  margin: 100px;
+  padding: 50px;
 }
 
 .text-input::-webkit-input-placeholder {

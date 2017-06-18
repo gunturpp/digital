@@ -21,14 +21,18 @@ ion-label.text {
 {
 color: #f90;
 }
-.scroll-y, .card-scroll-y {
-    height:500px;
+.scroll-y {
+    margin-top: 60px;
+    height:800px;
+    width:auto;
+    overflow:auto;
+
+} 
+.card-scroll-y {
+    height:700px;
     width:auto;
     overflow:auto;
 } 
-.scroll-y {
-    margin-top: 60px;
- }
  .swiper-pagination-progress .swiper-pagination-progressbar {
   background:red;
   margin: 3px;
@@ -59,11 +63,9 @@ button.btn-color {
 }
 
 // GOOGLE MAPS
-  ion-list {
-    margin: 0 !important;
-  }
- 
-  #please-connect {
+page-home {
+   
+    #please-connect {
     position: absolute;
     background-color: #000;
     opacity: 0.5;
@@ -71,7 +73,7 @@ button.btn-color {
     height: 100%;
     z-index: 1;
   }
- 
+
   #please-connect p {
       color: #fff;
       font-weight: bold;
@@ -80,16 +82,15 @@ button.btn-color {
       font-size: 1.6em;
       top: 30%;
   }
- 
-  .scroll-content {
-      overflow: hidden;
-  }
- 
+
+
   #map {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-  }
+}
+}
+
 //-------------------

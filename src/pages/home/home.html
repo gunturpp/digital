@@ -1,4 +1,4 @@
-  <ion-slides pager="true" loop control direction="horizontal"  class="bg"  paginationType="progress">
+  <ion-slides control pager="true" paginationType="bullets" class="bg">
     <!--SLIDE HOME-->
     <ion-slide>
 
@@ -10,9 +10,12 @@
         <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">BAZAR APPAREL</button>
 
       </ion-list>
+      <button ion-button clear (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
       <br>
-      <ion-label>MORE INFO</ion-label>      
-      <ion-label><img (click)="moreInfo()" src="assets/img/Arrow-bottom-down.png"></ion-label>
+      <ion-label (click)="presentMenu()">MORE INFO</ion-label>      
+      <ion-label><img (click)="presentMenu()" src="assets/img/Arrow-bottom-down.png"></ion-label>
     </ion-slide>
     <!--SLIDE BEST DEALS-->
     <ion-slide class="black">
@@ -63,24 +66,27 @@
     </ion-slide>
     <!--SLIDE EDITOR REVIEWS-->
     <ion-slide class="black">
-      <h1>EDITOR REVIEWS</h1>
-      <div padding class="card-scroll-y">
-        <ion-card *ngFor="let review of reviews">
-        <ion-card-content padding>
-        <ion-slides pager="true" paginationType="progress" control loop>
+      <ion-header>
+        <ion-navbar color="blacks">
+         <ion-label>EDITOR REVIEWS</ion-label>
+        </ion-navbar>
+      </ion-header>
+
+      <div class="card-scroll-y">
+        <ion-card  *ngFor="let review of reviews">
+<!--
+        <ion-slides pager="true" paginationType="bullets">
           <ion-slide>
-          <img [src]="review.image2"/>
+          <img [src]="review.image"/>
           </ion-slide>
           <ion-slide>
-          <img [src]="review.image2"/>
+          <img [src]="review.image"/>
           </ion-slide>
-        </ion-slides>
-        </ion-card-content>
+        </ion-slides>-->
           <ion-card-content>
+              <img [src]="review.image"/>
             <p [innerHTML]="review.description"></p>
           </ion-card-content>
-          <img [src]="review.image2"/>
-          <img [src]="review.image2"/>
         </ion-card>
       </div>
     </ion-slide>
@@ -88,36 +94,36 @@
     <!--MAPS-->
     <ion-slide>
       <ion-header>
-    <ion-navbar color="primary">
-        <ion-buttons left>
-            <button ion-button (click)="close()">Cancel</button>
-        </ion-buttons>
-        <ion-buttons right>
-            <button [disabled]="saveDisabled" ion-button (click)="save()">Save</button>
-        </ion-buttons>
-    </ion-navbar>
+        <ion-navbar color="primary">
+            <ion-buttons left>
+                <button ion-button (click)="close()">Cancel</button>
+            </ion-buttons>
+            <ion-buttons right>
+                <button [disabled]="saveDisabled" ion-button (click)="save()">Save</button>
+            </ion-buttons>
+        </ion-navbar>
  
-    <ion-toolbar>
-        <ion-searchbar [(ngModel)]="query" (ionInput)="searchPlace()"></ion-searchbar>
-    </ion-toolbar>
+        <ion-toolbar>
+            <ion-searchbar [(ngModel)]="query" (ionInput)="searchPlace()"></ion-searchbar>
+        </ion-toolbar>
  
-    <ion-list>
-        <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
-    </ion-list>
+          <ion-list>
+              <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
+          </ion-list>
+      
+      </ion-header>
  
-</ion-header>
- 
-<ion-content>
- 
-    <div #pleaseConnect id="please-connect">
-        <p>Please connect to the Internet...</p>
-    </div>
- 
-    <div #map id="map">
-        <ion-spinner></ion-spinner>
-    </div>
- 
-</ion-content>
+        <ion-content>
+        
+            <div #pleaseConnect id="please-connect">
+                <p>Please connect to the Internet...</p>
+            </div>
+        
+            <div #map id="map">
+                <ion-spinner></ion-spinner>
+            </div>
+        
+        </ion-content>
     
     </ion-slide>
   </ion-slides>

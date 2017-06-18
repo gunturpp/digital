@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Network } from '@ionic-native/network';
 import { Platform } from 'ionic-angular';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the ConnectivityServiceProvider provider.
@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
+declare var Connection;
+
 @Injectable()
 export class ConnectivityServiceProvider {
   onDevice: boolean;

@@ -1,20 +1,20 @@
 <ion-content padding class="background">
-      <ion-list class="listing">
-
+    <ion-list class="listing">
+      <form #LoginForm="ngForm" novalidate>
         <ion-item>
-          <ion-input type="text" placeholder="Email/Username"></ion-input>
+          <ion-input [(ngModel)]="user.email" name="email" type="text" placeholder="Email" #email="ngModel" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="password" placeholder="Password"></ion-input>
+          <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password" #password="ngModel" required></ion-input>
         </ion-item>
 
-        <!--button login in front of password-->
-        <button ion-button full round (click)="login()" ion-button icon-only round color="grays">Masuk</button>
+        <button ion-button full round (click)="doLogin(LoginForm)" type="submit" ion-button icon-only round color="grays">Masuk</button>
+      </form>
         <br>
         <ion-label (click)="forgotPassword()" style="text-align:right">Lupa Password</ion-label>
         <br><br>
-        <button ion-button full round (click)="regisAccount()" ion-button icon-only round color="grays">Daftar Baru</button>
+        <button ion-button full round (click)="register()" ion-button icon-only round color="grays">Daftar Baru</button>
 
-      </ion-list>
+    </ion-list>
 </ion-content>
