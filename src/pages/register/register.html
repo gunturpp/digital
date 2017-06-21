@@ -49,6 +49,33 @@
       <br><br><br>
       <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
 
+<<<<<<< HEAD
     </form>    
+=======
+    <ion-item>
+      <ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>
+    </ion-item>
+  </form>
+    <ion-item padding class="css-datetime">
+      <ion-label class="css-datetime">TGL LAHIR</ion-label>
+      <ion-datetime [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
+    </ion-item>
+  <form #signupForm="ngForm" novalidate>
+    <ion-item>
+      <ion-input [(ngModel)]="user.status_kawin" name="status_kawin" type="text" placeholder="STATUS"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <br><br><br>
+    <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+  </form>    
+>>>>>>> 689f597b0f91340f1f40760fbd36a86aba7324d5
   </ion-list>
 </ion-content>

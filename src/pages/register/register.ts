@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { NgForm } from '@angular/forms';
-import { Http } from '@angular/http';
+import { Http, RequestOptions } from '@angular/http';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -24,7 +24,9 @@ export class RegisterPage {
 
       if (form.valid) {
         loading.present();
-        let input = JSON.stringify({
+        let contentHeader = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
+
+        let input = {
           name: this.user.name,
           email: this.user.email,
           gender: this.user.gender,
@@ -34,8 +36,9 @@ export class RegisterPage {
           birthdate: this.user.birthdate,
           password: this.user.password,
           role: this.user.role="user",
-        });
-        this.http.post("http://localhost:8000/signup",input).subscribe(data => {
+        };
+        var data = {matric:21};
+        this.http.post("http://localhost:8000/signup", input, contentHeader).subscribe(data => {
               loading.dismiss();
               let response = data.json();
               if(response.status == 200){

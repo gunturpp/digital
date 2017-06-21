@@ -29,12 +29,14 @@ export class LoginPage {
 
     if (form.valid) {
     loading.present();
-     
-      let input = JSON.stringify({
+      let contentHeader = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
+
+      let input = {
         email: this.user.email,
         password: this.user.password
-      });
-        this.http.post(apiURL,input).subscribe(data => {
+      };
+      
+        this.http.post(apiURL,input, contentHeader).subscribe(data => {
            let response = data.json();
           //  loading.dismiss();
            if(response.status == 200) {
