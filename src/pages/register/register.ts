@@ -41,13 +41,20 @@ export class RegisterPage {
               if(response.status == 200){
                 let user=response.data;
                 this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender);
-                    this.navCtrl.setRoot(LoginPage);
+                this.navCtrl.setRoot(LoginPage);
+                console.log(this.user.gender);
 
               }
               this.showAlert(response.message);
         }, err => {
            loading.dismiss();
            this.showError(err);
+                           console.log(this.user.gender);
+                           console.log(this.user.hp);
+                           console.log(this.user.birthdate);
+                           console.log(this.user.status_kawin);
+                           console.log(this.user.password);
+
         });
     }
   }
@@ -56,31 +63,6 @@ export class RegisterPage {
     this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
     this.showAlert("Tidak dapat menyambungkan ke server. Mohon muat kembali halaman ini");
   }
-  presentConfirm() {
-  let alert = this.alertCtrl.create({
-    // title: 'Confirm purchase',
-    // message: 'Do you want to buy this book?',
-    buttons: [
-      {
-        text: 'Female',
-        cssClass: 'cobaa' ,
-        handler: () => {
-          this.user.gender ="female";
-          console.log(this.user.gender);
-        }
-      },
-      {
-        text: 'Male',
-        role: 'male',
-        handler: () => {
-          this.user.gender ="male";
-          console.log(this.user.gender);
-        }
-      }
-    ]
-  });
-  alert.present();
-}
   showAlert(message){
     let toast = this.toastCtrl.create({
       message: message,

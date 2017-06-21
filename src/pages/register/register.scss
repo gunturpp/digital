@@ -1,35 +1,45 @@
-
 .listing {
     margin-top: 50px;
 }
-.background {
-    background-color: #000;
+.a {
+  background-color:#000;
 }
 // time picker
-.css-datetime {
-
+ion-datetime {
+    text-align: left;
+    font-size: 20px;
+    margin-left: -10px;
 }
-ion-datetime, ion-label, .css-datetime {
-  border-radius: 5px;
-  color: rgba(0,0,0,1);
+ion-item {
+  // margin-left: 20px;
+  border-radius:15px;
+  background-color: rgba(0,0,0,0.1);
+}
+.color {
+  color:#FFF;
+  font-size: 20px;
+}
+ion-input {
+  color: #fff;
+}
+.css-item {
+  background-color: rgba(255,255,255,0.15);
+}
+ion-label {
+  padding-left: 5px;
 }
 // warna untuk place holder
-.text-input::-moz-placeholder, img, .register, ion-label {
+.text-input::-moz-placeholder, img, ion-label {
   color: white;
-  text-align: center;
+  text-align: left;
+  font-size: 20px;
 }
 
 .text-input:-ms-input-placeholder {
   color: white;
-  text-align: center;
+  text-align: left;
 }
-.cobaa {
-  background-color: red;
-  margin: 100px;
-  padding: 50px;
-}
-
 .text-input::-webkit-input-placeholder {
   color: white;
-  text-align: center;
+  text-align: left;
 }

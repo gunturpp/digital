@@ -74,7 +74,10 @@ $colors: (
 
 @import "ionic.ionicons";
 
-
+$alert-md-border-radius: 20px;
+$alert-md-background-color: #fff;
+$alert-md-button-text-align: end;
+$alert-md-head-text-align: start;
 // Fonts
 // --------------------------------------------------
 

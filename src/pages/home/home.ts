@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
 import { ModalController, App, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
@@ -12,8 +13,8 @@ import { LoginPage } from '../login/login';
  * on Ionic pages and navigation.
  */
 declare var google;
-
 @IonicPage()
+@Injectable()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -22,7 +23,7 @@ declare var google;
 
 export class HomePage {
   
-
+    
     @ViewChild(Slides) slides: Slides;  
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
@@ -45,9 +46,9 @@ export class HomePage {
         this.saveDisabled = true;
         
         // auth token
-        if(localStorage.getItem("token")) {
-        this.isLoggedIn = true;
-        }        
+        // if(localStorage.getItem("token")) {
+        // this.isLoggedIn = true;
+        // }        
   }
   
      ionViewDidLoad(): void {
@@ -60,7 +61,22 @@ export class HomePage {
  
         }); 
     }
- 
+    
+    public goToSlide1() {
+    this.slides.slideTo(0, 200);
+    }
+    goToSlide2() {
+    this.slides.slideTo(1, 200);
+    }
+    goToSlide3() {
+    this.slides.slideTo(2, 200);
+    }
+    goToSlide4() {
+    this.slides.slideTo(3, 200);
+    }
+    goToSlide5() {
+    this.slides.slideTo(4, 200);
+    }
     selectPlace(place){
  
         this.places = [];
