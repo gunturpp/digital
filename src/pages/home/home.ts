@@ -8,10 +8,11 @@ import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
 
-// let apiReviews = 'http://188.166.188.11/getreviews';
+let apiReviews = 'http://188.166.188.11/getreviews';
+let apiBikes = 'http://188.166.188.11/getbikes';
 // let apiEvents = 'http://188.166.188.11/getevents';
 // let apiVloggers = 'http://188.166.188.11/getvloggers';
-let apiProduct = 'http://188.166.188.11/';
+let apiProduct = 'http://188.166.188.11/getproduct';
 let token = localStorage.getItem('token');
 /**
  * Generated class for the HomePage page.
@@ -56,20 +57,33 @@ export class HomePage {
         // auth token
         if(localStorage.getItem(token)) {
         this.isLoggedIn = true;
-      }        
-          let headers = new Headers();
-      
-          headers.append('Access-Control-Allow-Origin', '*');
-          headers.append('Authorization', 'Bearer ' + token);
-          headers.append('Content-Type', 'application/json',);
-          let options = new RequestOptions({ headers: headers });
 
-        this.http.get(apiProduct + 'getproduct', options)
+      }        
+
+        let headers = new Headers({
+         'Authorization': 'Bearer ' + token,
+        });
+        let options = new RequestOptions({ headers: headers });
+
+        this.http.get(apiProduct, options)
         .map(res => this.products= res.json())
         .subscribe(products => {
-            this.products = products;
-            console.log(products);
+            this.products = products['products'];
+            console.log(this.products);
           });
+        this.http.get(apiReviews, options)
+        .map(res => this.reviews= res.json())
+        .subscribe(reviews => {
+            this.reviews = reviews['reviews'];
+            console.log(this.reviews);
+          });
+        this.http.get(apiBikes, options)
+        .map(res => this.bikes= res.json())
+        .subscribe(bikes => {
+            this.bikes = bikes['bikes'];
+            console.log(this.bikes);
+          });
+
 
   }
   

@@ -29,13 +29,13 @@
             </ion-searchbar>
         </ion-navbar>
       </ion-header>
-      <div class="scroll-y">
+      <div class="scroll-y-slide2">
           <ion-row>
-            <ion-col col-6 *ngFor="let product of products" class="cards">
-              <div class="card-detail">
+            <ion-col *ngFor="let product of products"  col-6 class="cards">
+              <div   class="card-detail">
                 <img style="height:200px;" class="card-image" [src]="product.picture">
-                <ion-label class="text">{{ product.name }}</ion-label>
-                <ion-label class="text">{{ product.price}}</ion-label>
+                <ion-label  class="text">{{ product.name }}</ion-label>
+                <ion-label  class="text">{{ product.price}}</ion-label>
                 <button class="btn-color" ion-button>Pre Order</button>
               </div>
             </ion-col>
@@ -44,36 +44,35 @@
 
     </ion-slide>
     
-    <!--SLIDE DUCATI DIAVEL-->
+    <!--SLIDE BIKES-->
     <ion-slide  class="black">
       <ion-header>
-        <ion-navbar color="blacks">
-            <ion-searchbar  [(ngModel)]="searchCountryString" (input)="searchCountry($event)"
+        <ion-navbar color="blacks-trans">
+            <ion-searchbar color="blacks-trans" (input)="searchCountry($event)"
                     [showCancelButton]="shouldShowCancel" [showCancelButton]="shouldShowCancel"
-                            (ionCancel)="onCancel($event)">
+                            (ionCancel)="onCancel($event)"  [(ngModel)]="searchCountryString">
             </ion-searchbar>
         </ion-navbar>
       </ion-header>
-      <div class="card-scroll-y" >
-        <ion-card *ngFor="let bike of bikes">
-          <img [src]="bike.image"/>
+      <div class="scroll-y-slide3" >
+        <ion-card class="content-slide3" *ngFor="let bike of bikes">
+          <img [src]="bike.picture"/>
           <ion-card-content>
-            <p [innerHTML]="bike.description"></p>
+            <p>{{bike.description}}</p>
           </ion-card-content>
-          <img [src]="bike.image2"/>
-          <img [src]="bike.image2"/>
+          <img [src]="bike.picture"/>
         </ion-card>
       </div>
     </ion-slide>
     <!--SLIDE EDITOR REVIEWS-->
     <ion-slide class="black">
       <ion-header>
-        <ion-navbar color="blacks">
-         <ion-label>EDITOR REVIEWS</ion-label>
+        <ion-navbar color="blacks-trans">
+         <ion-label style="text-align:center;">EDITOR REVIEWS</ion-label>
         </ion-navbar>
       </ion-header>
 
-      <div class="card-scroll-y">
+      <div class="scroll-y-slide4">
         <ion-card  *ngFor="let review of reviews">
 <!--
         <ion-slides pager="true" paginationType="bullets">
@@ -84,10 +83,13 @@
           <img [src]="review.image"/>
           </ion-slide>
         </ion-slides>-->
-          <ion-card-content>
-              <img [src]="review.image"/>
-            <p [innerHTML]="review.description"></p>
-          </ion-card-content>
+          <ion-card-content class="content-slide4">
+            <img class="img-slide4" src="assets/img/Bikes-image-b.jpg"/>
+            <!--<img [src]="review.picture"/>-->
+            <h1>{{review.name}}</h1>
+            <p>{{review.created_at}}</p>
+            <p>{{review.description}}</p>
+          </ion-car\d-content>
         </ion-card>
       </div>
     </ion-slide>

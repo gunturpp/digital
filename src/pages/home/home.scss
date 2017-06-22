@@ -13,26 +13,46 @@ ion-label.text {
 .black {
     background-color: #000;
 }
-.slider-pager 
-{
- color: #000;
+div.swiper-pagination {
+   top:3px;
+   bottom:inherit;
+       margin: 0.1px;
+
 }
-.slider-pager-page.active
-{
-color: #f90;
+.swiper-pagination-bullet {
+    background-color: rgba(255,255,255,0.8);
+    height: 5px;
+    width: 18px;
 }
-.scroll-y {
-    margin-top: 60px;
-    height:800px;
+.scroll-y-slide2 {
+    margin-top: 80px;
+    height:420px;
     width:auto;
     overflow:auto;
 
 } 
-.card-scroll-y {
-    height:700px;
+.scroll-y-slide3 {
+    width:auto;
+    height: 500px;
+    overflow:auto;
+}
+.content-slide3 {
+    height: 500px;
+} 
+.scroll-y-slide4 {
+    height:550px;
     width:auto;
     overflow:auto;
 } 
+.content-slide4 {
+    height: 300px;
+}
+.img-slide4 {
+    width: 100%;
+}
+p, h1 {
+    text-align: left;
+}
  .swiper-pagination-progress .swiper-pagination-progressbar {
   background:red;
   margin: 3px;

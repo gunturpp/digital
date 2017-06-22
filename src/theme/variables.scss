@@ -31,10 +31,10 @@ $colors: (
   dark:       #222,
   grays:      #7c7c7c,
   blacks:     #000,
+  blacks-trans:rgba(0,0,0,0.8),
   greenday:   #149f35,
   transparants: rgba(255,255,255,0),
 );
-
 
 // App iOS Variables
 // --------------------------------------------------
@@ -65,8 +65,12 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
-
-
+// search bar
+$searchbar-md-input-text-color 	        :#fff;
+$searchbar-md-input-search-icon-color 	:#ffffff;
+$searchbar-md-input-background-color 	  :rgba(255,255,255,0.2);
+$searchbar-md-input-placeholder-color 	:rgba(0,0,0,0.2);
+$searchbar-md-input-border-radius       :	2px;
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
