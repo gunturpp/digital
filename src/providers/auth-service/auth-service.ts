@@ -30,7 +30,18 @@ export class AuthServiceProvider {
   //         });
   //   });
   // }
-   login(name,email,domisili,gender,hp,status,birthdate,role) {
+  setProfile(email,name,domisili) {
+    localStorage.setItem('email',email);    
+    localStorage.setItem('name',name);    
+    localStorage.setItem('domisili',domisili);    
+  }
+  
+  getProfile(email, name){
+    localStorage.get('email');    
+    localStorage.get('name');    
+
+  }
+   login(name,email,domisili,gender,hp,status,birthdate,role,token) {
       this.storage.set(this.HAS_LOGGED_IN, true);
       this.storage.set('name', name);
       this.storage.set('email', email);
@@ -42,14 +53,14 @@ export class AuthServiceProvider {
       this.storage.set('role',role);
       this.events.publish('user:login');
       this.loginState = true;
-  }
-    
+  }    
     signup(email) {
       this.storage.set(this.HAS_LOGGED_IN, true);
       this.storage.set('email',email);
       this.events.publish('user:signup');
     }
     logout() {
+      
       this.storage.remove(this.HAS_LOGGED_IN);
       this.storage.remove('name');
       this.storage.remove('email');
@@ -63,7 +74,7 @@ export class AuthServiceProvider {
       this.events.publish('user:logout');
       this.loginState = false;
       // location.reload();
-}
-
+    }
+    
 
 }

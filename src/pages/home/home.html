@@ -8,6 +8,7 @@
         <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">MEET & GREET</button>
         <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">MOTOVLOGGER</button>
         <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">BAZAR APPAREL</button>
+        <button ion-button full (click)="logout()" ion-button icon-only round color="grays">Logout</button>
 
       </ion-list>
       <!--<button ion-button clear (click)="goToSlide()">
@@ -30,11 +31,11 @@
       </ion-header>
       <div class="scroll-y">
           <ion-row>
-            <ion-col col-6 *ngFor="let card of cards" class="cards">
+            <ion-col col-6 *ngFor="let product of products" class="cards">
               <div class="card-detail">
-                <img style="height:200px;" class="card-image" [src]="card.image">
-                <ion-label class="text" [innerHTML]="card.merk"></ion-label>
-                <ion-label class="text" [innerHTML]="card.harga"></ion-label>
+                <img style="height:200px;" class="card-image" [src]="product.picture">
+                <ion-label class="text">{{ product.name }}</ion-label>
+                <ion-label class="text">{{ product.price}}</ion-label>
                 <button class="btn-color" ion-button>Pre Order</button>
               </div>
             </ion-col>
@@ -119,10 +120,10 @@
                 <p>Please connect to the Internet...</p>
             </div>
         
-            <div #map id="map">
+            <!--<div #map id="map">
                 <ion-spinner></ion-spinner>
             </div>
-        
+        -->
         </ion-content>
     
     </ion-slide>

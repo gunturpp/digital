@@ -1,5 +1,11 @@
 {
   "name": "hikers",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "http://188.166.188.11/getproduct",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ]
 }

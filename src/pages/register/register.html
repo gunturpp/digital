@@ -2,56 +2,23 @@
   <ion-navbar color="blacks">
   </ion-navbar>
 </ion-header>
-<ion-content class="a">
-<ion-searchbar
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="onInput($event)"
-  (ionCancel)="onCancel($event)">
-</ion-searchbar>  <ion-list padding class="listing">
+<ion-content padding class="background">
+  <ion-list class="listing">
+    <h2 class="register">Register</h2>
+    <br>
+  <form #signupForm="ngForm" novalidate>
+    <ion-item>
+      <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="Nama"></ion-input>
+    </ion-item>
 
-    <form  #signupForm="ngForm" novalidate>
-      <ion-item>
-        <ion-input  [(ngModel)]="user.name" name="name" type="text" placeholder="Nama"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="Email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
-      </ion-item>
-      <!--gender-->
-      <ion-item class="css-item">
-        <ion-label>PRIA/WANITA</ion-label>
-        <ion-select class="color" [(ngModel)]="user.gender" [ngModelOptions]="{standalone:true}">
-            <ion-option  value="Pria">Pria</ion-option>
-            <ion-option  value="Wanita">Wanita</ion-option>
-        </ion-select>
-      </ion-item>     
-      <!--khusus datepicker-->
-      <ion-item class="css-item">
-        <ion-datetime class="css-item2" class="color" placeholder="TGL LAHIR" min="1920"  [(ngModel)]="user.birthdate" [ngModelOptions]="{standalone:true}" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
-      </ion-item>
-      <ion-item class="css-item">
-        <ion-label>STATUS</ion-label>
-        <ion-select class="color" [(ngModel)]="user.status_kawin" [ngModelOptions]="{standalone:true}">
-            <ion-option  value="Single">Single</ion-option>
-            <ion-option  value="Married">Married</ion-option>
-        </ion-select>
-      </ion-item>     
-      <ion-item>
-        <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
 
-      <br><br><br>
-      <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+    <ion-item>
+      <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
+    </ion-item>
 
-<<<<<<< HEAD
-    </form>    
-=======
     <ion-item>
       <ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>
     </ion-item>
@@ -76,6 +43,7 @@
     <br><br><br>
     <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
   </form>    
->>>>>>> 689f597b0f91340f1f40760fbd36a86aba7324d5
   </ion-list>
+      <button ion-button full color="blacks" (click)="presentConfirm()">PRIA/WANITA</button>
+
 </ion-content>

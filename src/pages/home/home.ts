@@ -1,11 +1,18 @@
 import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
 import { ModalController, App, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Http, Headers,RequestOptions } from '@angular/http';
 
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
 
+// let apiReviews = 'http://188.166.188.11/getreviews';
+// let apiEvents = 'http://188.166.188.11/getevents';
+// let apiVloggers = 'http://188.166.188.11/getvloggers';
+let apiProduct = 'http://188.166.188.11/';
+let token = localStorage.getItem('token');
 /**
  * Generated class for the HomePage page.
  *
@@ -22,6 +29,7 @@ declare var google;
 })
 
 export class HomePage {
+  products:any;
   
     
     @ViewChild(Slides) slides: Slides;  
@@ -41,25 +49,42 @@ export class HomePage {
     loading: any;
     isLoggedIn: boolean = false;
 
-  constructor(public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
+    
+  constructor( public http: Http, public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider) {
         this.searchDisabled = true;
         this.saveDisabled = true;
-        
         // auth token
-        // if(localStorage.getItem("token")) {
-        // this.isLoggedIn = true;
-        // }        
+        if(localStorage.getItem(token)) {
+        this.isLoggedIn = true;
+      }        
+          let headers = new Headers();
+      
+          headers.append('Access-Control-Allow-Origin', '*');
+          headers.append('Authorization', 'Bearer ' + token);
+          headers.append('Content-Type', 'application/json',);
+          let options = new RequestOptions({ headers: headers });
+
+        this.http.get(apiProduct + 'getproduct', options)
+        .map(res => this.products= res.json())
+        .subscribe(products => {
+            this.products = products;
+            console.log(products);
+          });
+
   }
   
      ionViewDidLoad(): void {
+        // GET FROM API
+        
  
-       let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
 
-            this.autocompleteService = new google.maps.places.AutocompleteService();
-            this.placesService = new google.maps.places.PlacesService(this.maps.map);
-            this.searchDisabled = false;
- 
-        }); 
+      //  let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
+
+      //       this.autocompleteService = new google.maps.places.AutocompleteService();
+      //       this.placesService = new google.maps.places.PlacesService(this.maps.map);
+      //       this.searchDisabled = false;
+      //   }); 
+      console.log(token);
     }
     
     public goToSlide1() {
@@ -77,6 +102,9 @@ export class HomePage {
     goToSlide5() {
     this.slides.slideTo(4, 200);
     }
+  
+
+    
     selectPlace(place){
  
         this.places = [];
@@ -227,14 +255,18 @@ export class HomePage {
 
   //--------- logout --------------
    logout() {
-    this.autocompleteService.logout().then((result) => {
-      this.loading.dismiss();
-      let nav = this.app.getRootNav();
-      nav.setRoot(LoginPage);
-    }, (err) => {
-      this.loading.dismiss();
-      this.presentToast(err);
+   
+    let loading = this.loadingCtrl.create({
+        content: 'Tunggu sebentar ...'
     });
+    localStorage.removeItem('token');
+    this.authService.logout();
+      loading.present();
+      let nav = this.app.getRootNav();
+      
+      loading.dismiss();
+      nav.setRoot(LoginPage);
+      this.showAlert("Logout berhasil.")
   }
 
   showLoader(){
@@ -244,6 +276,13 @@ export class HomePage {
 
     this.loading.present();
   }
+    showAlert(val){
+    let toast = this.toastCtrl.create({
+      message: val,
+      duration: 3000
+    });
+    toast.present();
+  };
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

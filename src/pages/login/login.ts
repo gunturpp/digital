@@ -6,7 +6,8 @@ import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
 import { Http } from '@angular/http';
 
- let apiURL = "http://localhost:8000/signin";
+ let apiURL = "http://188.166.188.11/signin";
+ 
  @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -14,12 +15,19 @@ import { Http } from '@angular/http';
 export class LoginPage {
   
 
-  user: {email?: string, password?: string} = {};
+  // user: {email?: string, password?: string} = {};
   submitted = false;
-  // user = { email:'drikdoank@gmail.com', password:'didok49' };
+  user = { email:'drikdoank@gmail.com', password:'didok49' };
   data: any;
+  token:any;
+  constructor(public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+    
+     if(localStorage.getItem('token')) {
+      this.navCtrl.setRoot(HomePage);
+      
+ }
 
-  constructor(public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
+  }
 
    doLogin(form: NgForm) {
     this.submitted = true;
@@ -30,26 +38,39 @@ export class LoginPage {
     if (form.valid) {
     loading.present();
       let contentHeader = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
-
       let input = {
         email: this.user.email,
         password: this.user.password
       };
-      
-        this.http.post(apiURL,input, contentHeader).subscribe(data => {
-           let response = data.json();
-          //  loading.dismiss();
-           if(response.status == 200) {
-             let user=response.data;
-             this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender);
-            //  this.userDataProvider.login(user.user_id,user.username,user.user_status,user.name,user.phone_number,user.email);
-             console.log(user); 
-             this.navCtrl.push(HomePage);
+
+      this.http.post(apiURL,input, contentHeader).subscribe(data => {
+          let response = data.json();
+          loading.dismiss();
+          this.navCtrl.push(HomePage);
+          this.showAlert('Selamat Datang.');
+
+          if(response.status == 200) {
+     
+            let user=response.data;
+            this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender,response.token);
+            localStorage.setItem('email',user);
+          
+             
 
 
            } else {
-             this.showAlert(response.message);
-             console.log(response);
+            console.log(this.user,'oooo');
+            
+            localStorage.setItem('email',this.user.email);
+            // localStorage.setItem('password',this.user.password);
+            let wew2 = localStorage.getItem('email');
+            let wew3 = localStorage.getItem('name');
+            console.log('www',wew2);             
+            console.log('www',wew3);             
+            this.showAlert(response.message);
+            let saveToken = response.token;
+            localStorage.setItem('token',saveToken);
+            
            }
         }, err => {
            loading.dismiss();
@@ -80,5 +101,5 @@ export class LoginPage {
       duration: 3000
     });
     toast.present();
-};
+  };
 }
