@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
+
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 @IonicPage()
 @Component({
@@ -11,15 +13,15 @@ export class MyprofilePage {
     submitted = false;
     
 
-  constructor(public authService: AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
-    let getProfiles = localStorage.getItem('email');
-    console.log(getProfiles);
+  constructor(public storage: Storage,public authService: AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+            let myStringArray = localStorage.getItem('email');
+            let s = JSON.stringify(myStringArray); 
+            console.log('string',s);
+            console.log('string',myStringArray);
 
   }
   
   ionViewDidLoad() {
-    let getProfiles = localStorage.getItem('email');
-    console.log(getProfiles);
   }
 
 }

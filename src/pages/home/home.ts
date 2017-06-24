@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
-import { ModalController, App, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
+import { AlertController, ModalController, App, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http, Headers,RequestOptions } from '@angular/http';
 
@@ -7,6 +7,8 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
+import { ProductDetailPage } from '../product-detail/product-detail';
+import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
 
 let apiReviews = 'http://188.166.188.11/getreviews';
 let apiBikes = 'http://188.166.188.11/getbikes';
@@ -36,24 +38,16 @@ export class HomePage {
     @ViewChild(Slides) slides: Slides;  
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
- 
-    latitude: number;
-    longitude: number;
-    autocompleteService: any;
-    placesService: any;
-    query: string = '';
-    places: any = [];
-    searchDisabled: boolean;
-    saveDisabled: boolean;
-    location: any;  
+
+    reviews:any;
+    bikes:any;
+  
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
 
     
-  constructor( public http: Http, public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider) {
-        this.searchDisabled = true;
-        this.saveDisabled = true;
+  constructor( public http: Http, public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController) {
         // auth token
         if(localStorage.getItem(token)) {
         this.isLoggedIn = true;
@@ -91,13 +85,6 @@ export class HomePage {
         // GET FROM API
         
  
-
-      //  let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
-
-      //       this.autocompleteService = new google.maps.places.AutocompleteService();
-      //       this.placesService = new google.maps.places.PlacesService(this.maps.map);
-      //       this.searchDisabled = false;
-      //   }); 
       console.log(token);
     }
     
@@ -115,156 +102,25 @@ export class HomePage {
     }
     goToSlide5() {
     this.slides.slideTo(4, 200);
-    }
+  }
+  goToProductDetail(productName: any) {
+    this.navCtrl.push(ProductDetailPage, {
+      product: productName,
+      name: productName.name
+    });
+  }
+  goToReviewDetail(reviewName: any) {
+    this.navCtrl.push(ReviewsDetailPage, {
+      review: reviewName,
+      name: reviewName.name
+    });
+  }
   
-
-    
-    selectPlace(place){
- 
-        this.places = [];
- 
-        let location = {
-            lat: null,
-            lng: null,
-            name: place.name
-        };
- 
-        this.placesService.getDetails({placeId: place.place_id}, (details) => {
- 
-            this.zone.run(() => {
- 
-                location.name = details.name;
-                location.lat = details.geometry.location.lat();
-                location.lng = details.geometry.location.lng();
-                this.saveDisabled = false;
- 
-                this.maps.map.setCenter({lat: location.lat, lng: location.lng}); 
- 
-                this.location = location;
- 
-            });
- 
-        });
- 
-    }
-  
-    searchPlace(){
- 
-        this.saveDisabled = true;
- 
-        if(this.query.length > 0 && !this.searchDisabled) {
- 
-            let config = {
-                types: ['geocode'],
-                input: this.query
-            }
- 
-            this.autocompleteService.getPlacePredictions(config, (predictions, status) => {
- 
-                if(status == google.maps.places.PlacesServiceStatus.OK && predictions){
- 
-                    this.places = [];
- 
-                    predictions.forEach((prediction) => {
-                        this.places.push(prediction);
-                    });
-                }
- 
-            });
- 
-        } else {
-            this.places = [];
-        }
- 
-    }
- 
-    save(){
-      this.viewCtrl.dismiss(this.location);      
-    }
- 
-    close(){
-        this.viewCtrl.dismiss();
-    }
   
     presentMenu() {
       let modal = this.modalCtrl.create(MenuPage);
       modal.present();
     }
-
-
-  reviews = [
-    {
-          image: "assets/img/Bikes-image-a.jpg",
-          image2: "assets/img/Bikes-image-a.jpg",
-          image3: "assets/img/Bikes-image-a.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...",
-    },
-    {
-          image: "assets/img/Bikes-image-a.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...",
-    },
-        {
-          image: "assets/img/Bikes-image-a.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...",
-    },
-    {
-          image: "assets/img/Bikes-image-a.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...",
-    }
-
-  ]
-
-
-  bikes = [
-    {
-      image: "assets/img/Bikes-image-a.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...",
-      image2: "assets/img/Bikes-image-b.jpg",
-    }
-  ];
-  cards = [
-    {
-      image: "assets/img/Best-Deals-Helmet-1.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-2.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-3.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-4.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-5.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-6.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-6.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-    {
-      image: "assets/img/Best-Deals-Helmet-6.jpg",
-      merk : "Nolan 1",
-      harga : "Rp 100.000",
-    },
-   
-  ];
 
 
   //--------- logout --------------
@@ -282,7 +138,7 @@ export class HomePage {
       nav.setRoot(LoginPage);
       this.showAlert("Logout berhasil.")
   }
-
+//=========================================
   showLoader(){
     this.loading = this.loadingCtrl.create({
         content: 'Authenticating...'
@@ -312,6 +168,7 @@ export class HomePage {
 
     toast.present();
   }
+ 
 //=======================================
 
 }

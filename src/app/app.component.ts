@@ -7,13 +7,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
-// import { RegisterPage } from '../pages/register/register';
+import { RegisterPage } from '../pages/register/register';
+import { CobascrollPage } from '../pages/cobascroll/cobascroll';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -1,0 +1,23 @@
+<ion-content class="background" class="speaker-detail">
+  <div text-center class="css-card">
+    <img style="height:120px;" class="card-image" src="http://188.166.188.11{{product.picture}}">
+<ion-col>
+    <ion-label  class="text" style="font-size:14px;">{{ product.name }}</ion-label>
+    <ion-label  class="text" style="font-size:14px;">IDR {{ product.price}}</ion-label>
+    <ion-label  class="text" style="font-size:10px;">Merchant:</ion-label>
+    <ion-label  class="text">{{ product.user}}</ion-label>
+    <ion-label class="text" style="font-size:10px">Tunjukkan code dibawah ke Merchant</ion-label>
+    <ion-label  class="text" style="color:red">{{ product.promotion}}</ion-label>
+    <p  class="text" style="text-align:center;font-size:8px;">Harga dan transaksi pembelian hanya berlaku</p>
+    <p  class="text" style="text-align:center;font-size:8px;">di merchant selama pameran berlangsung.</p>
+</ion-col>
+  </div>
+    <br>
+  <div class="btn-css">
+    <button ion-button full outline color="primary" (click)="saveToInbox()">Ok, simpan ke inbox</button>
+  </div>
+  <div class="btn-css">
+    <button ion-button full outline color="primary" (click)="popback()">Batal Pre Order</button>
+  </div>
+
+</ion-content>

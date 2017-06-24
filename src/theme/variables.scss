@@ -28,6 +28,7 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
+  whites:    #fff,
   dark:       #222,
   grays:      #7c7c7c,
   blacks:     #000,
@@ -77,7 +78,8 @@ $searchbar-md-input-border-radius       :	2px;
 // http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionic.ionicons";
-
+$item-md-divider-border-bottom : 1px solid;
+$list-md-border-color: black;
 $alert-md-border-radius: 20px;
 $alert-md-background-color: #fff;
 $alert-md-button-text-align: end;

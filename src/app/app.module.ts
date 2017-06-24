@@ -13,6 +13,7 @@ import { ConnectivityServiceProvider } from '../providers/connectivity-service/c
 
 import { MyApp } from './app.component';
 
+import { CobascrollPage } from '../pages/cobascroll/cobascroll';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -24,7 +25,8 @@ import { AboutPage } from '../pages/about/about';
 import { SettingPage } from '../pages/setting/setting';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     InboxPage,
     AboutPage,
     SettingPage,
-    MyprofilePage
+    MyprofilePage,
+    CobascrollPage,
+    ProductDetailPage,
+    ReviewsDetailPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,10 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     InboxPage,
     AboutPage,
     SettingPage,
-    MyprofilePage
+    MyprofilePage,
+    CobascrollPage,
+    ProductDetailPage,
+    ReviewsDetailPage
   ],
   providers: [
     StatusBar,

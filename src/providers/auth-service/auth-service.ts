@@ -37,20 +37,27 @@ export class AuthServiceProvider {
   }
   
   getProfile(email, name){
+    
     localStorage.get('email');    
     localStorage.get('name');    
 
   }
-   login(name,email,domisili,gender,hp,status,birthdate,role,token) {
+  
+  getProf(name,email,domisili,gender,hp,status,birthdate,role,token) {
+     this.storage.get(email).then((val) => {
+    console.log('Your age is', val);
+  });
+  }
+   login(email,token) {
       this.storage.set(this.HAS_LOGGED_IN, true);
-      this.storage.set('name', name);
+      // this.storage.set('name', name);
       this.storage.set('email', email);
-      this.storage.set('domisili',domisili);
-      this.storage.set('gender',gender);
-      this.storage.set('hp',hp);
-      this.storage.set('status',status);
-      this.storage.set('birthdate',birthdate);
-      this.storage.set('role',role);
+      // this.storage.set('domisili',domisili);
+      // this.storage.set('gender',gender);
+      // this.storage.set('hp',hp);
+      // this.storage.set('status',status);
+      // this.storage.set('birthdate',birthdate);
+      // this.storage.set('role',role);
       this.events.publish('user:login');
       this.loginState = true;
   }    

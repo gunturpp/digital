@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AlertController, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { AlertController, NavController, NavParams, LoadingController, ToastController, Slides } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { NgForm } from '@angular/forms';
 import { Http, RequestOptions } from '@angular/http';
@@ -11,10 +11,15 @@ import { LoginPage } from '../login/login';
 })
 export class RegisterPage {
 
-  
+  @ViewChild(Slides) slides: Slides;  
+
   user: {name?: string, email?: string, gender?: string, password?: string, role?:string,hp?:string,status_kawin?:string,domisili?:string,birthdate?:string} = {};
   submitted = false;
   constructor(public alertCtrl: AlertController, public http: Http,public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
+
+    goToSlide1() {
+    this.slides.slideTo(1, 200);
+    }
 
    onSignup(form: NgForm) {
       this.submitted = true;

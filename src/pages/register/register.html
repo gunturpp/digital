@@ -1,49 +1,36 @@
-<ion-header>
-  <ion-navbar color="blacks">
-  </ion-navbar>
-</ion-header>
-<ion-content padding class="background">
-  <ion-list class="listing">
-    <h2 class="register">Register</h2>
-    <br>
+<ion-slides class="a">
+  <ion-slide>
   <form #signupForm="ngForm" novalidate>
-    <ion-item>
       <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="Nama"></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="Email"></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>
-    </ion-item>
   </form>
-    <ion-item padding class="css-datetime">
-      <ion-label class="css-datetime">TGL LAHIR</ion-label>
-      <ion-datetime [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
+    <ion-item class="ions">
+      <ion-datetime class="ions2" placeholder="TGL LAHIR" [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
     </ion-item>
   <form #signupForm="ngForm" novalidate>
-    <ion-item>
       <ion-input [(ngModel)]="user.status_kawin" name="status_kawin" type="text" placeholder="STATUS"></ion-input>
-    </ion-item>
-
-    <ion-item>
       <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
-    </ion-item>
 
-    <ion-item>
       <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
-    </ion-item>
 
     <br><br><br>
-    <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+    <button ion-button full type="submit" (click)="goToSlide1()" color="grays"><img src="assets/img/arrow-right-next.png"></button>
   </form>    
-  </ion-list>
-      <button ion-button full color="blacks" (click)="presentConfirm()">PRIA/WANITA</button>
+   <ion-content (ionScroll)="scrollHandler($event)">
+       <p> Some realllllllly long content </p>
+    </ion-content>
+  </ion-slide>
+  <ion-slide>
 
-</ion-content>
+      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
+
+    <br><br><br>  
+    <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+
+  </ion-slide>
+</ion-slides>

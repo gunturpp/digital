@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
  let apiURL = "http://188.166.188.11/signin";
  
@@ -17,10 +18,10 @@ export class LoginPage {
 
   // user: {email?: string, password?: string} = {};
   submitted = false;
-  user = { email:'drikdoank@gmail.com', password:'didok49' };
+  user = { email:'drikdoank@gmail.com', password:'didok49',status:'0' };
   data: any;
   token:any;
-  constructor(public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(public storage:Storage, public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
     
      if(localStorage.getItem('token')) {
       this.navCtrl.setRoot(HomePage);
@@ -40,7 +41,8 @@ export class LoginPage {
       let contentHeader = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
       let input = {
         email: this.user.email,
-        password: this.user.password
+        password: this.user.password,
+        status: this.user.status
       };
 
       this.http.post(apiURL,input, contentHeader).subscribe(data => {
@@ -52,25 +54,24 @@ export class LoginPage {
           if(response.status == 200) {
      
             let user=response.data;
-            this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender,response.token);
-            localStorage.setItem('email',user);
-          
+            this.authService.login(user.email,response.token);
+            localStorage.setItem('email',JSON.stringify(user));
+            this.storage.set('email',user.email);
              
 
 
            } else {
             console.log(this.user,'oooo');
-            
             localStorage.setItem('email',this.user.email);
             // localStorage.setItem('password',this.user.password);
             let wew2 = localStorage.getItem('email');
-            let wew3 = localStorage.getItem('name');
+            let wew3 = localStorage.getItem('password');
             console.log('www',wew2);             
             console.log('www',wew3);             
             this.showAlert(response.message);
             let saveToken = response.token;
             localStorage.setItem('token',saveToken);
-            
+            console.log('proff',this.user);
            }
         }, err => {
            loading.dismiss();

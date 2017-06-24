@@ -1,42 +1,72 @@
-  <ion-slides control pager="true" paginationType="bullets" class="bg">
-    <!--SLIDE HOME-->
+  <ion-slides control pager="true" paginationType="bullets" class="black">
+    <!--SLIDE HOME SLIDE 1-->
     <ion-slide>
+      <ion-header>
+        <ion-toolbar color="blacks-trans">
+          <ion-buttons left>
+            <button  (click)="presentMenu()" ion-button icon-only>
+              <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+            </button>
+          </ion-buttons>
+         
+        </ion-toolbar>
+        <ion-toolbar  color="blacks-trans">
+        <img class="logoHaikers" src="assets/img/Home-logo-Haikers2.png">
+        </ion-toolbar>
+      </ion-header>
 
-      <img class="logoHaikers" src="assets/img/Home-logo-Haikers.png">
-      <ion-list class="list">
-        <button ion-button full (click)="goToSlide2()" ion-button icon-only round color="grays">EXHIBITION</button>
-        <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">MEET & GREET</button>
-        <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">MOTOVLOGGER</button>
-        <button ion-button full (click)="regisAccount()" ion-button icon-only round color="grays">BAZAR APPAREL</button>
-        <button ion-button full (click)="logout()" ion-button icon-only round color="grays">Logout</button>
+      <div class="bg">
+        <div>
+          <div class="list">
+            <button ion-button medium full (click)="goToSlide4()" color="blacks-trans">EXHIBITION</button>
+            <button ion-button medium full (click)="regisAccount()" color="dark">MEET & GREET</button>
+            <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
+            <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
+            <button ion-button medium full (click)="logout()" color="grays">Logout</button>
+          </div>
+        <br>
+        <ion-label class="text-more">MORE INFO</ion-label>      
 
-      </ion-list>
-      <!--<button ion-button clear (click)="goToSlide()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>-->
-      <br>
-      <ion-label (click)="presentMenu()">MORE INFO</ion-label>      
-      <ion-label><img (click)="presentMenu()" src="assets/img/Arrow-bottom-down.png"></ion-label>
+          <div class="black">
+            <p class="white">Hikers (Hai Bikers!) adalah suatu event inovatif yang di kemas secara unik dan menarik. Mulai dari menjual apparel motor standart hingga premium, pameran motor sport, serta meet and greet youtuber ( Motovlogger ), medsos uploader, serta doorprize!</p>
+            <br>
+            <img src="assets/img/Home-image-Exhibition.jpg">
+            <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
+            <img src="assets/img/Home-image-Bazaar.jpg">
+            <img src="assets/img/MediaPartner-List.jpg">
+          </div>
+          <div>
+          </div>
+        </div>
+
+      </div>
     </ion-slide>
-    <!--SLIDE BEST DEALS-->
+    <!--SLIDE BEST DEALS SLIDE 2-->
     <ion-slide class="black">
       <ion-header>
-        <ion-navbar color="blacks">
-          <ion-label>Best Deals</ion-label>
+        <ion-toolbar color="blacks-trans">
+          <ion-buttons left>
+            <button  (click)="presentMenu()" ion-button icon-only>
+              <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-toolbar color="blacks-trans">     
+          <ion-title>Best Deals</ion-title>
             <ion-searchbar  [(ngModel)]="searchCountryString" (input)="searchCountry($event)"
                     [showCancelButton]="shouldShowCancel" [showCancelButton]="shouldShowCancel"
                             (ionCancel)="onCancel($event)">
             </ion-searchbar>
-        </ion-navbar>
+        </ion-toolbar>
       </ion-header>
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
               <div   class="card-detail">
-                <img style="height:200px;" class="card-image" [src]="product.picture">
+                <img style="height:200px;" class="card-image" src="http://188.166.188.11{{product.picture}}">
                 <ion-label  class="text">{{ product.name }}</ion-label>
-                <ion-label  class="text">{{ product.price}}</ion-label>
-                <button class="btn-color" ion-button>Pre Order</button>
+                <ion-label  class="text">IDR {{ product.price}}</ion-label>
+                <button class="btn-color" ion-button (click)=" goToProductDetail(product)">Pre Order</button>
               </div>
             </ion-col>
           </ion-row>  
@@ -44,32 +74,51 @@
 
     </ion-slide>
     
-    <!--SLIDE BIKES-->
+    <!--SLIDE BIKES SLIDE 3-->
     <ion-slide  class="black">
       <ion-header>
-        <ion-navbar color="blacks-trans">
-            <ion-searchbar color="blacks-trans" (input)="searchCountry($event)"
-                    [showCancelButton]="shouldShowCancel" [showCancelButton]="shouldShowCancel"
-                            (ionCancel)="onCancel($event)"  [(ngModel)]="searchCountryString">
-            </ion-searchbar>
-        </ion-navbar>
+        <ion-toolbar color="blacks-trans">
+          <ion-buttons left>
+            <button  (click)="presentMenu()" ion-button icon-only>
+              <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-toolbar color="blacks-trans">
+            <ion-item  color="blacks-trans">
+              <ion-label></ion-label>
+              <ion-select [(ngModel)]="gaming" placeholder="PILIH JENIS MOTOR">
+                <ion-option text-center value="nes">DUCATI DIAVEL</ion-option>
+                <ion-option text-center value="n64">BIKE A</ion-option>
+                <ion-option text-center value="ps">BIKE B</ion-option>
+                <ion-option text-center value="genesis">BIKE C</ion-option>
+                <ion-option text-center value="saturn">BIKE D</ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-toolbar>
       </ion-header>
       <div class="scroll-y-slide3" >
         <ion-card class="content-slide3" *ngFor="let bike of bikes">
-          <img [src]="bike.picture"/>
+          <img src="http://188.166.188.11{{bike.picture}}"/>
           <ion-card-content>
             <p>{{bike.description}}</p>
           </ion-card-content>
-          <img [src]="bike.picture"/>
+          <img src="http://188.166.188.11{{bike.picture}}"/>
         </ion-card>
       </div>
     </ion-slide>
-    <!--SLIDE EDITOR REVIEWS-->
+    <!--SLIDE EDITOR REVIEWS SLIDE 4-->
     <ion-slide class="black">
       <ion-header>
-        <ion-navbar color="blacks-trans">
-         <ion-label style="text-align:center;">EDITOR REVIEWS</ion-label>
-        </ion-navbar>
+        <ion-toolbar color="blacks-trans">
+          <ion-buttons left>
+            <button  (click)="presentMenu()" ion-button icon-only>
+              <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+            </button>
+          </ion-buttons>
+         
+         <ion-title style="text-align:center;">EDITOR REVIEWS</ion-title>
+        </ion-toolbar>
       </ion-header>
 
       <div class="scroll-y-slide4">
@@ -84,48 +133,43 @@
           </ion-slide>
         </ion-slides>-->
           <ion-card-content class="content-slide4">
-            <img class="img-slide4" src="assets/img/Bikes-image-b.jpg"/>
+            <img class="img-slide4" src="http://188.166.188.11{{review.picture}}"/>
             <!--<img [src]="review.picture"/>-->
-            <h1>{{review.name}}</h1>
-            <p>{{review.created_at}}</p>
-            <p>{{review.description}}</p>
-          </ion-car\d-content>
+            <h2>{{review.name}}</h2>
+            <p class="text" style="font-size:8px">{{review.created_at}}</p>
+            <p class="text">{{review.description}}</p>
+            <button ion-button (click)="goToReviewDetail(review)"></button>
+          </ion-card-content>
         </ion-card>
       </div>
     </ion-slide>
 
-    <!--MAPS-->
+    <!--MAPS SLIDE 5-->
     <ion-slide>
       <ion-header>
-        <ion-navbar color="primary">
-            <ion-buttons left>
-                <button ion-button (click)="close()">Cancel</button>
-            </ion-buttons>
-            <ion-buttons right>
-                <button [disabled]="saveDisabled" ion-button (click)="save()">Save</button>
-            </ion-buttons>
-        </ion-navbar>
- 
-        <ion-toolbar>
-            <ion-searchbar [(ngModel)]="query" (ionInput)="searchPlace()"></ion-searchbar>
+        <ion-toolbar color="blacks-trans">
+         <ion-buttons left>
+            <button  (click)="presentMenu()" ion-button icon-only>
+              <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+            </button>
+         </ion-buttons>
         </ion-toolbar>
- 
-          <ion-list>
-              <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
-          </ion-list>
-      
+        <ion-toolbar color="blacks-trans">  
+            <ion-item  color="blacks-trans">
+              <ion-label></ion-label>
+              <ion-select [(ngModel)]="gaming" placeholder="PILIH JENIS MOTOR">
+                <ion-option text-center value="nes">DUCATI DIAVEL</ion-option>
+                <ion-option text-center value="n64">BIKE A</ion-option>
+                <ion-option text-center value="ps">BIKE B</ion-option>
+                <ion-option text-center value="genesis">BIKE C</ion-option>
+                <ion-option text-center value="saturn">BIKE D</ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-toolbar>
       </ion-header>
  
         <ion-content>
         
-            <div #pleaseConnect id="please-connect">
-                <p>Please connect to the Internet...</p>
-            </div>
-        
-            <!--<div #map id="map">
-                <ion-spinner></ion-spinner>
-            </div>
-        -->
         </ion-content>
     
     </ion-slide>
