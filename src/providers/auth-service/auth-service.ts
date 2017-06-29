@@ -48,9 +48,9 @@ export class AuthServiceProvider {
     console.log('Your age is', val);
   });
   }
-   login(email,token) {
+   login(email,token,name) {
       this.storage.set(this.HAS_LOGGED_IN, true);
-      // this.storage.set('name', name);
+      this.storage.set('name', name);
       this.storage.set('email', email);
       // this.storage.set('domisili',domisili);
       // this.storage.set('gender',gender);

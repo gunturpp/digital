@@ -2,4 +2,23 @@ page-myprofile {
     .blacks {
         background-color: #000;
     }
+    .img-css {
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 150px;
+        -webkit-border-radius: 150px;
+        -moz-border-radius: 150px;
+    }
+    .img-content {
+        height:250px;
+        border-bottom: solid;
+        color:#fff;
+
+    }
+    .profile-content {
+        margin-left: 10px;
+    }
 }

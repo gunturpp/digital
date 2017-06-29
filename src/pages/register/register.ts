@@ -55,6 +55,7 @@ export class RegisterPage {
 
               }
               this.showAlert(response.message);
+              console.log(input);
         }, err => {
            loading.dismiss();
            this.showError(err);

@@ -7,23 +7,31 @@
 
       <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
 
-      <ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>
+      <!--<ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>-->
   </form>
+   <ion-item class="ions">
+      <ion-select type="text" name="gender" class="ions2-select" placeholder="GENDER" [(ngModel)]="user.gender">
+        <ion-option value="Pria">PRIA</ion-option>
+        <ion-option value="Wanita">WANITA</ion-option>
+      </ion-select>
+   </ion-item>
+
     <ion-item class="ions">
       <ion-datetime class="ions2" placeholder="TGL LAHIR" [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
     </ion-item>
+   <ion-item class="ions">
+      <ion-select type="text" name="status_kawin" class="ions2-select" placeholder="STATUS" [(ngModel)]="user.status_kawin">
+        <ion-option value="Pria">SINGLE</ion-option>
+        <ion-option value="Married">MARRIED</ion-option>
+      </ion-select>
+   </ion-item>
   <form #signupForm="ngForm" novalidate>
-      <ion-input [(ngModel)]="user.status_kawin" name="status_kawin" type="text" placeholder="STATUS"></ion-input>
+      <!--<ion-input [(ngModel)]="user.status_kawin" name="status_kawin" type="text" placeholder="STATUS"></ion-input>-->
       <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
 
-      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
-
-    <br><br><br>
+        <br><br><br>
     <button ion-button full type="submit" (click)="goToSlide1()" color="grays"><img src="assets/img/arrow-right-next.png"></button>
   </form>    
-   <ion-content (ionScroll)="scrollHandler($event)">
-       <p> Some realllllllly long content </p>
-    </ion-content>
   </ion-slide>
   <ion-slide>
 

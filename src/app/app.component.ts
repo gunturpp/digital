@@ -8,7 +8,6 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { RegisterPage } from '../pages/register/register';
-import { CobascrollPage } from '../pages/cobascroll/cobascroll';
 
 @Component({
   templateUrl: 'app.html'

@@ -8,19 +8,17 @@
 
 
 <ion-content padding class="blacks">
-
-  <ion-card>
-  <img src="assets/img/Best-Deals-Helmet-1.jpg"/>
-  <ion-card-content>
-    <ion-card-title *ngFor="let profile of myStringArray">
-      {{profile.email}}
-      </ion-card-title>
-      <p *ngFor="let profile of s">      {{profile.email}}
-      </p><p>
-      The most popular industrial group ever, and largely
-      responsible for bringing the music to a mass audience.
-      </p>
-    </ion-card-content>
-  </ion-card>
-
+    <div class="img-content">
+      <img class="img-css" src="http://188.166.188.11{{profile.img}}">
+    </div>
+    <div class="profile-content">
+      <ion-label>{{profile.name|uppercase}}</ion-label>
+      <ion-label>{{profile.email|uppercase}}</ion-label>
+      <ion-label>{{profile.hp|uppercase}}</ion-label>
+      <ion-label>{{profile.gender|uppercase}}</ion-label>
+      <ion-label>{{profile.birthdate|uppercase}}</ion-label>
+      <ion-label>{{profile.status_kawin|uppercase}}</ion-label>
+      <ion-label>{{profile.domisili|uppercase}}</ion-label>
+      <ion-label (click)="changePassword()">GANTI PASSWORD</ion-label>
+    </div>
 </ion-content>

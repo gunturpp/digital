@@ -6,14 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Storage, IonicStorageModule } from '@ionic/storage';
+import {IonicStorageModule } from '@ionic/storage';
 
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
 
 import { MyApp } from './app.component';
 
-import { CobascrollPage } from '../pages/cobascroll/cobascroll';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -41,7 +40,6 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     AboutPage,
     SettingPage,
     MyprofilePage,
-    CobascrollPage,
     ProductDetailPage,
     ReviewsDetailPage
   ],
@@ -64,7 +62,6 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     AboutPage,
     SettingPage,
     MyprofilePage,
-    CobascrollPage,
     ProductDetailPage,
     ReviewsDetailPage
   ],

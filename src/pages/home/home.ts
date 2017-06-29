@@ -10,12 +10,7 @@ import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
 
-let apiReviews = 'http://188.166.188.11/getreviews';
-let apiBikes = 'http://188.166.188.11/getbikes';
-// let apiEvents = 'http://188.166.188.11/getevents';
-// let apiVloggers = 'http://188.166.188.11/getvloggers';
-let apiProduct = 'http://188.166.188.11/getproduct';
-let token = localStorage.getItem('token');
+let apiURL = 'http://188.166.188.11/';
 /**
  * Generated class for the HomePage page.
  *
@@ -32,8 +27,6 @@ declare var google;
 })
 
 export class HomePage {
-  products:any;
-  
     
     @ViewChild(Slides) slides: Slides;  
     @ViewChild('map') mapElement: ElementRef;
@@ -41,6 +34,9 @@ export class HomePage {
 
     reviews:any;
     bikes:any;
+    products:any;
+    rundowns:any;
+  
   
     // for token login
     loading: any;
@@ -49,43 +45,49 @@ export class HomePage {
     
   constructor( public http: Http, public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController) {
         // auth token
+        let token = localStorage.getItem('token');
+        console.log('token home',token);
+
         if(localStorage.getItem(token)) {
         this.isLoggedIn = true;
-
-      }        
+        }        
 
         let headers = new Headers({
          'Authorization': 'Bearer ' + token,
         });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.get(apiProduct, options)
+        this.http.get(apiURL+'getproduct', options)
         .map(res => this.products= res.json())
         .subscribe(products => {
             this.products = products['products'];
             console.log(this.products);
           });
-        this.http.get(apiReviews, options)
+        this.http.get(apiURL+'getreviews', options)
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
             console.log(this.reviews);
           });
-        this.http.get(apiBikes, options)
+        this.http.get(apiURL+'getbikes', options)
         .map(res => this.bikes= res.json())
         .subscribe(bikes => {
             this.bikes = bikes['bikes'];
             console.log(this.bikes);
           });
+        this.http.get(apiURL+'getevents', options)
+        .map(res => this.rundowns= res.json())
+        .subscribe(rundowns => {
+            this.rundowns = rundowns['rundowns'];
+            console.log(this.rundowns);
+          });
+
 
 
   }
   
      ionViewDidLoad(): void {
-        // GET FROM API
-        
- 
-      console.log(token);
+        // GET FROM API 
     }
     
     public goToSlide1() {
@@ -132,11 +134,15 @@ export class HomePage {
     localStorage.removeItem('token');
     this.authService.logout();
       loading.present();
-      let nav = this.app.getRootNav();
       
       loading.dismiss();
-      nav.setRoot(LoginPage);
-      this.showAlert("Logout berhasil.")
+      this.showAlert("Logout berhasil.");
+      this.navCtrl.setRoot(LoginPage);
+
+      console.log('tokenul' ,localStorage.getItem('token'));
+      localStorage.clear();
+      console.log('profil',localStorage.getItem('userReturn'));
+      
   }
 //=========================================
   showLoader(){
@@ -158,7 +164,7 @@ export class HomePage {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
-      position: 'bottom',
+      position: 'top',
       dismissOnPageChange: true
     });
 

@@ -33,6 +33,18 @@
             <img src="assets/img/Home-image-Exhibition.jpg">
             <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
             <img src="assets/img/Home-image-Bazaar.jpg">
+          <div class="css-rundown" *ngFor="let rundown of rundowns">
+            <h1>RUNDOWNS.               {{rundown.name}}                
+</h1>
+            <ion-row>
+              <ion-col>
+              {{rundown.name}}                
+              </ion-col>
+              <ion-col>
+                {{rundown.user}}
+              </ion-col>
+            </ion-row>
+          </div>
             <img src="assets/img/MediaPartner-List.jpg">
           </div>
           <div>

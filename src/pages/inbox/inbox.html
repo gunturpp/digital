@@ -13,6 +13,16 @@
 </ion-header>
 
 
-<ion-content padding class="blacks">
+<ion-content padding>
+<!--<ion-card>
+  <ion-card-header>
+    <img src="http://188.166.188.11{{orderan.picture}}">
+  </ion-card-header>
+  <ion-card-content>-->
+    <ion-label *ngFor="let orderan of count" class="text">{{ orderan.name }}</ion-label>
+    <ion-label  class="text">IDR {{ orderan.price}}</ion-label>
+  <!--</ion-card-content>-->
+  
+<!--</ion-card>-->
 
 </ion-content>

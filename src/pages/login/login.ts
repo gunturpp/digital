@@ -18,9 +18,10 @@ export class LoginPage {
 
   // user: {email?: string, password?: string} = {};
   submitted = false;
-  user = { email:'drikdoank@gmail.com', password:'didok49',status:'0' };
+  user = { email:'', password:'',status:'0' };
   data: any;
   token:any;
+  name:any;
   constructor(public storage:Storage, public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
     
      if(localStorage.getItem('token')) {
@@ -48,39 +49,32 @@ export class LoginPage {
       this.http.post(apiURL,input, contentHeader).subscribe(data => {
           let response = data.json();
           loading.dismiss();
-          this.navCtrl.push(HomePage);
-          this.showAlert('Selamat Datang.');
+          if(response.status == true) {
+            localStorage.setItem('userReturn',JSON.stringify(response));
+  
+            this.navCtrl.push(HomePage);
+            this.showAlert('Selamat Datang ' + response.user.name);
 
-          if(response.status == 200) {
-     
-            let user=response.data;
-            this.authService.login(user.email,response.token);
-            localStorage.setItem('email',JSON.stringify(user));
-            this.storage.set('email',user.email);
-             
+            console.log('statusnya3',response.status);
+            localStorage.setItem('token', response .token);
+            console.log('cektokenn',localStorage.getItem('token'));
 
-
-           } else {
-            console.log(this.user,'oooo');
-            localStorage.setItem('email',this.user.email);
-            // localStorage.setItem('password',this.user.password);
-            let wew2 = localStorage.getItem('email');
-            let wew3 = localStorage.getItem('password');
-            console.log('www',wew2);             
-            console.log('www',wew3);             
+          } 
+          else {
             this.showAlert(response.message);
-            let saveToken = response.token;
-            localStorage.setItem('token',saveToken);
-            console.log('proff',this.user);
+            console.log("password salah");
+           
            }
         }, err => {
            loading.dismiss();
            this.showError(err);
-
         });
 
 }
   }
+    ionViewDidLoad() {
+  }
+
 
 
   register() {
@@ -99,7 +93,8 @@ export class LoginPage {
   showAlert(val){
     let toast = this.toastCtrl.create({
       message: val,
-      duration: 3000
+      duration: 3000,
+      position:'middle'
     });
     toast.present();
   };
