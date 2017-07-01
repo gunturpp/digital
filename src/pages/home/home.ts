@@ -1,14 +1,17 @@
 import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
-import { AlertController, ModalController, App, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
+import { AlertController, ModalController, App, PopoverController, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http, Headers,RequestOptions } from '@angular/http';
 
+
+import { DataProvider } from '../../providers/data/data';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
+import { PopoverPage } from '../home-popover/home-popover';
 
 let apiURL = 'http://188.166.188.11/';
 /**
@@ -32,18 +35,20 @@ export class HomePage {
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
+    searchTermProduct: string = '';
+    searchTermBike: string = '';
+    items: any;
     reviews:any;
     bikes:any;
     products:any;
     rundowns:any;
-  
-  
+
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
-
+    x:any;
     
-  constructor( public http: Http, public loadingCtrl: LoadingController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController) {
+  constructor( public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
         // auth token
         let token = localStorage.getItem('token');
         console.log('token home',token);
@@ -57,12 +62,6 @@ export class HomePage {
         });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.get(apiURL+'getproduct', options)
-        .map(res => this.products= res.json())
-        .subscribe(products => {
-            this.products = products['products'];
-            console.log(this.products);
-          });
         this.http.get(apiURL+'getreviews', options)
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
@@ -82,14 +81,25 @@ export class HomePage {
             console.log(this.rundowns);
           });
 
-
-
   }
+
   
-     ionViewDidLoad(): void {
-        // GET FROM API 
+    ionViewDidLoad(): void {
+       this.setFilteredItemsProduct();
+       this.setFilteredItemsBikes()
     }
-    
+    setFilteredItems(){
+        this.setFilteredItemsProduct();
+        this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
+
+    }
+    setFilteredItemsProduct() {
+        this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
+    }
+    setFilteredItemsBikes() {
+        this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
+
+    }
     public goToSlide1() {
     this.slides.slideTo(0, 200);
     }
@@ -145,6 +155,110 @@ export class HomePage {
       
   }
 //=========================================
+filterProduct() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Filter');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'All',
+      value: '',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Helmet',
+      value: 'Helm',
+      checked: true
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Jacket',
+      value: 'jacket',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Glove',
+      value: 'glove',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Shoes',
+      value: 'shoes',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'T-shirt',
+      value: 'T-shirt',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Accessories',
+      value: 'Accessories',
+      checked: false
+    });
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+          this.searchTermProduct=data;
+          console.log(this.searchTermProduct)
+          this.setFilteredItemsProduct() 
+          this.products = this.dataService.filterItemsProduct(data);
+      }
+    });
+    alert.present();
+  }
+filterBikes() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Filter');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'DUCATI DIAVEL',
+      value: 'DUCATI DIAVEL',
+      checked: true
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'BIKE A',
+      value: 'BIKE A',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'BIKE B',
+      value: 'BIKE B',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'BIKE C',
+      value: 'BIKE C',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'BIKE D',
+      value: 'BIKE D',
+      checked: false
+    });
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+          this.searchTermBike=data;
+          console.log(this.searchTermBike)
+          this.setFilteredItemsBikes() 
+          this.bikes = this.dataService.filterItemsBikes(data);
+      }
+    });
+    alert.present();
+  }
   showLoader(){
     this.loading = this.loadingCtrl.create({
         content: 'Authenticating...'
@@ -159,7 +273,13 @@ export class HomePage {
     });
     toast.present();
   };
-
+  
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+      ev: myEvent
+    });
+  }
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,

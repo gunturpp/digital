@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import {IonicStorageModule } from '@ionic/storage';
 
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { DataProvider} from '../providers/data/data';
 import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
 
 import { MyApp } from './app.component';
@@ -26,6 +27,8 @@ import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
+import { PopoverPage } from '../pages/home-popover/home-popover'
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     SettingPage,
     MyprofilePage,
     ProductDetailPage,
-    ReviewsDetailPage
+    ReviewsDetailPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -63,13 +67,15 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     SettingPage,
     MyprofilePage,
     ProductDetailPage,
-    ReviewsDetailPage
+    ReviewsDetailPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ConnectivityServiceProvider,
     GoogleMapsProvider,
+    DataProvider,
     Network,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

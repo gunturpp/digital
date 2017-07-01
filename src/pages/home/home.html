@@ -18,7 +18,7 @@
       <div class="bg">
         <div>
           <div class="list">
-            <button ion-button medium full (click)="goToSlide4()" color="blacks-trans">EXHIBITION</button>
+            <button ion-button medium full (click)="goToSlide3()" color="blacks-trans">EXHIBITION</button>
             <button ion-button medium full (click)="regisAccount()" color="dark">MEET & GREET</button>
             <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
             <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
@@ -33,18 +33,18 @@
             <img src="assets/img/Home-image-Exhibition.jpg">
             <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
             <img src="assets/img/Home-image-Bazaar.jpg">
-          <div class="css-rundown" *ngFor="let rundown of rundowns">
-            <h1>RUNDOWNS.               {{rundown.name}}                
-</h1>
-            <ion-row>
-              <ion-col>
-              {{rundown.name}}                
-              </ion-col>
-              <ion-col>
-                {{rundown.user}}
-              </ion-col>
-            </ion-row>
-          </div>
+             <ion-card class="brown">
+              <ion-card-header class="card-rundown">
+                <img class="card-rundown" src="assets/img/Home-icon-Round-Down.png">
+                <h1 class="center">RUNDOWN</h1>
+              </ion-card-header>
+
+              <!-- Loops through and creates multiple items -->
+              <ion-card-content *ngFor="let rundown of rundowns" class="css-rundown">
+                {{rundown.day_start}} - {{rundown.day_end}} {{rundown.name}}
+              </ion-card-content>
+             </ion-card>
+          
             <img src="assets/img/MediaPartner-List.jpg">
           </div>
           <div>
@@ -58,19 +58,20 @@
       <ion-header>
         <ion-toolbar color="blacks-trans">
           <ion-buttons left>
-            <button  (click)="presentMenu()" ion-button icon-only>
+            <button  (click)="filterProduct()" ion-button icon-only>
+            <!--<button  (click)="presentPopover($event)" ion-button icon-only>-->
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
           </ion-buttons>
+
         </ion-toolbar>
         <ion-toolbar color="blacks-trans">     
           <ion-title>Best Deals</ion-title>
-            <ion-searchbar  [(ngModel)]="searchCountryString" (input)="searchCountry($event)"
-                    [showCancelButton]="shouldShowCancel" [showCancelButton]="shouldShowCancel"
-                            (ionCancel)="onCancel($event)">
-            </ion-searchbar>
+        <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
         </ion-toolbar>
       </ion-header>
+ 
+    
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
@@ -91,31 +92,23 @@
       <ion-header>
         <ion-toolbar color="blacks-trans">
           <ion-buttons left>
-            <button  (click)="presentMenu()" ion-button icon-only>
+            <button  (click)="filterBikes()" ion-button icon-only>
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
           </ion-buttons>
         </ion-toolbar>
-        <ion-toolbar color="blacks-trans">
-            <ion-item  color="blacks-trans">
-              <ion-label></ion-label>
-              <ion-select [(ngModel)]="gaming" placeholder="PILIH JENIS MOTOR">
-                <ion-option text-center value="nes">DUCATI DIAVEL</ion-option>
-                <ion-option text-center value="n64">BIKE A</ion-option>
-                <ion-option text-center value="ps">BIKE B</ion-option>
-                <ion-option text-center value="genesis">BIKE C</ion-option>
-                <ion-option text-center value="saturn">BIKE D</ion-option>
-              </ion-select>
-            </ion-item>
+        <ion-toolbar color="blacks-trans">     
+        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
         </ion-toolbar>
       </ion-header>
       <div class="scroll-y-slide3" >
-        <ion-card class="content-slide3" *ngFor="let bike of bikes">
-          <img src="http://188.166.188.11{{bike.picture}}"/>
-          <ion-card-content>
-            <p>{{bike.description}}</p>
+        <ion-card class="card-slide3" *ngFor="let bike of bikes">
+          <div class="css-imgslide3">
+          <img  src="http://188.166.188.11{{bike.picture}}"/>
+          </div>
+          <ion-card-content class="card-contentslide3">
+            <p class="color">{{bike.description}}</p>
           </ion-card-content>
-          <img src="http://188.166.188.11{{bike.picture}}"/>
         </ion-card>
       </div>
     </ion-slide>
@@ -144,14 +137,19 @@
           <img [src]="review.image"/>
           </ion-slide>
         </ion-slides>-->
-          <ion-card-content class="content-slide4">
-            <img class="img-slide4" src="http://188.166.188.11{{review.picture}}"/>
-            <!--<img [src]="review.picture"/>-->
+        <div class="content-slide4">
+          <ion-card-content>
+            <div class="img-slide4">
+              <img src="http://188.166.188.11{{review.picture}}"/>
+            </div>
             <h2>{{review.name}}</h2>
             <p class="text" style="font-size:8px">{{review.created_at}}</p>
-            <p class="text">{{review.description}}</p>
+            <div class="css-readmore">
+              <p class="text">{{review.description}}</p>
+            </div>
             <button ion-button (click)="goToReviewDetail(review)"></button>
           </ion-card-content>
+        </div>
         </ion-card>
       </div>
     </ion-slide>
