@@ -12,6 +12,7 @@ import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
 import { PopoverPage } from '../home-popover/home-popover';
+import { LocationSelectPage } from '../location-select/location-select';
 
 let apiURL = 'http://188.166.188.11/';
 /**
@@ -42,11 +43,10 @@ export class HomePage {
     bikes:any;
     products:any;
     rundowns:any;
-
+    x:number= 0;
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
-    x:any;
     
   constructor( public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
         // auth token
@@ -67,6 +67,7 @@ export class HomePage {
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
             console.log(this.reviews);
+       
           });
         this.http.get(apiURL+'getbikes', options)
         .map(res => this.bikes= res.json())
@@ -83,10 +84,12 @@ export class HomePage {
 
   }
 
-  
+    openMap(){
+      this.navCtrl.setRoot(LocationSelectPage);
+    }
     ionViewDidLoad(): void {
        this.setFilteredItemsProduct();
-       this.setFilteredItemsBikes()
+       this.setFilteredItemsBikes();
     }
     setFilteredItems(){
         this.setFilteredItemsProduct();

@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="blacks-trans">
+        <ion-buttons left>
+            <button ion-button (click)="backButton()">Cancel</button>
+        </ion-buttons>
+        <ion-buttons right>
+        <button  (click)="filterProduct()" ion-button icon-only>
+            <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
+        </button>
+        </ion-buttons>
+
+    </ion-navbar>
+    <ion-toolbar color="blacks-trans">     
+    <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
+    </ion-toolbar>
+     <ion-list>
+        <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
+    </ion-list>
+
+</ion-header>
+ 
+ 
+<ion-content>
+ 
+    <div #pleaseConnect id="please-connect">
+        <p>Please connect to the Internet...</p>
+    </div>
+ 
+    <div #map id="map" data-tap-disabled="true">
+        <ion-spinner>
+            
+        </ion-spinner>
+    </div>
+    <div  id="listnya">
+    <ion-list>
+            <ion-item (click)="directPlace()" class="css-item" *ngFor="let location of locations">
+                <h2>{{location.name}}</h2>
+                <p>{{location.vicinity}}</p>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

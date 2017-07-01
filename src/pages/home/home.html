@@ -26,6 +26,9 @@
               <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
               <button ion-button medium full (click)="logout()" color="grays">Logout</button>
             </div>
+              <ion-fab right bottom edge style="margin:30px;">
+                <button ion-fab mini (click)="openMap()"><ion-icon name="add"></ion-icon></button>
+              </ion-fab>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      
             <div class="black">
@@ -125,20 +128,20 @@
       </ion-header>
 
       <div class="scroll-y-slide4">
-        <ion-card  *ngFor="let review of reviews">
-        <div class="content-slide4">
-          <ion-card-content>
-            <div class="img-slide4">
-              <img src="http://188.166.188.11{{review.picture}}"/>
-            </div>
-            <h2>{{review.name}}</h2>
-            <p class="text" style="font-size:8px">{{review.created_at}}</p>
-            <div class="css-readmore">
-              <p class="text">{{review.description}}</p>
-            </div>
-            <button ion-button (click)="goToReviewDetail(review)"></button>
-          </ion-card-content>
-        </div>
+        <ion-card class="border-radius"  *ngFor="let review of reviews">
+          <div class="img-slide4">
+            <img src="http://188.166.188.11{{review.picture}}"/>
+          </div>
+          <div class="content-slide4">
+            <ion-card-content>
+              <h2>{{review.name}}</h2>
+              <p class="text" style="font-size:9px" >{{review.created_at}}</p>
+              <div class="css-readmore">
+                <p>{{review.description}}</p>
+              </div>
+              <p style="font-style: italic;text-align:right;" (click)="goToReviewDetail(review)">more</p>
+            </ion-card-content>
+          </div>
         </ion-card>
       </div>
     </ion-slide>

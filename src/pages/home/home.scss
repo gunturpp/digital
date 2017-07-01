@@ -14,6 +14,7 @@
 .black {
     color:black;
 }
+
 .brown {
     background-color:  	#ece8e8;
     padding-bottom:15px;
@@ -114,21 +115,29 @@ p.color {
     padding: 0px;
     height:550px;
     width:auto;
-    overflow:auto;
-} 
+    overflow:auto;  
+}
+.border-radius {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    width: 350px;
+    border:solid 3px grey;
+
+}
 .content-slide4 {
-    height: 400px;
-    border:solid grey;
+    height: 170px;
 }
-.img-slide4 {
-    height: 250px;
-    border: solid;
-}
+// .img-slide4 {
+//     margin-left: auto;
+//     margin-right: auto;
+// }
 p, h2 {
     text-align: left;
 }
-.css-readmore{
-    border:solid;
+ion-card div ion-card-content div p{
+    height: 85px;
+    overflow:hidden;
 }
  .swiper-pagination-progress .swiper-pagination-progressbar {
   background:red;

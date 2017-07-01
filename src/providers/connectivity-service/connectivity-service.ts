@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Network } from '@ionic-native/network';
 import { Platform } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
+declare var Connection;
 /*
   Generated class for the ConnectivityServiceProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
+  for more info on providers and Angular DI.
 */
-declare var Connection;
-
 @Injectable()
 export class ConnectivityServiceProvider {
+
   onDevice: boolean;
  
   constructor(public platform: Platform, public network: Network){
@@ -42,5 +42,4 @@ export class ConnectivityServiceProvider {
   watchOffline(): any {
     return this.network.onDisconnect();
   }
- 
 }

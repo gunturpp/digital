@@ -7,24 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>reviews-detail</ion-title>
+    <ion-title>Editor Reviews</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding class="speaker-detail">
-  
-  <img class="img-slide4" src="http://188.166.188.11{{review.picture}}"/>
-  <!--<img [src]="review.picture"/>-->
-  <ion-item>
-    <h2>{{review.name}}</h2>
-  </ion-item>
-  <ion-item>
-  <p class="text" style="font-size:8px">{{review.created_at}}</p>
-  </ion-item>
-  <ion-item>
-  <p class="text">{{review.description}}</p>
-  </ion-item>
-
+        <ion-card class="border-radius">
+            <img src="http://188.166.188.11{{review.picture}}"/>
+            <ion-card-content  class="content-slide4">
+              <h2>{{review.name}}</h2>
+              <p class="text" style="font-size:9px" >{{review.created_at}}</p>
+              <p>{{review.description}}</p>
+            </ion-card-content>
+        </ion-card>
 </ion-content>

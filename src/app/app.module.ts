@@ -11,9 +11,10 @@ import {IonicStorageModule } from '@ionic/storage';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { DataProvider} from '../providers/data/data';
 import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
-
+import { Locations } from '../providers/locations';
 import { MyApp } from './app.component';
 
+import { LocationSelectPage } from '../pages/location-select/location-select';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -45,7 +46,8 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    PopoverPage
+    PopoverPage,
+    LocationSelectPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    PopoverPage
+    PopoverPage,
+    LocationSelectPage
   ],
   providers: [
     StatusBar,
@@ -77,6 +80,7 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     GoogleMapsProvider,
     DataProvider,
     Network,
+    Locations,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider 
