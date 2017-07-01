@@ -17,8 +17,13 @@
 
       <div class="bg">
         <div>
+<<<<<<< HEAD
           <div class="list">
             <button ion-button medium full (click)="goToSlide3()" color="blacks-trans">EXHIBITION</button>
+=======
+          <div class="header-list">
+            <button ion-button medium full (click)="goToSlide4()" color="blacks-trans">EXHIBITION</button>
+>>>>>>> 6c196e7fcf00017f9dbd716d5eda260452c2487c
             <button ion-button medium full (click)="regisAccount()" color="dark">MEET & GREET</button>
             <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
             <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
@@ -29,10 +34,10 @@
 
           <div class="black">
             <p class="white">Hikers (Hai Bikers!) adalah suatu event inovatif yang di kemas secara unik dan menarik. Mulai dari menjual apparel motor standart hingga premium, pameran motor sport, serta meet and greet youtuber ( Motovlogger ), medsos uploader, serta doorprize!</p>
-            <br>
             <img src="assets/img/Home-image-Exhibition.jpg">
             <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
             <img src="assets/img/Home-image-Bazaar.jpg">
+<<<<<<< HEAD
              <ion-card class="brown">
               <ion-card-header class="card-rundown">
                 <img class="card-rundown" src="assets/img/Home-icon-Round-Down.png">
@@ -46,6 +51,22 @@
              </ion-card>
           
             <img src="assets/img/MediaPartner-List.jpg">
+=======
+            <ion-list>
+              <ion-list-header class="brown">
+                <h2>RUNDDOWN</h2>
+              </ion-list-header>
+
+              <!-- Loops through and creates multiple items -->
+              <ion-item-divider *ngFor="let rundown of rundowns">
+                {{rundown.day_start}}
+                {{rundown.day_end}}
+                {{rundown.name}}
+              </ion-item-divider>
+
+            </ion-list>
+              <img src="assets/img/MediaPartner-List.jpg">
+>>>>>>> 6c196e7fcf00017f9dbd716d5eda260452c2487c
           </div>
           <div>
           </div>
