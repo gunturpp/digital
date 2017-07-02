@@ -18,10 +18,9 @@
       <div class="bg">
         <div>
           <div class="list">
-              <button ion-button medium full (click)="goToSlide3()" color="blacks-trans">EXHIBITION</button>
             <div class="header-list">
               <button ion-button medium full (click)="goToSlide4()" color="blacks-trans">EXHIBITION</button>
-              <button ion-button medium full (click)="regisAccount()" color="dark">MEET & GREET</button>
+              <button ion-button medium full (click)="goToSlide3()" color="dark">MEET & GREET</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
               <button ion-button medium full (click)="logout()" color="grays">Logout</button>
@@ -135,7 +134,7 @@
           <div class="content-slide4">
             <ion-card-content>
               <h2>{{review.name}}</h2>
-              <p class="text" style="font-size:9px" >{{review.created_at}}</p>
+              <p class="text" style="font-size:9px" >{{review.created_at | date:'EEEE, dd MMMM yyyy'}}</p>
               <div class="css-readmore">
                 <p>{{review.description}}</p>
               </div>

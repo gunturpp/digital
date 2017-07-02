@@ -75,6 +75,7 @@ export class HomePage {
             this.bikes = bikes['bikes'];
             console.log(this.bikes);
           });
+          
         this.http.get(apiURL+'getevents', options)
         .map(res => this.rundowns= res.json())
         .subscribe(rundowns => {
@@ -262,7 +263,8 @@ filterBikes() {
     });
     alert.present();
   }
-  showLoader(){
+    
+    showLoader(){
     this.loading = this.loadingCtrl.create({
         content: 'Authenticating...'
     });
