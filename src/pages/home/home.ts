@@ -69,6 +69,15 @@ export class HomePage {
             console.log(this.reviews);
        
           });
+        
+        this.http.get(apiURL+'getproduct', options)
+        .map(res => this.products= res.json())
+        .subscribe(products => {
+            this.products = products['products'];
+            console.log(this.products);
+       
+          });
+
         this.http.get(apiURL+'getbikes', options)
         .map(res => this.bikes= res.json())
         .subscribe(bikes => {
