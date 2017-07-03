@@ -233,7 +233,7 @@ filterBikes() {
     alert.addInput({
       type: 'radio',
       label: 'DUCATI DIAVEL',
-      value: 'DUCATI DIAVEL',
+      value: 'ducati',
       checked: true
     });
     alert.addInput({
@@ -244,20 +244,20 @@ filterBikes() {
     });
     alert.addInput({
       type: 'radio',
-      label: 'BIKE B',
-      value: 'BIKE B',
+      label: 'YAMAHA',
+      value: 'yamaha',
       checked: false
     });
     alert.addInput({
       type: 'radio',
-      label: 'BIKE C',
-      value: 'BIKE C',
+      label: 'Honda',
+      value: 'honda',
       checked: false
     });
     alert.addInput({
       type: 'radio',
-      label: 'BIKE D',
-      value: 'BIKE D',
+      label: 'Suzuki',
+      value: 'suzuki',
       checked: false
     });
     alert.addButton('Cancel');
