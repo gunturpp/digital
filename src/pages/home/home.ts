@@ -113,8 +113,8 @@ export class HomePage {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
 
     }
-    public goToSlide1() {
-    this.slide1 = this.slides.slideTo(0, 200);
+    goToSlide1() {
+    this.slides.slideTo(0, 200);
     }
     goToSlide2() {
     this.slides.slideTo(1, 200);

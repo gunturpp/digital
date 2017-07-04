@@ -14,7 +14,7 @@ export class ProductDetailPage {
   product:any;
   token = localStorage.getItem('token');
   contentHeader = new Headers({
-      "Authorization" : "Bearer" + this.token
+      "Authorization" : "Bearer " + this.token
   });
 
   submitted = false;
@@ -24,7 +24,7 @@ export class ProductDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad', this.token);
+    console.log('ionViewDidLoad2', this.token);
 
   }
   // ini fungsi pas save order

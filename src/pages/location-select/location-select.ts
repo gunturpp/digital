@@ -33,9 +33,6 @@ export class LocationSelectPage {
     backButton(){
         this.navCtrl.setRoot(MenuPage);
     }
-    directPlace(){
-        console.log('a');
-    }
     ionViewDidLoad(): void {
         console.log('spbu',this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));

@@ -19,35 +19,7 @@ import { LocationSelectPage } from '../location-select/location-select';
 export class MenuPage {
 
   constructor(public loadingCtrl:LoadingController, public toastCtrl:ToastController, public authService:AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {}
-   // simbol button
    
-  symbols = [
-    {
-      image :"assets/img/Menu-icon-Home-Event.png",
-      text : "EVENT"
-    },
-    {
-      image :"assets/img/Menu-icon-Best-Deals.png",
-      text : "BEST DEALS"
-    },
-
-    {
-      image :"assets/img/Menu-icon-Bikes.png",
-      text : "BIKES"
-    },
-    {
-      image :"assets/img/Menu-icon-Reviews.png",
-      text : "REVIEWS"
-    },
-    {
-      image :"assets/img/Menu-icon-Direction.png",
-      text : "DIRECTION",
-      link: "openMap()"
-    }
-
-  ];
-
-
   //back button
   backToHome(){
     this.navCtrl.setRoot(HomePage);

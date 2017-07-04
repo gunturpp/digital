@@ -7,12 +7,18 @@
 <ion-header>
 
   <ion-navbar color="blacks">
-    <ion-title>feedback</ion-title>
+    <ion-title>Feedback</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding class="blacks">
-
+<ion-content class="blacks">
+    <ion-item>
+      <ion-input [(ngModel)]="feedback.title" style="color:white" placeholder="Judul" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="feedback.description" style="color:white"  placeholder="Beri masukkan kritik dan saran" type="text"></ion-textarea>
+    </ion-item>
+    <button ion-button full color="whites" (click)="sendFeedback()">Kirim</button>
 </ion-content>
