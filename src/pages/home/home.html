@@ -19,18 +19,15 @@
         <div>
           <div class="list">
             <div class="header-list">
-              <button ion-button medium full (click)="goToSlide4()" color="blacks-trans">EXHIBITION</button>
+              <button ion-button medium full (click)="slideChanged()" color="blacks-trans">EXHIBITION</button>
               <button ion-button medium full (click)="goToSlide3()" color="dark">MEET & GREET</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
-              <button ion-button medium full (click)="logout()" color="grays">Logout</button>
             </div>
-              <ion-fab right bottom edge style="margin:30px;">
-                <button ion-fab mini (click)="openMap()"><ion-icon name="add"></ion-icon></button>
-              </ion-fab>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      
             <div class="black">
+            <br>
               <p class="white">Hikers (Hai Bikers!) adalah suatu event inovatif yang di kemas secara unik dan menarik. Mulai dari menjual apparel motor standart hingga premium, pameran motor sport, serta meet and greet youtuber ( Motovlogger ), medsos uploader, serta doorprize!</p>
               <img src="assets/img/Home-image-Exhibition.jpg">
               <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
@@ -98,14 +95,14 @@
           </ion-buttons>
         </ion-toolbar>
         <ion-toolbar color="blacks-trans">     
-        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
+        <!--<ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>-->
         </ion-toolbar>
       </ion-header>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
           <div class="css-imgslide3">
           <img class="img-center" src="http://188.166.188.11{{bike.picture}}"/>
-          </div>
+            </div>
           <ion-card-content class="card-contentslide3">
             <p class="color">{{bike.description}}</p>
           </ion-card-content>
@@ -145,7 +142,7 @@
       </div>
     </ion-slide>
 
-    <!--MAPS SLIDE 5-->
+    <!--MAPS SLIDE 5
     <ion-slide>
       <ion-header>
         <ion-toolbar color="blacks-trans">
@@ -173,6 +170,6 @@
         
         </ion-content>
     
-    </ion-slide>
+    </ion-slide>-->
   </ion-slides>
   

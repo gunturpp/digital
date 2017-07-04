@@ -6,23 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar color="blacks">
+  <ion-navbar color="transparants">
     <ion-title>inbox</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-<!--<ion-card>
-  <ion-card-header>
-    <img src="http://188.166.188.11{{orderan.picture}}">
-  </ion-card-header>
-  <ion-card-content>-->
-    <ion-label *ngFor="let orderan of count" class="text">{{ orderan.name }}</ion-label>
-    <ion-label  class="text">IDR {{ orderan.price}}</ion-label>
-  <!--</ion-card-content>-->
-  
-<!--</ion-card>-->
+<ion-content padding class="css-content">
+  <ion-card class="css-inbox" *ngFor="let inbox of inboxs">
+      <ion-card-content>
+        <p>{{inbox.id}}</p>
+        <p>{{inbox.receiver}}</p>
+        <p>{{inbox.user}}</p>
+        <p>{{inbox.title}}</p>
+        <p>{{inbox.description}}</p>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

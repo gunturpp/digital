@@ -1,9 +1,8 @@
 import { NavController, Platform, ViewController } from 'ionic-angular';
 import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
-// import { GoogleMaps } from '../../providers/googlemaps';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
-import { HomePage } from '../home/home';
+import { MenuPage } from '../menu/menu';
 declare var google: any;
 
 @Component({
@@ -32,7 +31,7 @@ export class LocationSelectPage {
         this.locations = JSON.parse(localStorage.getItem('koordinat'));
     }
     backButton(){
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(MenuPage);
     }
     directPlace(){
         console.log('a');

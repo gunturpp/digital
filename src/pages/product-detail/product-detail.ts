@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController,ToastController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import {IonicStorageModule } from '@ionic/storage';
-/**
- * Generated class for the ProductDetailPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { Http } from '@angular/http';
+
+let apiURL = "http://188.166.188.11/addorder";
+
 @IonicPage()
 @Component({
   selector: 'page-product-detail',
@@ -14,30 +12,64 @@ import {IonicStorageModule } from '@ionic/storage';
 })
 export class ProductDetailPage {
   product:any;
-  x;
-  temp = [];
+  token = localStorage.getItem('token');
+  contentHeader = new Headers({
+      "Authorization" : "Bearer" + this.token
+  });
 
-  constructor(public storage: IonicStorageModule, public navCtrl: NavController, public navParams: NavParams) {
-     this.product = this.navParams.data.product;
+  submitted = false;
+  constructor(public http:Http,public storage: IonicStorageModule, public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+    this.product = this.navParams.data.product;
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
-    console.log(this.product);
-    console.log('arr', JSON.stringify(localStorage.getItem('order3')));
+    console.log('ionViewDidLoad', this.token);
+
   }
   // ini fungsi pas save order
   saveToInbox(saveOrder){
-    localStorage.setItem('order',JSON.stringify(this.product));
-    this.temp.push(this.product);
-    
-    console.log(this.temp);
-    this.x =this.temp;
-    localStorage.setItem('order3',(this.x));
-    console.log(this.x);
-   
+    this.submitted = true;
+    let input =  JSON.stringify({
+      id_product: this.product.promotion,
+      amount: this.product.price,
+      qty: '1',
+      address: 'null',
+      note:this.product.name
+    });
+    let loading = this.loadingCtrl.create({
+        content: 'Tunggu sebentar...'
+    });    this.http.post(apiURL,input, this.contentHeader).subscribe(data => {
+        let response = data.json();
+        if(response.status == true) {
+          this.showAlert('Orderan anda sudah kami terima, silahkan cek inbox');
+
+        } 
+        else {
+          this.showAlert(response.message);
+          console.log("password salah");
+          
+          }
+      }, err => {
+          loading.dismiss();
+          this.showError(err);
+      });
+
   }
+   showError(err: any){
+    err.status==0?
+    this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
+    this.showAlert("Tidak dapat menyambungkan ke server. Mohon muat kembali halaman ini");
+  }
+  showAlert(val){
+    let toast = this.toastCtrl.create({
+      message: val,
+      duration: 3000,
+      position:'middle'
+    });
+    toast.present();
+  };
+
   popback(){
     this.navCtrl.popToRoot();
   }

@@ -9,9 +9,25 @@
     <img src="assets/img/Arrow-up.png" (click)="backToHome()">
 
     <ion-row>
-      <ion-col col-4 *ngFor="let symbol of symbols"  class="symbol-detail">
+      <ion-col col-4  class="symbol-detail">
         <div>
-          <img class="card-image" [src]="symbol.image">
+          <img class="card-image" src="assets/img/Menu-icon-Home-Event.pn" (click)="openMap()">
+          <ion-label class="text" [innerHTML]="EVENT"></ion-label>
+        </div>
+        <div>
+          <img class="card-image" src="assets/img/Menu-icon-Best-Deals.png" (click)="openMap()">
+          <ion-label class="text" [innerHTML]="symbol.text"></ion-label>
+        </div>
+        <div>
+          <img class="card-image" src="assets/img/Menu-icon-Bikes.png" (click)="openMap()">
+          <ion-label class="text" [innerHTML]="symbol.text"></ion-label>
+        </div>
+        <div>
+          <img class="card-image" src="assets/img/Menu-icon-Reviews.png" (click)="openMap()">
+          <ion-label class="text" [innerHTML]="symbol.text"></ion-label>
+        </div>
+        <div>
+          <img class="card-image" src="assets/img/Menu-icon-Direction.png" (click)="openMap()">
           <ion-label class="text" [innerHTML]="symbol.text"></ion-label>
         </div>
       </ion-col>
@@ -81,7 +97,7 @@
     </button>
     <br>
 
-    <button ion-item (click)="signOut()">
+    <button ion-item (click)="logout()">
       <ion-row>
         <ion-col>
           <h1>SIGNOUT</h1>

@@ -1,25 +1,35 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/**
- * Generated class for the InboxPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { Http, Headers,RequestOptions } from '@angular/http';
+
+let apiURL = 'http://188.166.188.11/';
+
+
 @IonicPage()
 @Component({
   selector: 'page-inbox',
   templateUrl: 'inbox.html',
 })
 export class InboxPage {
-count:any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  
-    //ini mau gua get, di inbox.ts
-    let inboxOrderan = JSON.parse(localStorage.getItem('order'));
+inboxs:any;  
+  constructor(public http:Http,public navCtrl: NavController, public navParams: NavParams) {
+        let token = localStorage.getItem('token');
+        console.log('token home',token);
 
-    console.log(inboxOrderan);
+        let headers = new Headers({
+         'Authorization': 'Bearer ' + token,
+        });
+        let options = new RequestOptions({ headers: headers });
+
+        this.http.get(apiURL+'getinbox', options)
+        .map(res => this.inboxs= res.json())
+        .subscribe(inboxs => {
+            this.inboxs = inboxs['inbox'];
+            console.log(this.inboxs);
+       
+          });
+
+
   }
 
 

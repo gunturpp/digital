@@ -12,7 +12,6 @@ import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
 import { PopoverPage } from '../home-popover/home-popover';
-import { LocationSelectPage } from '../location-select/location-select';
 
 let apiURL = 'http://188.166.188.11/';
 /**
@@ -93,10 +92,10 @@ export class HomePage {
           });
 
   }
-
-    openMap(){
-      this.navCtrl.setRoot(LocationSelectPage);
-    }
+     slideChanged() {
+    this.slides.scrollTop();
+    // console.log('Current index is', currentIndex);
+  }
     ionViewDidLoad(): void {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
@@ -148,25 +147,6 @@ export class HomePage {
     }
 
 
-  //--------- logout --------------
-   logout() {
-   
-    let loading = this.loadingCtrl.create({
-        content: 'Tunggu sebentar ...'
-    });
-    localStorage.removeItem('token');
-    this.authService.logout();
-      loading.present();
-      
-      loading.dismiss();
-      this.showAlert("Logout berhasil.");
-      this.navCtrl.setRoot(LoginPage);
-
-      console.log('tokenul' ,localStorage.getItem('token'));
-      localStorage.clear();
-      console.log('profil',localStorage.getItem('userReturn'));
-      
-  }
 //=========================================
 filterProduct() {
     let alert = this.alertCtrl.create();

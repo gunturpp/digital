@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // import { MenuPage } from '../pages/menu/menu';
 import { HomePage } from '../pages/home/home';
+import { InboxPage } from '../pages/inbox/inbox';
 import { LoginPage } from '../pages/login/login';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { RegisterPage } from '../pages/register/register';
@@ -13,7 +14,7 @@ import { RegisterPage } from '../pages/register/register';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
