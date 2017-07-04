@@ -43,6 +43,7 @@ export class HomePage {
     products:any;
     rundowns:any;
     x:number= 0;
+    slide1:any;
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
@@ -92,10 +93,10 @@ export class HomePage {
           });
 
   }
-     slideChanged() {
-    this.slides.scrollTop();
-    // console.log('Current index is', currentIndex);
-  }
+    //  slideChanged() {
+    // this.slides.scrollTop();
+    // // console.log('Current index is', currentIndex);
+  // }
     ionViewDidLoad(): void {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
@@ -113,7 +114,7 @@ export class HomePage {
 
     }
     public goToSlide1() {
-    this.slides.slideTo(0, 200);
+    this.slide1 = this.slides.slideTo(0, 200);
     }
     goToSlide2() {
     this.slides.slideTo(1, 200);
