@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController, LoadingController, ToastController  } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 
  let apiURL = "http://188.166.188.11/";
 
@@ -25,28 +25,22 @@ export class FeedbackPage {
 
     loading.present();
       let contentHeader = new Headers({
-        'Content-Type': 'x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + this.token,
-
-        
+        "Authorization" : "Bearer " + this.token,
+        "Content-Type": "application/json"        
       });
+      let options = new RequestOptions({ headers: contentHeader });
+
       let input = {
         title: this.feedback.title,
         description: this.feedback.description,
       };
 
-      this.http.post(apiURL+'addfeedback',input, contentHeader).subscribe(data => {
+      this.http.post(apiURL+'addfeedback',input, options).subscribe(data => {
           let response = data.json();
           loading.dismiss();
           if(response.status == true) {
-            localStorage.setItem('userReturn',JSON.stringify(response));
-  
+            alert("Feedback berhasil dikirim");
             this.navCtrl.popToRoot();
-            this.showAlert('Selamat Datang ' + response.user.name);
-
-            console.log('statusnya3',response.status);
-            localStorage.setItem('token', response .token);
-            console.log('cektokenn',localStorage.getItem('token'));
 
           } 
           else {

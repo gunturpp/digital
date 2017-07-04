@@ -13,14 +13,10 @@ let apiURL = "http://188.166.188.11/addorder";
 })
 export class ProductDetailPage {
   product:any;
-<<<<<<< HEAD
   token = localStorage.getItem('token');
   contentHeader = new Headers({
       "Authorization" : "Bearer " + this.token
   });
-=======
-  token; 
->>>>>>> 2a456049255b4f8eb2dee356169e772fdc16c2d8
 
   submitted = false;
   constructor(public http:Http,public storage: IonicStorageModule, public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
