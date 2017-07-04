@@ -3,8 +3,8 @@ import { LoadingController,ToastController, IonicPage, NavController, NavParams 
 import {IonicStorageModule } from '@ionic/storage';
 import { Http, Headers,RequestOptions } from '@angular/http';
 
-//let apiURL = "http://188.166.188.11/addorder";
-let apiURL = "http://localhost:8000/addorder"
+let apiURL = "http://188.166.188.11/addorder";
+///let apiURL = "http://localhost:8000/addorder"
 
 @IonicPage()
 @Component({
