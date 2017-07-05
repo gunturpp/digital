@@ -38,6 +38,7 @@ export class DataProvider {
             localStorage.removeItem('token');
             this.authService.logout();      
             //this.nav.setRoot(LoginPage);
+            //tinggal redirect ke login, tapi gw gak bisa
             localStorage.clear();
             }
           });
