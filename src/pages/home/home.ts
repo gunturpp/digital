@@ -53,6 +53,12 @@ export class HomePage {
         let token = localStorage.getItem('token');
         console.log('token home',token);
 
+        let loading = this.loadingCtrl.create({
+            content: 'Tunggu sebentar...'
+        });
+       
+        loading.present();
+
         if(localStorage.getItem(token)) {
         this.isLoggedIn = true;
         }        
@@ -90,6 +96,8 @@ export class HomePage {
         .subscribe(rundowns => {
             this.rundowns = rundowns['rundowns'];
             console.log(this.rundowns);
+            loading.dismiss();
+
           });
 
   }

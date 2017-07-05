@@ -16,10 +16,9 @@
 <ion-content padding class="css-content">
   <ion-card class="css-inbox" *ngFor="let inbox of inboxs">
       <ion-card-content>
-        <p>{{inbox.id}}</p>
-        <p>{{inbox.receiver}}</p>
-        <p>{{inbox.user}}</p>
-        <p>{{inbox.title}}</p>
+        <p>From  : {{inbox.id_user}}</p>
+        <h3>{{inbox.title}}</h3>
+        <br>
         <p>{{inbox.description}}</p>
       </ion-card-content>
     </ion-card>
