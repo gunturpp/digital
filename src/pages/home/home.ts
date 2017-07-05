@@ -53,11 +53,12 @@ export class HomePage {
         let token = localStorage.getItem('token');
         console.log('token home',token);
 
+        /*  
         let loading = this.loadingCtrl.create({
             content: 'Tunggu sebentar...'
         });
-       
         loading.present();
+       */
 
         if(localStorage.getItem(token)) {
         this.isLoggedIn = true;
@@ -72,9 +73,8 @@ export class HomePage {
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
-            console.log(this.reviews);
-       
-          });
+            console.log(this.reviews); 
+         });
         
         this.http.get(apiURL+'getproduct', options)
         .map(res => this.products= res.json())
@@ -96,7 +96,7 @@ export class HomePage {
         .subscribe(rundowns => {
             this.rundowns = rundowns['rundowns'];
             console.log(this.rundowns);
-            loading.dismiss();
+            //loading.dismiss();
 
           });
 

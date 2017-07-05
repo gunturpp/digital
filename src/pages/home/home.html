@@ -42,6 +42,9 @@
                 <ion-card-content *ngFor="let rundown of rundowns" class="css-rundown">
                   {{rundown.day_start}} - {{rundown.day_end}} {{rundown.name}}
                 </ion-card-content>
+                <ion-card-content>
+                  <div #map id="map"></div>  
+                </ion-card-content>
               </ion-card>          
               <img src="assets/img/MediaPartner-List.jpg">
             </div>

@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
-let profiles = JSON.parse(localStorage.getItem('userReturn'));
 
 @IonicPage()
 @Component({
@@ -14,9 +13,11 @@ let profiles = JSON.parse(localStorage.getItem('userReturn'));
 })
 export class MyprofilePage {
     submitted = false;
-    profile = profiles.user;
+    profile;
 
   constructor(public storage: Storage,public authService: AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+    let profiles = JSON.parse(localStorage.getItem('userReturn'));
+    this.profile=profiles.user;
   }
   
   ionViewDidLoad() {
