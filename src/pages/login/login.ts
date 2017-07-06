@@ -22,12 +22,14 @@ export class LoginPage {
   data: any;
   token:any;
   name:any;
+  statusnya:any;
   constructor(public storage:Storage, public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
-    
+    this.token = localStorage.getItem('token');
      if(localStorage.getItem('token')) {
       this.navCtrl.setRoot(HomePage);
-      
- }
+     }
+     this.statusnya = localStorage.getItem('status');
+     console.log(this.statusnya);
 
   }
 
@@ -58,7 +60,8 @@ export class LoginPage {
             console.log('statusnya3',response.status);
             localStorage.setItem('token', response .token);
             console.log('cektokenn',localStorage.getItem('token'));
-
+            console.log('responya',response.status);
+            localStorage.setItem('status', response.status);            
           } 
           else {
             this.showAlert(response.message);
@@ -68,6 +71,7 @@ export class LoginPage {
         }, err => {
            loading.dismiss();
            this.showError(err);
+           console.log('eerrror', err);
         });
 
 }

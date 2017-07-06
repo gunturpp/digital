@@ -60,8 +60,9 @@ export class HomePage {
         loading.present();
        */
 
-        if(localStorage.getItem(token)) {
-        this.isLoggedIn = true;
+        if(token == null) {
+        this.isLoggedIn = false;
+        this.navCtrl.setRoot(LoginPage);
         }        
 
         let headers = new Headers({
@@ -73,7 +74,9 @@ export class HomePage {
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
-            console.log(this.reviews); 
+            console.log('rev',this.reviews); 
+          
+        
          });
         
         this.http.get(apiURL+'getproduct', options)
@@ -95,7 +98,7 @@ export class HomePage {
         .map(res => this.rundowns= res.json())
         .subscribe(rundowns => {
             this.rundowns = rundowns['rundowns'];
-            console.log(this.rundowns);
+            console.log(this.rundowns.location);
             //loading.dismiss();
 
           });
@@ -105,6 +108,9 @@ export class HomePage {
     // this.slides.scrollTop();
     // // console.log('Current index is', currentIndex);
   // }
+  goToLocation(){
+    window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
+  }
     ionViewDidLoad(): void {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();

@@ -1,16 +1,16 @@
 <ion-slides class="a">
   <ion-slide>
   <form #signupForm="ngForm" novalidate>
-      <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="Nama"></ion-input>
+      <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
 
-      <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="Email"></ion-input>
+      <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
 
       <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
 
       <!--<ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>-->
   </form>
    <ion-item class="ions">
-      <ion-select type="text" name="gender" class="ions2-select" placeholder="GENDER" [(ngModel)]="user.gender">
+      <ion-select type="text" name="gender" class="ions2-select" placeholder="PRIA/WANITA" [(ngModel)]="user.gender">
         <ion-option value="Pria">PRIA</ion-option>
         <ion-option value="Wanita">WANITA</ion-option>
       </ion-select>
@@ -30,15 +30,15 @@
       <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
 
         <br><br><br>
-    <button ion-button full type="submit" (click)="goToSlide1()" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+    <button ion-button full large type="submit" (click)="goToSlide1()" color="grays"><img src="assets/img/arrow-right-next.png"></button>
   </form>    
   </ion-slide>
   <ion-slide>
-
-      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
+      <ion-label>Buat Password</ion-label>
+      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="PASSWORD"></ion-input>
 
     <br><br><br>  
-    <button ion-button full type="submit" (click)="onSignup(signupForm)" color="grays"><img src="assets/img/arrow-right-next.png"></button>
+    <button ion-button full large type="submit" (click)="onSignup(signupForm)" color="blacks"><img src="assets/img/arrow-right-next.png"></button>
 
   </ion-slide>
 </ion-slides>
