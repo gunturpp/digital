@@ -11,7 +11,6 @@ import { MenuPage } from '../menu/menu';
 import { LoginPage } from '../login/login';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ReviewsDetailPage } from '../reviews-detail/reviews-detail';
-import { PopoverPage } from '../home-popover/home-popover';
 
 let apiURL = 'http://188.166.188.11/';
 /**
@@ -283,12 +282,6 @@ filterBikes() {
     toast.present();
   };
   
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverPage);
-    popover.present({
-      ev: myEvent
-    });
-  }
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,

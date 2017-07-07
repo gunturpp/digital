@@ -18,7 +18,6 @@ import { LocationSelectPage } from '../pages/location-select/location-select';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { BestdealsPage } from '../pages/bestdeals/bestdeals';
 import { MenuPage } from '../pages/menu/menu';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { InboxPage } from '../pages/inbox/inbox';
@@ -28,7 +27,6 @@ import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
-import { PopoverPage } from '../pages/home-popover/home-popover'
 
 
 @NgModule({
@@ -37,7 +35,6 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     HomePage,
     LoginPage,
     RegisterPage,
-    BestdealsPage,
     MenuPage,
     FeedbackPage,
     InboxPage,
@@ -46,7 +43,6 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    PopoverPage,
     LocationSelectPage
   ],
   imports: [
@@ -61,7 +57,6 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     HomePage,
     LoginPage,
     RegisterPage,
-    BestdealsPage,
     MenuPage,
     FeedbackPage,
     InboxPage,
@@ -70,7 +65,6 @@ import { PopoverPage } from '../pages/home-popover/home-popover'
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    PopoverPage,
     LocationSelectPage
   ],
   providers: [
