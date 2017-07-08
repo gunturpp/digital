@@ -94,8 +94,8 @@ export class GoogleMapsProvider {
         // let latLng = new google.maps.LatLng(-6.129614, 106.926856);
         let mapOptions = {
           center: latLng,
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.TERRAIN
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         // google mapsnya
         let  map = new google.maps.Map(this.mapElement, mapOptions);
@@ -116,7 +116,7 @@ export class GoogleMapsProvider {
         resolve(true);
           let request = {
           location: latLng,
-          // radius: '1000',
+          // radius: '1000'
           rankBy: google.maps.places.RankBy.DISTANCE,
           keyword: ['spbu','gas station']
           };
@@ -149,6 +149,7 @@ export class GoogleMapsProvider {
           map:map,
           icon: image,
           animation: google.maps.Animation.DROP,
+          
           position: place.geometry.location,
           title:place.name
         });

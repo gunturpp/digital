@@ -4,7 +4,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 declare var google: any;
-
+JSON.parse(localStorage.getItem('koordinat'));
+ 
 @Component({
   selector: 'page-location-select',
   templateUrl: 'location-select.html'
@@ -27,8 +28,8 @@ export class LocationSelectPage {
     constructor(public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
         this.searchDisabled = true;
         this.saveDisabled = true;
-
         this.locations = JSON.parse(localStorage.getItem('koordinat'));
+
     }
     backButton(){
         this.navCtrl.setRoot(MenuPage);
@@ -74,7 +75,9 @@ export class LocationSelectPage {
  
     }
  
- 
+    filterProduct(){
+        console.log("eaaaa");
+    }
     close(){
         this.viewCtrl.dismiss();
     }   
