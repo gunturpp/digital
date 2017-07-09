@@ -13,10 +13,11 @@
     <!--<ion-toolbar color="blacks-trans">     
     <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
     </ion-toolbar>
-    -->
      <ion-list>
         <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
     </ion-list>
+        -->
+
 
 </ion-header>
  
@@ -32,10 +33,11 @@
             
         </ion-spinner>
     </div>
+    <br>
     <div  id="listnya">
     <ion-list>
             <ion-item class="css-item" *ngFor="let location of locations">
-                <h2>{{location.name}}</h2>
+                <p><b>{{location.name}}</b></p>
                 <p>{{location.vicinity}}</p>
             </ion-item>
         </ion-list>
