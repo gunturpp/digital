@@ -73,9 +73,7 @@ export class HomePage {
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
-            console.log('rev',this.reviews); 
-          
-        
+            console.log('rev',this.reviews);                 
          });
         
         this.http.get(apiURL+'getbikes', options)
@@ -84,7 +82,7 @@ export class HomePage {
             this.bikes = bikes['bikes'];
             console.log(this.bikes);
           });
-          
+        
         this.http.get(apiURL+'getevents', options)
         .map(res => this.rundowns= res.json())
         .subscribe(rundowns => {
@@ -107,13 +105,12 @@ export class HomePage {
        this.setFilteredItemsBikes();
     }
     setFilteredItems(){
-        this.setFilteredItemsProduct();
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
-
     }
     setFilteredItemsProduct() {
-        this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
-    }
+        this.products = this.dataService.filterItemsProduct('helm');
+  }
+
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
 

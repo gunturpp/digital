@@ -140,7 +140,7 @@ export class GoogleMapsProvider {
               var loc2 = results[i].geometry.location;
               var dist = loc2.distanceFrom(loc1);
               results[i].distance=dist;
-              console.log(results[i].distance);
+              //console.log(results[i].distance);
             }
             createMarker(results[i], map);
           }
