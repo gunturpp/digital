@@ -133,12 +133,10 @@ export class GoogleMapsProvider {
 
         function callback(results, status, map) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          var place =[]
           for (var i = 0; i < results.length; i++) {
-            place = results[i];
             var loc1 = latLng
-            if(typeof(place.geometry)!==undefined){
-              var loc2 = place.geometry.location;
+            if(typeof(results[i].geometry)!=undefined){
+              var loc2 = results[i].geometry.location;
               var dist = loc2.distanceFrom(loc1);
               results[i].distance=dist;
               console.log(results[i].distance);
