@@ -42,10 +42,38 @@ export class LocationSelectPage {
   
           let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
             this.autocompleteService = new google.maps.places.AutocompleteService();
-            if(this.maps.map!=null)
-                this.placesService = new google.maps.places.PlacesService(this.maps.map);
+            this.placesService = new google.maps.places.PlacesService(this.maps.map);
             this.searchDisabled = false;
         }); 
+    }
+ 
+    selectPlace(place){
+ 
+        this.places = [];
+ 
+        let location = {
+            lat: null,
+            lng: null,
+            name: place.name
+        };
+ 
+        this.placesService.getDetails({placeId: place.place_id}, (details) => {
+ 
+            this.zone.run(() => {
+ 
+                location.name = details.name;
+                location.lat = details.geometry.location.lat();
+                location.lng = details.geometry.location.lng();
+                this.saveDisabled = false;
+ 
+                this.maps.map.setCenter({lat: location.lat, lng: location.lng});
+ 
+                //this.locations = location;
+ 
+            });
+ 
+        });
+ 
     }
  
     searchPlace(){

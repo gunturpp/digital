@@ -36,10 +36,10 @@
     <br>
     <div  id="listnya">
     <ion-list>
-            <ion-item class="css-item" *ngFor="let location of locations" (touchstart)="selectPlace(place)">
-                <p><b>{{location.name}}</b></p>
-                <p>{{location.vicinity.split(',')[0]}}</p>
-                <p>{{location.distance}} m</p>
+            <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
+                <p><b>{{place.name}}</b></p>
+                <p>{{place.vicinity.split(',')[0]}}</p>
+                <p>{{place.distance}} m</p>
             </ion-item>
         </ion-list>
     </div>

@@ -98,7 +98,8 @@ export class GoogleMapsProvider {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         // google mapsnya
-        let  map = new google.maps.Map(this.mapElement, mapOptions);
+        this.map = new google.maps.Map(this.mapElement, mapOptions);
+        
         // current location image
          var image = {
           path: google.maps.SymbolPath.CIRCLE,
@@ -108,7 +109,7 @@ export class GoogleMapsProvider {
           scale: 7
         };
         var marker = new google.maps.Marker({
-          map:map,
+          map:this.map,
           icon:image,
           animation: google.maps.Animation.DROP,
           position:latLng
@@ -121,14 +122,14 @@ export class GoogleMapsProvider {
           keyword: ['spbu','gas station']
           };
 
-        let service = new google.maps.places.PlacesService(map);
+        let service = new google.maps.places.PlacesService(this.map);
         //service.nearbySearch( request, callback);
         service.nearbySearch({
                 location: latLng,
                 rankBy: google.maps.places.RankBy.DISTANCE,
                 keyword: ['spbu','gas station']
               }, (results, status) => {
-                  callback(results, status, map)
+                  callback(results, status, this.map)
               });
 
         function callback(results, status, map) {
@@ -180,12 +181,12 @@ export class GoogleMapsProvider {
           title:place.name
         });
         // UNCOMMENT IF U WANT USE INFWOWINDOW
-        //  var infowindow = new google.maps.InfoWindow;
+        var infowindow = new google.maps.InfoWindow;
 
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infowindow.setContent(place.name);
-        //   infowindow.open(map, this);
-        // });
+        google.maps.event.addListener(marker, 'click', function() {
+           infowindow.setContent(place.name);
+           infowindow.open(this.map, this);
+         });
       }
 // //direction
 //         directionsDisplay.setMap(map);
