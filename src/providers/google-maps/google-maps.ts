@@ -122,20 +122,27 @@ export class GoogleMapsProvider {
           };
 
         let service = new google.maps.places.PlacesService(map);
-        service.nearbySearch( request, callback);
+        //service.nearbySearch( request, callback);
+        service.nearbySearch({
+                location: latLng,
+                rankBy: google.maps.places.RankBy.DISTANCE,
+                keyword: ['spbu','gas station']
+              }, (results, status) => {
+                  callback(results, status, map)
+              });
 
-        function callback(results, status, spbu) {
+        function callback(results, status, map) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           var place =[]
           for (var i = 0; i < results.length; i++) {
             place = results[i];
-            createMarker(results[i]);
+            createMarker(results[i], map);
           }
           localStorage.setItem('koordinat',JSON.stringify(results));
 
           }
         }
-      function createMarker(place) {
+      function createMarker(place, map) {
         var image = {
             url: place.icon,
             size: new google.maps.Size(71, 71),

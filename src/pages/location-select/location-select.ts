@@ -32,15 +32,18 @@ export class LocationSelectPage {
 
     }
     backButton(){
+        this.viewCtrl.dismiss();
         this.navCtrl.setRoot(MenuPage);
     }
+    
     ionViewDidLoad(): void {
         console.log('spbu',this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
   
           let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
             this.autocompleteService = new google.maps.places.AutocompleteService();
-            this.placesService = new google.maps.places.PlacesService(this.maps.map);
+            if(this.maps.map!=null)
+                this.placesService = new google.maps.places.PlacesService(this.maps.map);
             this.searchDisabled = false;
         }); 
     }
