@@ -38,7 +38,7 @@
     <ion-list>
             <ion-item class="css-item" *ngFor="let location of locations">
                 <p><b>{{location.name}}</b></p>
-                <p>{{location.vicinity}}</p>
+                <p>{{location.vicinity.split(',')[0]}}</p>
             </ion-item>
         </ion-list>
     </div>
