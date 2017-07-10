@@ -33,18 +33,15 @@
     <div #map id="map">
     </div>
     <br>
-    <div>
+    <div id="listnya">
     <ion-list>
         <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
-            <ion-row>
-            <ion-col>
+          
                 <p><b>{{place.name}}</b></p>
                 <p>{{place.alamat}}</p>
-            </ion-col>
-            <ion-col>
+          
                 <p style="text-align:right">{{place.distance}} m</p>
-            </ion-col>
-            </ion-row>
+        
         </ion-item>
     </ion-list>
     </div>
