@@ -124,14 +124,14 @@ export class GoogleMapsProvider {
         service.nearbySearch({
                 location: latLng,
                 rankBy: google.maps.places.RankBy.DISTANCE,
-                keyword: ['spbu','gas station']
+                type: ['gas station']
               }, (results, status) => {
                   callback(results, status, this.map)
               });
 
         function callback(results, status, map) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
+          for (var i = 0; i <6; i++) {
             var loc1 = latLng
             if(typeof(results[i].geometry)!=undefined){
               var loc2 = results[i].geometry.location;

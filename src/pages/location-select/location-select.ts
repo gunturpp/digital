@@ -38,6 +38,7 @@ export class LocationSelectPage {
     ionViewDidLoad(): void {
         console.log('spbu', this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
+        this.locations = JSON.parse(localStorage.getItem('koordinat'));
 
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
             this.autocompleteService = new google.maps.places.AutocompleteService();
@@ -47,11 +48,6 @@ export class LocationSelectPage {
         //this.locations = JSON.parse(localStorage.getItem('koordinat'));
     }
 
-    ionLoad(): void {
-        console.log('spbu', this.maps.spbu);
-        console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
-        this.locations = JSON.parse(localStorage.getItem('koordinat'));
-    }
     selectPlace(place) {
 
         this.places = [];
@@ -109,12 +105,12 @@ export class LocationSelectPage {
                 }, (results, status) => {
                     callback(results, status, this.maps.map)
                     this.locations = JSON.parse(localStorage.getItem('koordinat'));
-                    this.ionLoad();
+                    
                 });
 
                 function callback(results, status, map) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
-                        for (var i = 0; i < results.length; i++) {
+                        for (var i = 0; i <6; i++) {
                             var loc1 = latLng
                             if (typeof (results[i].geometry) != undefined) {
                                 var loc2 = results[i].geometry.location;
