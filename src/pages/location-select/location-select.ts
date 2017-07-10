@@ -47,6 +47,11 @@ export class LocationSelectPage {
         //this.locations = JSON.parse(localStorage.getItem('koordinat'));
     }
 
+    ionLoad(): void {
+        console.log('spbu', this.maps.spbu);
+        console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
+        this.locations = JSON.parse(localStorage.getItem('koordinat'));
+    }
     selectPlace(place) {
 
         this.places = [];
@@ -80,6 +85,7 @@ export class LocationSelectPage {
         console.log("eaaaa");
     }
     close() {
+        localStorage.removeItem('koordinat');
         this.viewCtrl.dismiss();
     }
 
@@ -102,6 +108,8 @@ export class LocationSelectPage {
                     type: [place]
                 }, (results, status) => {
                     callback(results, status, this.maps.map)
+                    this.locations = JSON.parse(localStorage.getItem('koordinat'));
+                    this.ionLoad();
                 });
 
                 function callback(results, status, map) {
@@ -170,7 +178,6 @@ export class LocationSelectPage {
                         infoWindow.open(this.map);
                     }
                 }
-                this.locations = JSON.parse(localStorage.getItem('koordinat'));
             });
 
         } else {
