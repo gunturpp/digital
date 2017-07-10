@@ -130,6 +130,7 @@ export class GoogleMapsProvider {
               });
 
         function callback(results, status, map) {
+        map.markers= new Array();
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i <6; i++) {
             var loc1 = latLng
@@ -178,6 +179,7 @@ export class GoogleMapsProvider {
           position: place.geometry.location,
           title:place.name
         });
+        map.markers.push(marker);
 
         // UNCOMMENT IF U WANT USE INFWOWINDOW
         var infowindow = new google.maps.InfoWindow;
