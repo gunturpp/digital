@@ -120,7 +120,7 @@ export class LocationSelectPage {
                     clearOverlays(map);
                     map.markers= new Array();
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
-                        for (var i = 0; i <6; i++) {
+                        for (var i = 0; i <results.length; i++) {
                             var loc1 = latLng
                             if (typeof (results[i].geometry) != undefined) {
                                 var loc2 = results[i].geometry.location;
