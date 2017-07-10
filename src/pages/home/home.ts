@@ -60,8 +60,9 @@ export class HomePage {
        */
 
         if(token == null) {
-        this.isLoggedIn = false;
-        this.navCtrl.setRoot(LoginPage);
+          this.isLoggedIn = false;
+          this.navCtrl.setRoot(LoginPage);
+          this.viewCtrl.dismiss();
         }        
 
         let headers = new Headers({
@@ -74,7 +75,18 @@ export class HomePage {
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
             console.log('rev',this.reviews);                 
-         });
+         },
+          error => {
+            console.log(error); 
+            if(error.statusText=="Unauthorized"){
+            localStorage.removeItem('token');
+            this.authService.logout();      
+            this.isLoggedIn = false;
+            this.navCtrl.setRoot(LoginPage);
+            this.viewCtrl.dismiss();
+            localStorage.clear();
+            }
+        });
         
         this.http.get(apiURL+'getbikes', options)
         .map(res => this.bikes= res.json())
@@ -101,6 +113,7 @@ export class HomePage {
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
+       //this.products = this.dataService.filterItemsProduct("h");
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
     }
@@ -108,7 +121,7 @@ export class HomePage {
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
     }
     setFilteredItemsProduct() {
-        this.products = this.dataService.filterItemsProduct('helm');
+        this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
   }
 
     setFilteredItemsBikes() {
