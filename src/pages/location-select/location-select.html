@@ -33,6 +33,7 @@
     <div #map id="map">
     </div>
     <br>
+    <div>
     <ion-list>
         <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
             <ion-row>
@@ -46,4 +47,5 @@
             </ion-row>
         </ion-item>
     </ion-list>
+    </div>
 </ion-content>
