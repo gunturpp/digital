@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <ion-content>  <ion-slides control pager="true" paginationType="bullets" class="black">
+=======
+  <ion-slides control pager="true" (ionSlideDidChange)="slideChanged()" paginationType="bullets" class="black">
+>>>>>>> 84060e337f625b58207091add146b7838cbbc78e
     <!--SLIDE HOME SLIDE 1-->
     <ion-slide #kak>
       <ion-header>
@@ -18,10 +22,17 @@
         <div>
           <div class="list">
             <div class="header-list">
+<<<<<<< HEAD
               <button ion-button medium full (click)="scrollToTop()" color="blacks-trans">EXHIBITION</button>
               <button ion-button medium full (click)="goToSlide3()" color="dark">MEET & GREET</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
+=======
+              <button ion-button medium full (click)="goToSlide1()" color="blacks-trans">EXHIBITION</button>
+              <button ion-button medium full (click)="goToSlide2()" color="dark">MEET & GREET</button>
+              <button ion-button medium full (click)="goToSlide3()" color="grays">MOTOVLOGGER</button>
+              <button ion-button medium full (click)="goToSlide4()" color="grays">BAZAR APPAREL</button>
+>>>>>>> 84060e337f625b58207091add146b7838cbbc78e
             </div>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      
@@ -44,7 +55,7 @@
                 <ion-card-content>
                   <ion-row>
                     <img class="cssImg-location" src="assets/img/margocity2.jpg" (click)="goToLocation()">
-                    <img class="cssImg-location" src="assets/img/margocity.jpg" (click)="goToLocation()">
+                    <img class="cssImg-location" src="assets/img/margocity1.jpg" (click)="goToLocation()">
                   </ion-row>
                   <ion-label style="text-align:center;color:grey">FIND US @ MARGO CITY</ion-label>
                   <ion-label style="text-align:center;font-size:12px;color:grey">Jl. Margonda Raya No. 358.</ion-label>
@@ -103,17 +114,32 @@
             </button>
           </ion-buttons>
         </ion-toolbar>
+        <!--
         <ion-toolbar color="blacks-trans">     
-        <!--<ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>-->
+        </ion-toolbar>
+        -->
+        <ion-toolbar color="blacks-trans">     
+          <ion-title style="text-align:center">Bikes</ion-title>
+          <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
         </ion-toolbar>
       </ion-header>
+      <br>
+      <br>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
-          <div class="css-imgslide3">
-          <img class="img-center" src="http://188.166.188.11{{bike.picture}}"/>
-            </div>
+          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+            </ion-slides>            
           <ion-card-content class="card-contentslide3">
-            <p class="color">{{bike.description}}</p>
+            <p class="color">{{bike.name}}. {{bike.description}}</p>
           </ion-card-content>
         </ion-card>
       </div>
@@ -135,7 +161,17 @@
       <div class="scroll-y-slide4">
         <ion-card class="border-radius"  *ngFor="let review of reviews">
           <div class="img-slide4">
+          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
+              <ion-slide>
             <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+              <ion-slide>
+            <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+              <ion-slide>
+            <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+            </ion-slides>            
           </div>
           <div class="content-slide4">
             <ion-card-content>

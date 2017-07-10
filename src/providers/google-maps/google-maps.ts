@@ -97,7 +97,8 @@ export class GoogleMapsProvider {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         // google mapsnya
-        let  map = new google.maps.Map(this.mapElement, mapOptions);
+        this.map = new google.maps.Map(this.mapElement, mapOptions);
+        
         // current location image
          var image = {
           path: google.maps.SymbolPath.CIRCLE,
@@ -107,7 +108,7 @@ export class GoogleMapsProvider {
           scale: 7
         };
         var marker = new google.maps.Marker({
-          map:map,
+          map:this.map,
           icon:image,
           animation: google.maps.Animation.DROP,
           position:latLng
@@ -120,21 +121,48 @@ export class GoogleMapsProvider {
           keyword: ['spbu','gas station']
           };
 
-        let service = new google.maps.places.PlacesService(map);
-        service.nearbySearch( request, callback);
+        let service = new google.maps.places.PlacesService(this.map);
+        //service.nearbySearch( request, callback);
+        service.nearbySearch({
+                location: latLng,
+                rankBy: google.maps.places.RankBy.DISTANCE,
+                keyword: ['spbu','gas station']
+              }, (results, status) => {
+                  callback(results, status, this.map)
+              });
 
-        function callback(results, status, spbu) {
+        function callback(results, status, map) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          var place =[]
           for (var i = 0; i < results.length; i++) {
-            place = results[i];
-            createMarker(results[i]);
+            var loc1 = latLng
+            if(typeof(results[i].geometry)!=undefined){
+              var loc2 = results[i].geometry.location;
+              var dist = loc2.distanceFrom(loc1);
+              results[i].distance=dist;
+              //console.log(results[i].distance);
+            }
+            createMarker(results[i], map);
           }
           localStorage.setItem('koordinat',JSON.stringify(results));
-
           }
         }
-      function createMarker(place) {
+        
+
+        google.maps.LatLng.prototype.distanceFrom = function(latlng) {
+          var lat = [this.lat(), latlng.lat()]
+          var lng = [this.lng(), latlng.lng()]
+          var R = 6378137;
+          var dLat = (lat[1]-lat[0]) * Math.PI / 180;
+          var dLng = (lng[1]-lng[0]) * Math.PI / 180;
+          var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(lat[0] * Math.PI / 180 ) * Math.cos(lat[1] * Math.PI / 180 ) *
+          Math.sin(dLng/2) * Math.sin(dLng/2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          var d = R * c;
+          return Math.round(d);
+        }
+
+      function createMarker(place, map) {
         var image = {
             url: place.icon,
             size: new google.maps.Size(71, 71),
@@ -152,14 +180,25 @@ export class GoogleMapsProvider {
           position: place.geometry.location,
           title:place.name
         });
-        // UNCOMMENT IF U WANT USE INFWOWINDOW
-        //  var infowindow = new google.maps.InfoWindow;
 
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infowindow.setContent(place.name);
-        //   infowindow.open(map, this);
-        // });
+        // UNCOMMENT IF U WANT USE INFWOWINDOW
+        var infowindow = new google.maps.InfoWindow;
+        google.maps.event.addListener(marker, 'click', function() {
+           infowindow.setContent(place.name);
+           infowindow.open(this.map, this);
+         });
+
+         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.open(this.map);
+        }
       }
+      
+
+
 // //direction
 //         directionsDisplay.setMap(map);
 

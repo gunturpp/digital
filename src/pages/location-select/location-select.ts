@@ -32,8 +32,10 @@ export class LocationSelectPage {
 
     }
     backButton(){
+        this.viewCtrl.dismiss();
         this.navCtrl.setRoot(MenuPage);
     }
+    
     ionViewDidLoad(): void {
         console.log('spbu',this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
@@ -43,6 +45,35 @@ export class LocationSelectPage {
             this.placesService = new google.maps.places.PlacesService(this.maps.map);
             this.searchDisabled = false;
         }); 
+    }
+ 
+    selectPlace(place){
+ 
+        this.places = [];
+ 
+        let location = {
+            lat: null,
+            lng: null,
+            name: place.name
+        };
+ 
+        this.placesService.getDetails({placeId: place.place_id}, (details) => {
+ 
+            this.zone.run(() => {
+ 
+                location.name = details.name;
+                location.lat = details.geometry.location.lat();
+                location.lng = details.geometry.location.lng();
+                this.saveDisabled = false;
+ 
+                this.maps.map.setCenter({lat: location.lat, lng: location.lng});
+ 
+                //this.locations = location;
+ 
+            });
+ 
+        });
+ 
     }
  
     searchPlace(){

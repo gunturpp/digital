@@ -67,8 +67,9 @@ export class HomePage {
        */
 
         if(token == null) {
-        this.isLoggedIn = false;
-        this.navCtrl.setRoot(LoginPage);
+          this.isLoggedIn = false;
+          this.navCtrl.setRoot(LoginPage);
+          this.viewCtrl.dismiss();
         }        
 
         let headers = new Headers({
@@ -80,26 +81,35 @@ export class HomePage {
         .map(res => this.reviews= res.json())
         .subscribe(reviews => {
             this.reviews = reviews['reviews'];
-            console.log('rev',this.reviews); 
-          
+            console.log('rev',this.reviews);                 
+         },
+          error => {
+            console.log(error); 
+            if(error.statusText=="Unauthorized"){
+            localStorage.removeItem('token');
+            this.authService.logout();      
+            this.isLoggedIn = false;
+            this.navCtrl.setRoot(LoginPage);
+            this.viewCtrl.dismiss();
+            localStorage.clear();
+            }
+        });
         
-         });
-        
-        this.http.get(apiURL+'getproduct', options)
-        .map(res => this.products= res.json())
-        .subscribe(products => {
-            this.products = products['products'];
-            console.log(this.products);
-       
-          });
-
         this.http.get(apiURL+'getbikes', options)
         .map(res => this.bikes= res.json())
         .subscribe(bikes => {
             this.bikes = bikes['bikes'];
             console.log(this.bikes);
           });
-          
+
+        this.http.get(apiURL+'getproduct', options)
+        .map(res => this.products= res.json())
+        .subscribe(products => {
+            this.products = products['products'];
+            console.log(this.products);
+          });
+        
+        
         this.http.get(apiURL+'getevents', options)
         .map(res => this.rundowns= res.json())
         .subscribe(rundowns => {
@@ -110,6 +120,7 @@ export class HomePage {
           });
 
   }
+<<<<<<< HEAD
 
 
     //  slideChanged() {
@@ -117,9 +128,18 @@ export class HomePage {
     // // console.log('Current index is', currentIndex);
   // }
   goToLocation(){
+=======
+  
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    console.log('Current index is', currentIndex);
+  }
+    goToLocation(){
+>>>>>>> 84060e337f625b58207091add146b7838cbbc78e
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
+       //this.products = this.dataService.filterItemsProduct("h");
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
        let loadings = this.loadingCtrl.create({
@@ -135,13 +155,12 @@ export class HomePage {
         loadings.dismiss();
     }
     setFilteredItems(){
-        this.setFilteredItemsProduct();
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
-
     }
     setFilteredItemsProduct() {
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
-    }
+  }
+
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }

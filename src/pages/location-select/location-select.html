@@ -10,12 +10,18 @@
         </ion-buttons>
 
     </ion-navbar>
-    <ion-toolbar color="blacks-trans">     
-    <!--<ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>-->
+    <!--<ion-toolbar color="blacks-trans">     
+    <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
     </ion-toolbar>
      <!--<ion-list>
         <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
+<<<<<<< HEAD
     </ion-list>-->
+=======
+    </ion-list>
+        -->
+
+>>>>>>> 84060e337f625b58207091add146b7838cbbc78e
 
 </ion-header>
  
@@ -31,11 +37,13 @@
             
         </ion-spinner>
     </div>
+    <br>
     <div  id="listnya">
     <ion-list>
-            <ion-item class="css-item" *ngFor="let location of locations">
-                <h2>{{location.name}}</h2>
-                <p>{{location.vicinity}}</p>
+            <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
+                <p><b>{{place.name}}</b></p>
+                <p>{{place.vicinity.split(',')[0]}}</p>
+                <p>{{place.distance}} m</p>
             </ion-item>
         </ion-list>
     </div>
