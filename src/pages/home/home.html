@@ -109,10 +109,10 @@
         -->
         <ion-toolbar color="blacks-trans">     
           <ion-title style="text-align:center">Bikes</ion-title>
-        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
+          <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
         </ion-toolbar>
-
       </ion-header>
+      <br>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
           <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
