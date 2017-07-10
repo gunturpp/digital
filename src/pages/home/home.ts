@@ -89,8 +89,8 @@ export class HomePage {
             localStorage.removeItem('token');
             this.authService.logout();      
             this.isLoggedIn = false;
-            this.navCtrl.setRoot(LoginPage);
             this.viewCtrl.dismiss();
+            this.navCtrl.setRoot(LoginPage);
             localStorage.clear();
             }
         });
@@ -120,6 +120,7 @@ export class HomePage {
           });
 
   }
+<<<<<<< HEAD
 
       public CValue:String;
       onChange(CValue) {
@@ -134,6 +135,14 @@ export class HomePage {
     // // console.log('Current index is', currentIndex);
   // }
   goToLocation(){
+=======
+  
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    console.log('Current index is', currentIndex);
+  }
+    goToLocation(){
+>>>>>>> 6f020a70077258b0c3ebaaad76c481982cda5e89
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {

@@ -22,10 +22,9 @@ export class GoogleMapsProvider {
   scope:any;
   xscope:any=[];
   constructor(public http:Http, public connectivityService: ConnectivityServiceProvider, public geolocation: Geolocation) {
-        let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-6.1307391,106.924093&radius=1000&keyword=SPBU&key=' + this.apiKey;        
-        // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-6.1307391,106.924093&radius=1000&keyword=SPBU&key=AIzaSyCVgBP5RlW8x9R3MtZj81uE-2JpcGmUupA        
   }
   init(mapElement: any, pleaseConnect: any): Promise<any> { 
+    localStorage.removeItem('koordinat');
     this.mapElement = mapElement;
     this.pleaseConnect = pleaseConnect;
       return this.loadGoogleMaps();
@@ -78,7 +77,6 @@ export class GoogleMapsProvider {
   }
 
   initMap(): Promise<any> {
- 
     this.mapInitialised = true;
  
     return new Promise((resolve) => {
@@ -138,6 +136,7 @@ export class GoogleMapsProvider {
             if(typeof(results[i].geometry)!=undefined){
               var loc2 = results[i].geometry.location;
               var dist = loc2.distanceFrom(loc1);
+              results[i].distance=dist;
               results[i].distance=dist;
               //console.log(results[i].distance);
             }

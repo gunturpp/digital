@@ -1,5 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+<<<<<<< HEAD
 import { Slides, Content, ToastController, LoadingController, NavController, NavParams } from 'ionic-angular';
+=======
+import { ToastController, LoadingController, NavController, NavParams, Slides } from 'ionic-angular';
+>>>>>>> 6f020a70077258b0c3ebaaad76c481982cda5e89
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { FeedbackPage } from '../feedback/feedback';
@@ -18,6 +22,7 @@ import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
+<<<<<<< HEAD
     @ViewChild(Slides) slides: Slides;  
     @ViewChild(Content) content: Content;
 
@@ -26,6 +31,13 @@ export class MenuPage {
   }
 
     //back button
+=======
+  @ViewChild(Slides) slides: Slides;  
+    
+  constructor(public loadingCtrl:LoadingController, public toastCtrl:ToastController, public authService:AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {}
+   
+  //back button
+>>>>>>> 6f020a70077258b0c3ebaaad76c481982cda5e89
   backToHome(){
     this.navCtrl.setRoot(HomePage);
     
