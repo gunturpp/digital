@@ -105,9 +105,13 @@
         </ion-toolbar>
         <!--
         <ion-toolbar color="blacks-trans">     
-        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
         </ion-toolbar>
         -->
+        <ion-toolbar color="blacks-trans">     
+          <ion-title style="text-align:center">Bikes</ion-title>
+        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
+        </ion-toolbar>
+
       </ion-header>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
@@ -123,7 +127,7 @@
               </ion-slide>
             </ion-slides>            
           <ion-card-content class="card-contentslide3">
-            <p class="color">{{bike.description}}</p>
+            <p class="color">{{bike.name}}. {{bike.description}}</p>
           </ion-card-content>
         </ion-card>
       </div>
