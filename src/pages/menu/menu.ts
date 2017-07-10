@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ToastController, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { ToastController, LoadingController, NavController, NavParams, Slides } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { FeedbackPage } from '../feedback/feedback';
@@ -17,13 +17,28 @@ import { LocationSelectPage } from '../location-select/location-select';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-
+  @ViewChild(Slides) slides: Slides;  
+    
   constructor(public loadingCtrl:LoadingController, public toastCtrl:ToastController, public authService:AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {}
    
   //back button
   backToHome(){
     this.navCtrl.setRoot(HomePage);
   }
+  
+  goToSlide1() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goToSlide2() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goToSlide3() {
+    this.navCtrl.setRoot(HomePage);
+  }
+  goToSlide4() {
+    this.navCtrl.setRoot(HomePage);
+  }
+
   openMap(){
     this.navCtrl.setRoot(LocationSelectPage);
   }

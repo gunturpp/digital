@@ -1,4 +1,4 @@
-  <ion-slides control pager="true" paginationType="bullets" class="black">
+  <ion-slides control pager="true" (ionSlideDidChange)="slideChanged()" paginationType="bullets" class="black">
     <!--SLIDE HOME SLIDE 1-->
     <ion-slide>
       <ion-header>
@@ -19,10 +19,10 @@
         <div>
           <div class="list">
             <div class="header-list">
-              <button ion-button medium full (click)="slideChanged()" color="blacks-trans">EXHIBITION</button>
-              <button ion-button medium full (click)="goToSlide3()" color="dark">MEET & GREET</button>
-              <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
-              <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
+              <button ion-button medium full (click)="goToSlide1()" color="blacks-trans">EXHIBITION</button>
+              <button ion-button medium full (click)="goToSlide2()" color="dark">MEET & GREET</button>
+              <button ion-button medium full (click)="goToSlide3()" color="grays">MOTOVLOGGER</button>
+              <button ion-button medium full (click)="goToSlide4()" color="grays">BAZAR APPAREL</button>
             </div>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      
