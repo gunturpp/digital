@@ -1,4 +1,4 @@
-import { NavController, Platform, ViewController } from 'ionic-angular';
+import { LoadingController, NavController, Platform, ViewController } from 'ionic-angular';
 import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
@@ -25,7 +25,7 @@ export class LocationSelectPage {
     saveDisabled: boolean;
     locations: any;
 
-    constructor(public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
+    constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
         this.searchDisabled = true;
         this.saveDisabled = true;
         this.locations = JSON.parse(localStorage.getItem('koordinat'));
@@ -38,14 +38,15 @@ export class LocationSelectPage {
     ionViewDidLoad(): void {
         console.log('spbu', this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
-        this.locations = JSON.parse(localStorage.getItem('koordinat'));
-
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
             this.autocompleteService = new google.maps.places.AutocompleteService();
             this.placesService = new google.maps.places.PlacesService(this.maps.map);
             this.searchDisabled = false;
         });
         //this.locations = JSON.parse(localStorage.getItem('koordinat'));
+
+        this.CallLoading();
+
     }
 
     selectPlace(place) {
@@ -92,7 +93,7 @@ export class LocationSelectPage {
 
     cari(place) {
         this.saveDisabled = true;
-
+        this.CallLoading();
         if (place.length > 0 && !this.searchDisabled) {
             let latLng;
             this.geolocation.getCurrentPosition().then((position) => {
@@ -181,5 +182,20 @@ export class LocationSelectPage {
         }
 
     }
+    CallLoading(){
+        let loading = this.loadingCtrl.create({
+            spinner: 'circle'
+        });
 
+        loading.present();
+
+        setTimeout(() => {
+        }, 100);
+
+        setTimeout(() => {
+            loading.dismiss();
+        }, 7000);
+
+
+    }
 }
