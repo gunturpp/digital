@@ -13,9 +13,9 @@
     <ion-toolbar color="blacks-trans">     
     <!--<ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>-->
     </ion-toolbar>
-     <ion-list>
+     <!--<ion-list>
         <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
-    </ion-list>
+    </ion-list>-->
 
 </ion-header>
  
@@ -26,7 +26,7 @@
         <p>Please connect to the Internet...</p>
     </div>
  
-    <div #map id="map" data-tap-disabled="true">
+    <div #map id="map">
         <ion-spinner>
             
         </ion-spinner>

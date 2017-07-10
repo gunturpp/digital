@@ -25,7 +25,6 @@ export class GoogleMapsProvider {
         let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-6.1307391,106.924093&radius=1000&keyword=SPBU&key=' + this.apiKey;        
         // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-6.1307391,106.924093&radius=1000&keyword=SPBU&key=AIzaSyCVgBP5RlW8x9R3MtZj81uE-2JpcGmUupA        
   }
- 
   init(mapElement: any, pleaseConnect: any): Promise<any> { 
     this.mapElement = mapElement;
     this.pleaseConnect = pleaseConnect;
