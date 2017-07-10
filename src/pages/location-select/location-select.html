@@ -31,10 +31,8 @@
     </div>
  
     <div #map id="map">
-        <ion-spinner>
-            
-        </ion-spinner>
     </div>
+<<<<<<< HEAD
     <ion-list>
             <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
                 <p><b>{{place.name}}</b></p>
@@ -42,4 +40,14 @@
                 <p>{{place.distance}} m</p>
             </ion-item>
         </ion-list>
+=======
+    <br>
+    <ion-list>
+        <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
+            <p><b>{{place.name}}</b></p>
+            <p>{{place.alamat}}</p>
+            <p>{{place.distance}} m</p>
+        </ion-item>
+    </ion-list>
+>>>>>>> e5cae330e3f57636f8c3fc5b9e471fa70fa8018c
 </ion-content>
