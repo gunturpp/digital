@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
-import { AlertController, ModalController, App, PopoverController, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform } from 'ionic-angular';
+import { AlertController, ModalController, App, PopoverController, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform, Content } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http, Headers,RequestOptions } from '@angular/http';
 
@@ -29,11 +29,13 @@ declare var google;
 })
 
 export class HomePage {
-    
+    @ViewChild(Content) content: Content;
+
     @ViewChild(Slides) slides: Slides;  
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
+      
     searchTermProduct: string = '';
     searchTermBike: string = '';
     items: any;
@@ -43,14 +45,19 @@ export class HomePage {
     rundowns:any;
     x:number= 0;
     slide1:any;
+    test:any;
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
+    tangkap: any;
     
   constructor( public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
         // auth token
         let token = localStorage.getItem('token');
         console.log('token home',token);
+        this.tangkap = this.navParams.get('cacad');
+        console.log(this.tangkap);
+
 
         /*  
         let loading = this.loadingCtrl.create({
@@ -113,18 +120,39 @@ export class HomePage {
           });
 
   }
+<<<<<<< HEAD
+
+
+    //  slideChanged() {
+    // this.slides.scrollTop();
+    // // console.log('Current index is', currentIndex);
+  // }
+  goToLocation(){
+=======
   
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
     console.log('Current index is', currentIndex);
   }
     goToLocation(){
+>>>>>>> 84060e337f625b58207091add146b7838cbbc78e
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
        //this.products = this.dataService.filterItemsProduct("h");
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
+       let loadings = this.loadingCtrl.create({
+         content: "Please Wait"
+       });
+       setTimeout(() => {
+         this.goToSlide2();
+        }, 3000);
+        loadings.present();
+        if(this.tangkap!=null){
+          this.slides.slideNext(200);
+        }
+        loadings.dismiss();
     }
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
@@ -135,7 +163,6 @@ export class HomePage {
 
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
-
     }
     goToSlide1() {
     this.slides.slideTo(0, 200);

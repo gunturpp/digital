@@ -23,7 +23,6 @@ export class GoogleMapsProvider {
   xscope:any=[];
   constructor(public http:Http, public connectivityService: ConnectivityServiceProvider, public geolocation: Geolocation) {
   }
- 
   init(mapElement: any, pleaseConnect: any): Promise<any> { 
     localStorage.removeItem('koordinat');
     this.mapElement = mapElement;
