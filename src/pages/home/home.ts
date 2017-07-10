@@ -120,22 +120,12 @@ export class HomePage {
           });
 
   }
-<<<<<<< HEAD
-
-
-    //  slideChanged() {
-    // this.slides.scrollTop();
-    // // console.log('Current index is', currentIndex);
-  // }
-  goToLocation(){
-=======
   
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
     console.log('Current index is', currentIndex);
   }
     goToLocation(){
->>>>>>> 84060e337f625b58207091add146b7838cbbc78e
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
