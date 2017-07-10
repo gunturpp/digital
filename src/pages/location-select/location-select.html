@@ -32,11 +32,12 @@
  
     <div #map id="map">
     </div>
+    <br>
     <ion-list>
-            <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
-                <p><b>{{place.name}}</b></p>
-                <p>{{place.alamat}}</p>
-                <p>{{place.distance}} m</p>
-            </ion-item>
-        </ion-list>
+        <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
+            <p><b>{{place.name}}</b></p>
+            <p>{{place.alamat}}</p>
+            <p>{{place.distance}} m</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
