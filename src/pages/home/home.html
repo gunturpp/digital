@@ -103,15 +103,25 @@
             </button>
           </ion-buttons>
         </ion-toolbar>
+        <!--
         <ion-toolbar color="blacks-trans">     
-        <!--<ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>-->
+        <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
         </ion-toolbar>
+        -->
       </ion-header>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
-          <div class="css-imgslide3">
-          <img class="img-center" src="http://188.166.188.11{{bike.picture}}"/>
-            </div>
+          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+              <ion-slide>
+                <img src="http://188.166.188.11{{bike.picture}}">
+              </ion-slide>
+            </ion-slides>            
           <ion-card-content class="card-contentslide3">
             <p class="color">{{bike.description}}</p>
           </ion-card-content>
@@ -135,7 +145,17 @@
       <div class="scroll-y-slide4">
         <ion-card class="border-radius"  *ngFor="let review of reviews">
           <div class="img-slide4">
+          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
+              <ion-slide>
             <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+              <ion-slide>
+            <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+              <ion-slide>
+            <img src="http://188.166.188.11{{review.picture}}"/>
+              </ion-slide>
+            </ion-slides>            
           </div>
           <div class="content-slide4">
             <ion-card-content>
