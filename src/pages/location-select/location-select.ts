@@ -195,7 +195,7 @@ export class LocationSelectPage {
     }
     CallLoading(){
         let loading = this.loadingCtrl.create({
-            spinner: 'circle'
+            spinner: 'bubbles'
         });
 
         loading.present();
@@ -207,6 +207,6 @@ export class LocationSelectPage {
             loading.dismiss();
         }, 7000);
 
-
+    
     }
 }
