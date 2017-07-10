@@ -116,7 +116,7 @@ export class GoogleMapsProvider {
           location: latLng,
           // radius: '1000'
           rankBy: google.maps.places.RankBy.DISTANCE,
-          keyword: ['spbu','gas station']
+          type: ['gas_station']
           };
 
         let service = new google.maps.places.PlacesService(this.map);
