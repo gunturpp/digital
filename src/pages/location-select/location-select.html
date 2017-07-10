@@ -10,15 +10,17 @@
         </ion-buttons>
 
     </ion-navbar>
-    <!--<ion-toolbar color="blacks-trans">     
-    <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
-    </ion-toolbar>
-     <ion-list>
-        <ion-item *ngFor="let place of places" (touchstart)="selectPlace(place)">{{place.description}}</ion-item>
-    </ion-list>
-        -->
-
-
+     <ion-segment>
+        <ion-segment-button value="SPBU" (ionSelect)="cari('gas_station')">
+            SPBU
+        </ion-segment-button>
+        <ion-segment-button value="BENGKEL" (ionSelect)="cari('car_rental')">
+            BENGKEL
+        </ion-segment-button>
+        <ion-segment-button value="RUMAH SAKIT" (ionSelect)="cari('hospital')">
+            RUMAH SAKIT
+        </ion-segment-button>
+  </ion-segment>
 </ion-header>
  
  
@@ -38,7 +40,7 @@
     <ion-list>
             <ion-item class="css-item" *ngFor="let place of locations" (touchstart)="selectPlace(place)">
                 <p><b>{{place.name}}</b></p>
-                <p>{{place.vicinity.split(',')[0]}}</p>
+                <p>{{place.alamat}}</p>
                 <p>{{place.distance}} m</p>
             </ion-item>
         </ion-list>

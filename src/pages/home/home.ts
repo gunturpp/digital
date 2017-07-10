@@ -82,8 +82,8 @@ export class HomePage {
             localStorage.removeItem('token');
             this.authService.logout();      
             this.isLoggedIn = false;
-            this.navCtrl.setRoot(LoginPage);
             this.viewCtrl.dismiss();
+            this.navCtrl.setRoot(LoginPage);
             localStorage.clear();
             }
         });
