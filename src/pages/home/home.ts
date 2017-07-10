@@ -94,6 +94,14 @@ export class HomePage {
             this.bikes = bikes['bikes'];
             console.log(this.bikes);
           });
+
+        this.http.get(apiURL+'getproduct', options)
+        .map(res => this.products= res.json())
+        .subscribe(products => {
+            this.products = products['products'];
+            console.log(this.products);
+          });
+        
         
         this.http.get(apiURL+'getevents', options)
         .map(res => this.rundowns= res.json())
