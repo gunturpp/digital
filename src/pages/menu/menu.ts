@@ -12,12 +12,12 @@ import { LocationSelectPage } from '../location-select/location-select';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 
 
-
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
 export class MenuPage {
+  home:HomePage;
   @ViewChild(Slides) slides: Slides;  
     
   constructor(public loadingCtrl:LoadingController, public toastCtrl:ToastController, public authService:AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {}

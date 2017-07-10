@@ -35,7 +35,6 @@ export class HomePage {
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
-      
     searchTermProduct: string = '';
     searchTermBike: string = '';
     items: any;
@@ -50,8 +49,9 @@ export class HomePage {
     loading: any;
     isLoggedIn: boolean = false;
     tangkap: any;
-    
-  constructor( public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
+    menu:MenuPage;
+
+  constructor(public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
         // auth token
         let token = localStorage.getItem('token');
         console.log('token home',token);
@@ -137,11 +137,8 @@ export class HomePage {
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
-       //this.products = this.dataService.filterItemsProduct("h");
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
-       
-
     }
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
@@ -165,9 +162,6 @@ export class HomePage {
     goToSlide4() {
     this.slides.slideTo(3, 200);
     }
-    goToSlide5() {
-    this.slides.slideTo(4, 200);
-  }
   goToProductDetail(productName: any) {
     this.navCtrl.push(ProductDetailPage, {
       product: productName,
