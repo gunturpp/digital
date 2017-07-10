@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<ion-content>  <ion-slides control pager="true" paginationType="bullets" class="black">
-=======
-  <ion-slides control pager="true" (ionSlideDidChange)="slideChanged()" paginationType="bullets" class="black">
->>>>>>> 84060e337f625b58207091add146b7838cbbc78e
+<ion-slides control pager="true" paginationType="bullets" class="black">
     <!--SLIDE HOME SLIDE 1-->
     <ion-slide #kak>
       <ion-header>
@@ -22,17 +18,10 @@
         <div>
           <div class="list">
             <div class="header-list">
-<<<<<<< HEAD
               <button ion-button medium full (click)="scrollToTop()" color="blacks-trans">EXHIBITION</button>
               <button ion-button medium full (click)="goToSlide3()" color="dark">MEET & GREET</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">MOTOVLOGGER</button>
               <button ion-button medium full (click)="regisAccount()" color="grays">BAZAR APPAREL</button>
-=======
-              <button ion-button medium full (click)="goToSlide1()" color="blacks-trans">EXHIBITION</button>
-              <button ion-button medium full (click)="goToSlide2()" color="dark">MEET & GREET</button>
-              <button ion-button medium full (click)="goToSlide3()" color="grays">MOTOVLOGGER</button>
-              <button ion-button medium full (click)="goToSlide4()" color="grays">BAZAR APPAREL</button>
->>>>>>> 84060e337f625b58207091add146b7838cbbc78e
             </div>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      
@@ -74,7 +63,7 @@
       <ion-header>
         <ion-toolbar color="blacks-trans">
           <ion-buttons left>
-            <button  (click)="filterProduct()" ion-button icon-only>
+            <button  (click)="presentMenu()" ion-button icon-only>
             <!--<button  (click)="presentPopover($event)" ion-button icon-only>-->
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
@@ -109,38 +98,28 @@
       <ion-header>
         <ion-toolbar color="blacks-trans">
           <ion-buttons left>
-            <button  (click)="filterBikes()" ion-button icon-only>
+            <button  (click)="presentMenu()" ion-button icon-only>
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
           </ion-buttons>
         </ion-toolbar>
-        <!--
+        
         <ion-toolbar color="blacks-trans">     
-        </ion-toolbar>
-        -->
-        <ion-toolbar color="blacks-trans">     
-          <ion-title style="text-align:center">Bikes</ion-title>
-          <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="setFilteredItemsBikes()">  </ion-searchbar>
+          <!--<ion-title style="text-align:center">Bikes</ion-title>-->
+          <div class="css-select4">
+              <ion-select #C (ionChange)="onChange(C.value)" class="select-sLide3" placeholder="DUCATI DIAVEL">
+                <ion-option value="DUCATI DIAVEL">DUCATI DIAVEL</ion-option>
+                <ion-option value="BIKE A">BIKE A</ion-option>
+                <ion-option value="YAMAHA">YAMAHA</ion-option>
+                <ion-option value="HONDA">HONDA</ion-option>
+                <ion-option value="SUZUKI">SUZUKI</ion-option>
+              </ion-select>
+          </div>
         </ion-toolbar>
       </ion-header>
-      <br>
-      <br>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
-          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
-              <ion-slide>
                 <img src="http://188.166.188.11{{bike.picture}}">
-              </ion-slide>
-              <ion-slide>
-                <img src="http://188.166.188.11{{bike.picture}}">
-              </ion-slide>
-              <ion-slide>
-                <img src="http://188.166.188.11{{bike.picture}}">
-              </ion-slide>
-            </ion-slides>            
-          <ion-card-content class="card-contentslide3">
-            <p class="color">{{bike.name}}. {{bike.description}}</p>
-          </ion-card-content>
         </ion-card>
       </div>
     </ion-slide>
@@ -161,15 +140,15 @@
       <div class="scroll-y-slide4">
         <ion-card class="border-radius"  *ngFor="let review of reviews">
           <div class="img-slide4">
-          <ion-slides pager="true" paginationType="bullets" style="max-height:400px">
+          <ion-slides pager="true" paginationType="bullets">
               <ion-slide>
-            <img src="http://188.166.188.11{{review.picture}}"/>
+                <img   class="css-img-slide4" src="http://188.166.188.11{{review.picture}}"/>
               </ion-slide>
-              <ion-slide>
-            <img src="http://188.166.188.11{{review.picture}}"/>
+              <ion-slide  class="css-img-slide4">
+                <img src="http://188.166.188.11{{review.picture}}"/>
               </ion-slide>
-              <ion-slide>
-            <img src="http://188.166.188.11{{review.picture}}"/>
+              <ion-slide  class="css-img-slide4">
+                <img src="http://188.166.188.11{{review.picture}}"/>
               </ion-slide>
             </ion-slides>            
           </div>
@@ -187,4 +166,3 @@
       </div>
     </ion-slide>
   </ion-slides>
-</ion-content>

@@ -120,39 +120,28 @@ export class HomePage {
           });
 
   }
-<<<<<<< HEAD
 
+      public CValue:String;
+      onChange(CValue) {
+        this.searchTermBike=CValue;
+        console.log('JENISBIKES:',this.searchTermBike)
+        this.setFilteredItemsBikes() 
+        this.bikes = this.dataService.filterItemsBikes(CValue);
+      }
 
     //  slideChanged() {
     // this.slides.scrollTop();
     // // console.log('Current index is', currentIndex);
   // }
   goToLocation(){
-=======
-  
-  slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    console.log('Current index is', currentIndex);
-  }
-    goToLocation(){
->>>>>>> 84060e337f625b58207091add146b7838cbbc78e
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
     ionViewDidLoad(): void {
        //this.products = this.dataService.filterItemsProduct("h");
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
-       let loadings = this.loadingCtrl.create({
-         content: "Please Wait"
-       });
-       setTimeout(() => {
-         this.goToSlide2();
-        }, 3000);
-        loadings.present();
-        if(this.tangkap!=null){
-          this.slides.slideNext(200);
-        }
-        loadings.dismiss();
+       
+
     }
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
