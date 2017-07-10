@@ -124,7 +124,7 @@ export class GoogleMapsProvider {
         service.nearbySearch({
                 location: latLng,
                 rankBy: google.maps.places.RankBy.DISTANCE,
-                type: ['gas station']
+                type: ['gas_station']
               }, (results, status) => {
                   callback(results, status, this.map)
               });
