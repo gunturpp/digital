@@ -107,8 +107,17 @@ export class LocationSelectPage {
                     this.locations = JSON.parse(localStorage.getItem('koordinat'));
                     
                 });
+                
+                function clearOverlays(map) {
+                    for (var i = 0; i < map.markers.length; i++ ) {
+                        map.markers[i].setMap(null);
+                    }
+                    map.markers.length = 0;
+                }
 
                 function callback(results, status, map) {
+                    clearOverlays(map);
+                    map.markers= new Array();
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
                         for (var i = 0; i <6; i++) {
                             var loc1 = latLng
@@ -158,6 +167,8 @@ export class LocationSelectPage {
                         position: place.geometry.location,
                         title: place.name
                     });
+                    
+                    map.markers.push(marker);
 
                     // UNCOMMENT IF U WANT USE INFWOWINDOW
                     var infowindow = new google.maps.InfoWindow;
