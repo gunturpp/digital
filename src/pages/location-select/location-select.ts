@@ -28,7 +28,7 @@ export class LocationSelectPage {
     constructor(public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
         this.searchDisabled = true;
         this.saveDisabled = true;
-        //this.locations = JSON.parse(localStorage.getItem('koordinat'));
+        this.locations = JSON.parse(localStorage.getItem('koordinat'));
     }
     backButton() {
         this.viewCtrl.dismiss();
@@ -45,7 +45,6 @@ export class LocationSelectPage {
             this.searchDisabled = false;
         });
         //this.locations = JSON.parse(localStorage.getItem('koordinat'));
-
     }
 
     selectPlace(place) {
@@ -91,7 +90,6 @@ export class LocationSelectPage {
 
     cari(place) {
         this.saveDisabled = true;
-        google.maps.Map.prototype.markers = new Array();
 
         if (place.length > 0 && !this.searchDisabled) {
             let latLng;
@@ -175,11 +173,9 @@ export class LocationSelectPage {
                 this.locations = JSON.parse(localStorage.getItem('koordinat'));
             });
 
-
         } else {
             this.locations = [];
         }
-            this.locations = JSON.parse(localStorage.getItem('koordinat'));
 
     }
 
