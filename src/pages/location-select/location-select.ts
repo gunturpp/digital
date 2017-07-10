@@ -120,8 +120,7 @@ export class LocationSelectPage {
                                 var loc2 = results[i].geometry.location;
                                 var dist = loc2.distanceFrom(loc1);
                                 results[i].distance = dist;
-                                results[i].distance = dist;
-                                //console.log(results[i].distance);
+                                results[i].alamat = results[i].vicinity.split(',')[0];
                             }
                             createMarker(results[i], map);
                         }
