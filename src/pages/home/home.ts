@@ -43,6 +43,7 @@ export class HomePage {
     bikes:any;
     products:any;
     rundowns:any;
+    date;
     x:number= 0;
     slide1:any;
     test:any;
@@ -115,6 +116,7 @@ export class HomePage {
         .map(res => this.rundowns= res.json())
         .subscribe(rundowns => {
             this.rundowns = rundowns['rundowns'];
+            this.date = this.rundowns[0].created_at;
             console.log(this.rundowns.location);
             //loading.dismiss();
 

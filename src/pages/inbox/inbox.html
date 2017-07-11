@@ -16,10 +16,9 @@
 <ion-content padding class="css-content">
   <ion-card class="css-inbox" *ngFor="let inbox of inboxs">
       <ion-card-content>
-        <p>From  : {{inbox.id_user}}</p>
-        <h3>{{inbox.title}}</h3>
-        <br>
-        <p>{{inbox.description}}</p>
+        <h3>Pre Order {{inbox.product.name}}</h3>
+        <p>IDR {{inbox.product.price}}</p>
+        <img width="50px" height="150px" src="http://188.166.188.11{{inbox.product.picture}}"/>
       </ion-card-content>
     </ion-card>
 

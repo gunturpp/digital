@@ -38,6 +38,9 @@
                 </ion-card-header>
 
                 <!-- Loops through and creates multiple items -->
+                <ion-card-content ng-model="date" class="css-rundown">
+                  {{date | date:'EEEE, dd MMMM yyyy'}}
+                </ion-card-content>
                 <ion-card-content *ngFor="let rundown of rundowns" class="css-rundown">
                   {{rundown.day_start}} - {{rundown.day_end}} {{rundown.name}}
                 </ion-card-content>
@@ -70,6 +73,7 @@
           </ion-buttons>
 
         </ion-toolbar>
+        <!--
         <ion-toolbar color="blacks-trans">     
           <div class="css-select4">
               <ion-select #d (ionChange)="onProductChange(d.value)" class="select-slide3" placeholder="All">
@@ -83,6 +87,7 @@
               </ion-select>
           </div>
         </ion-toolbar>
+        -->
         <ion-toolbar color="blacks-trans">     
           <!--<ion-title style="text-align:center">Best Deals</ion-title>-->
           <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
