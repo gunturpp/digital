@@ -87,9 +87,7 @@
           <!--<ion-title style="text-align:center">Best Deals</ion-title>-->
           <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
         </ion-toolbar>
-      </ion-header>
- 
-    
+      </ion-header>    
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
