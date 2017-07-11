@@ -36,6 +36,7 @@ export class HomePage {
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
     searchTermProduct: string = '';
+    searchTermTypeProduct: string = '';
     searchTermBike: string = '';
     items: any;
     reviews:any;
@@ -126,8 +127,15 @@ export class HomePage {
         this.searchTermBike=CValue;
         console.log('JENISBIKES:',this.searchTermBike)
         this.setFilteredItemsBikes() 
-        //this.bikes = this.dataService.filterItemsBikes(CValue);
       }
+    
+      public dValue:String;
+      onProductChange(dValue) {
+        this.searchTermTypeProduct = dValue;
+        console.log('JENISPRODUCT:',this.searchTermTypeProduct)
+        this.setFilteredItemsTypeProduct() 
+      }
+
 
      slideChanged() {
     // this.slides.scrollTop();
@@ -145,8 +153,11 @@ export class HomePage {
     }
     setFilteredItemsProduct() {
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
-  }
-
+    }
+    setFilteredItemsTypeProduct() {
+        this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeProduct);
+    }
+    
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }

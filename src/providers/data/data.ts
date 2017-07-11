@@ -58,6 +58,12 @@ export class DataProvider {
             return product.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });      
   }
+
+  filterItemsTypeProduct(searchTerm){ 
+        return this.itemsProduct.filter((product) => {
+            return product.type.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });      
+  }
   filterItemsBikes(searchTerm){ 
         return this.itemsBikes.filter((bikes) => {
             return bikes.type.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
