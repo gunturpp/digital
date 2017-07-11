@@ -126,7 +126,7 @@ export class HomePage {
         this.searchTermBike=CValue;
         console.log('JENISBIKES:',this.searchTermBike)
         this.setFilteredItemsBikes() 
-        this.bikes = this.dataService.filterItemsBikes(CValue);
+        //this.bikes = this.dataService.filterItemsBikes(CValue);
       }
 
      slideChanged() {

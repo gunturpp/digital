@@ -71,8 +71,21 @@
 
         </ion-toolbar>
         <ion-toolbar color="blacks-trans">     
-          <ion-title style="text-align:center">Best Deals</ion-title>
-        <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
+          <div class="css-select4">
+              <ion-select #C (ionChange)="onChange(C.value)" class="select-slide3" placeholder="All">
+                  <ion-option value="all">All</ion-option>
+                  <ion-option value="helmet">Helmet</ion-option>
+                  <ion-option value="jacket">Jacket</ion-option>
+                  <ion-option value="golve">Golve</ion-option>
+                  <ion-option value="shoes">Shoes</ion-option>
+                  <ion-option value="tshirt">T Shirt</ion-option>
+                  <ion-option value="accesories">Accesories</ion-option>
+              </ion-select>
+          </div>
+        </ion-toolbar>
+        <ion-toolbar color="blacks-trans">     
+          <!--<ion-title style="text-align:center">Best Deals</ion-title>-->
+          <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
         </ion-toolbar>
       </ion-header>
  
@@ -108,11 +121,17 @@
           <!--<ion-title style="text-align:center">Bikes</ion-title>-->
           <div class="css-select4">
               <ion-select #C (ionChange)="onChange(C.value)" class="select-slide3" placeholder="DUCATI DIAVEL">
-                <ion-option value="DUCATI DIAVEL">DUCATI DIAVEL</ion-option>
-                <ion-option value="BIKE A">BIKE A</ion-option>
-                <ion-option value="YAMAHA">YAMAHA</ion-option>
-                <ion-option value="HONDA">HONDA</ion-option>
-                <ion-option value="SUZUKI">SUZUKI</ion-option>
+                <ion-option value="ducatidiavel">DUCATI DIAVEL</ion-option>
+                <ion-option value="yamahar6">YAMAHA R6</ion-option>
+                <ion-option value="kawasakier6n">KAWASAKI ER-6n</ion-option>
+                <ion-option value="ktmduke660">KTM DUKE 660</ion-option>
+                <ion-option value="benellibn600">BENELLI BN600</ion-option>
+                <ion-option value="suzukivstorm650">SUZUKI V-STORM 650</ion-option>
+                <ion-option value="kawasakizx6r">KAWASAKI ZX-6R</ion-option>
+                <ion-option value="ninja650abs">NINJA 650 ABS</ion-option>
+                <ion-option value="ktm690smc">KTM 690 SMC</ion-option>
+                <ion-option value="bmwg650s">BMW G 650S</ion-option>
+                <ion-option value="ktm690eduro">KTM 690 Enduro</ion-option>
               </ion-select>
           </div>
         </ion-toolbar>

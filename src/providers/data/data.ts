@@ -60,7 +60,7 @@ export class DataProvider {
   }
   filterItemsBikes(searchTerm){ 
         return this.itemsBikes.filter((bikes) => {
-            return bikes.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+            return bikes.type.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });      
   }
  
