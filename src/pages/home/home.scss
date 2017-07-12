@@ -1,6 +1,6 @@
 .bg {
-    background-image: url('../assets/img/Home-image-Cover.jpg');
-    background-repeat: no-repeat;
+    // background-image: url('../assets/img/Home-image-Cover.jpg');
+    // background-repeat: no-repeat;
     width: auto;
     height:800px;
     overflow:auto;
@@ -13,6 +13,16 @@
 }
 .black {
     color:black;
+}
+.popupsearch {
+    height: auto;
+    padding-bottom: 0.1px;
+    width:150px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
 }
 img.cssImg-location {
     margin-left: auto;
@@ -47,8 +57,8 @@ h1.center {
     border-bottom: solid 1px;
     border-bottom-color: #909090; 
 }
-.list {
-    margin-top: 400px;
+.sliding1 {
+    // margin-top: 170px;
 }
 
 .header-list {
@@ -85,7 +95,7 @@ ion-label.text-more {
 }
 // pager punya global
 ion-slides .swiper-pagination {
-   top:3px;
+   top:14px;
    bottom:inherit;
    margin: 0.1px;
 }
@@ -97,10 +107,10 @@ ion-slides .swiper-pagination-bullet {
 // close -------------
 
 .scroll-y-slide2 {
-    margin-top: 20px;
-    height:420px;
+    height:700px;
     width:auto;
     overflow:auto;
+    padding-top: 110px;
 
 } 
 .scroll-y-slide3 {
@@ -150,7 +160,6 @@ p.color {
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    width: 350px;
     border:solid 3px grey;
 
 }
@@ -194,12 +203,11 @@ ion-card div ion-card-content div p{
 
 }
 .logoHaikers {
-    margin-top: 15px;
     display: block;
-    height: 10%;
-    width: 100px;
     margin-left: auto;
     margin-right: auto;
+    margin-top:-3px;
+    margin-bottom: 5px;
 }
 .cards {
     background:transparent;

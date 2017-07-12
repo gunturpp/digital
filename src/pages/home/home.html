@@ -1,6 +1,6 @@
   <ion-slides control pager="true" (ionSlideDidChange)="slideChanged()" paginationType="bullets" class="black">
     <!--SLIDE HOME SLIDE 1-->
-    <ion-slide #kak>
+    <ion-slide>
       <ion-header>
         <ion-toolbar color="blacks-trans">
           <ion-buttons left>
@@ -8,36 +8,37 @@
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
           </ion-buttons>
-         
         </ion-toolbar>
-        <ion-toolbar  color="blacks-trans">
-        <img class="logoHaikers" src="assets/img/Home-logo-Haikers2.png">
-        </ion-toolbar>
+          <img class="logoHaikers" src="assets/img/Home-logo-Haikers2.png">
       </ion-header>
       <div class="bg">
         <div>
-          <div class="list">
-            <div class="header-list">
+          <div class="sliding1">
+            <!--<div class="header-list">
               <button ion-button medium full (click)="goToSlide1()" color="grays">EXHIBITION</button>
               <button ion-button medium full (click)="goToSlide2()" color="grays">MEET & GREET</button>
               <button ion-button medium full (click)="goToSlide3()" color="grays">MOTOVLOGGER</button>
               <button ion-button medium full (click)="goToSlide4()" color="grays">BAZAR APPAREL</button>
             </div>
             <br>
-            <ion-label class="text-more">MORE INFO</ion-label>      
+            <ion-label class="text-more">MORE INFO</ion-label>      -->
             <div class="black">
-            <br>
-              <p class="white">Hikers (Hai Bikers!) adalah suatu event inovatif yang di kemas secara unik dan menarik. Mulai dari menjual apparel motor standart hingga premium, pameran motor sport, serta meet and greet youtuber ( Motovlogger ), medsos uploader, serta doorprize!</p>
+              <img src="assets/img/Home-image-Cover.jpg">
+              <img src="assets/img/Home-image-About-Event.jpg">
               <img src="assets/img/Home-image-Exhibition.jpg">
               <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
               <img src="assets/img/Home-image-Bazaar.jpg">
+              <img src="assets/img/Home-image-RoundDown.jpg">           
+              <img src="assets/img/MediaPartner-List.jpg">
+            </div>
+            <!--<div>
               <ion-card class="brown">
                 <ion-card-header class="card-rundown">
                   <img class="card-rundown" src="assets/img/Home-icon-Round-Down.png">
                   <h1 class="center">RUNDOWN</h1>
                 </ion-card-header>
 
-                <!-- Loops through and creates multiple items -->
+                <!-- Loops through and creates multiple items
                 <ion-card-content ng-model="date" class="css-rundown">
                   {{date | date:'EEEE, dd MMMM yyyy'}}
                 </ion-card-content>
@@ -55,7 +56,7 @@
                 </ion-card-content>
               </ion-card>          
               <img src="assets/img/MediaPartner-List.jpg">
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
@@ -89,9 +90,22 @@
         </ion-toolbar>
         -->
         <ion-toolbar color="blacks-trans">     
-          <!--<ion-title style="text-align:center">Best Deals</ion-title>-->
-          <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="setFilteredItems()">  </ion-searchbar>
+          <ion-title style="text-align:center">BEST DEAL</ion-title>
+          <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="getItems($event)"></ion-searchbar>
         </ion-toolbar>
+        <ion-list *ngIf="showList">
+          <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
+          <div class="popupsearch">
+            <p (touchstart)="selectProduct('all')" style="text-align:center;border-bottom:solid grey">All</p>
+            <p (touchstart)="selectProduct('helmet')" style="text-align:center;border-bottom:solid grey">Helmet</p>
+            <p (touchstart)="selectProduct('jacket')" style="text-align:center;border-bottom:solid grey">Jacket</p>
+            <p (touchstart)="selectProduct('glove')" style="text-align:center;border-bottom:solid grey">Glove</p>
+            <p (touchstart)="selectProduct('shoes')" style="text-align:center;border-bottom:solid grey">Shoes</p>
+            <p (touchstart)="selectProduct('tshirt')" style="text-align:center;border-bottom:solid grey">T shirt</p>
+            <p (touchstart)="selectProduct('accessories')" style="text-align:center;border-bottom:solid grey">accessories</p>
+            <p (touchstart)="selectProduct('nolan')" style="text-align:center;border-bottom:solid grey">Nolan</p>
+          </div>
+      </ion-list>
       </ion-header>    
       <div class="scroll-y-slide2">
           <ion-row>
@@ -122,7 +136,25 @@
         
         <ion-toolbar color="blacks-trans">     
           <!--<ion-title style="text-align:center">Bikes</ion-title>-->
-          <div class="css-select4">
+            <ion-searchbar [(ngModel)]="searchTermBikes" (ionInput)="getItems($event)"></ion-searchbar>
+          <ion-list *ngIf="showList">
+            <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
+            <div class="popupsearch">
+              <p (touchstart)="selectBike('ducatidiavel')" style="text-align:center;border-bottom:solid grey">DUCATI DIAVEL</p>
+              <p (touchstart)="selectBike('yamahar6')" style="text-align:center;border-bottom:solid grey">YAMAHA R6</p>
+              <p (touchstart)="selectBike('kawasakier6n')" style="text-align:center;border-bottom:solid grey">KAWASAKI ER-6n</p>
+              <p (touchstart)="selectBike('ktmduke660')" style="text-align:center;border-bottom:solid grey">KTM DUKE 660</p>
+              <p (touchstart)="selectBike('benellibn600')" style="text-align:center;border-bottom:solid grey">BENELLI BN600</p>
+              <p (touchstart)="selectBike('suzukivstorm650')" style="text-align:center;border-bottom:solid grey">SUZUKI V-STORM 650</p>
+              <p (touchstart)="selectBike('kawasakizx6r')" style="text-align:center;border-bottom:solid grey">KAWASAKI ZX-6R</p>
+              <p (touchstart)="selectBike('ninja650abs')" style="text-align:center;border-bottom:solid grey">NINJA 650 ABS</p>
+              <p (touchstart)="selectBike('ktm690smc')" style="text-align:center;border-bottom:solid grey">KTM 690 SMC</p>
+              <p (touchstart)="selectBike('bmwg650s')" style="text-align:center;border-bottom:solid grey">BMW G 650S</p>
+              <p (touchstart)="selectBike('ktm690eduro')" style="text-align:center;border-bottom:solid grey">KTM 690 Enduro</p>
+            </div>
+          </ion-list>
+
+          <!--<div class="css-select4">
               <ion-select #C (ionChange)="onChange(C.value)" class="select-slide3" placeholder="DUCATI DIAVEL">
                 <ion-option value="ducatidiavel">DUCATI DIAVEL</ion-option>
                 <ion-option value="yamahar6">YAMAHA R6</ion-option>
@@ -136,7 +168,7 @@
                 <ion-option value="bmwg650s">BMW G 650S</ion-option>
                 <ion-option value="ktm690eduro">KTM 690 Enduro</ion-option>
               </ion-select>
-          </div>
+          </div>-->
         </ion-toolbar>
       </ion-header>
       <div class="scroll-y-slide3" >

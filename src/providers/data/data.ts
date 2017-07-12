@@ -55,7 +55,7 @@ export class DataProvider {
   }
   filterItemsProduct(searchTerm){ 
         return this.itemsProduct.filter((product) => {
-            return product.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+            return product.type.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });      
   }
 
@@ -70,6 +70,11 @@ export class DataProvider {
         });      
   }
  
+  filterItemsTypeBike(searchTerm){ 
+        return this.itemsBikes.filter((bikes) => {
+            return bikes.type.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });      
+  }
   
 
 }

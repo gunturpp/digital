@@ -58,6 +58,7 @@ export class ProductDetailPage {
         let response = data.json();
         if(response.status == true) {
           this.showAlert('Orderan anda sudah kami terima, silahkan cek inbox');
+          this.popback();
 
         } 
         else {
@@ -75,6 +76,7 @@ export class ProductDetailPage {
     err.status==0?
     this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
     this.showAlert("Tidak dapat menyambungkan ke server. Mohon muat kembali halaman ini");
+    this.popback();
   }
   showAlert(val){
     let toast = this.toastCtrl.create({

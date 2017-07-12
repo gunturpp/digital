@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="transparants">
-    <ion-title style="text-align:center">inbox</ion-title>
+    <ion-title style="text-align:center">INBOX</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,9 +16,16 @@
 <ion-content padding class="css-content">
   <ion-card class="css-inbox" *ngFor="let inbox of inboxs">
       <ion-card-content>
-        <h3>Pre Order {{inbox.product.name}}</h3>
-        <p>IDR {{inbox.product.price}}</p>
-        <img width="50px" height="150px" src="http://188.166.188.11{{inbox.product.picture}}"/>
+        <ion-row>
+          <ion-col col-3>
+            <img class="css-img" src="http://188.166.188.11{{inbox.product.picture}}"/>
+          </ion-col>
+          <ion-col>
+            <h2><b>Pre Order {{inbox.product.name}}</b></h2>
+            <p>IDR {{inbox.product.price}} mio</p>
+            <p>Merchant: Raja Helm</p>
+          </ion-col>
+        </ion-row>
       </ion-card-content>
     </ion-card>
 

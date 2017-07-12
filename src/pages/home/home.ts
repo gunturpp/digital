@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, NgZone, Injectable } from '@angular/core';
-import { AlertController, ModalController, App, PopoverController, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform, Content } from 'ionic-angular';
+import {  AlertController, ModalController, App, PopoverController, ToastController, LoadingController, IonicPage,Slides, NavController, NavParams,ViewController, Platform, Content } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http, Headers,RequestOptions } from '@angular/http';
 
@@ -35,9 +35,11 @@ export class HomePage {
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
+    showList: boolean = false;
     searchTermProduct: string = '';
     searchTermTypeProduct: string = '';
     searchTermBike: string = '';
+    searchTermTypeBike: string = '';
     items: any;
     reviews:any;
     bikes:any;
@@ -150,6 +152,34 @@ export class HomePage {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
     }
+    getItems(ev:any){
+      this.setFilteredItems();
+      // set val to the value of the searchbar
+      let val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        // Filter the items
+      
+        // Show the results
+        this.showList = true;
+      } else {  
+        // hide the results when the query is empty
+        this.showList = false;
+      }
+    }
+
+    selectProduct(type){
+      this.searchTermProduct = type;
+      this.setFilteredItems();
+      this.showList = false;
+     }
+     selectBike(type){
+      this.searchTermBike = type;
+      this.setFilteredItemsBike();
+      console.log(type);
+      this.showList = false;
+     }
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
     }
@@ -159,10 +189,17 @@ export class HomePage {
     setFilteredItemsTypeProduct() {
         this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeProduct);
     }
+    setFilteredItemsBike(){
+        this.products = this.dataService.filterItemsProduct(this.searchTermBike);
+    }
     
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }
+    setFilteredItemsTypeBike() {
+        this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeBike);
+    }
+
     goToSlide1() {
     this.slides.slideTo(0, 200);
     }

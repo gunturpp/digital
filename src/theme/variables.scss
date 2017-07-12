@@ -66,11 +66,11 @@ $colors: (
 // default are overridden.
 @import "ionic.theme.default";
 // search bar
-$searchbar-md-input-text-color 	        :#fff;
-$searchbar-md-input-search-icon-color 	:#ffffff;
-$searchbar-md-input-background-color 	  :rgba(255,255,255,0.2);
-$searchbar-md-input-placeholder-color 	:#fff;
-$searchbar-md-input-border-radius       :	2px;
+$searchbar-md-input-text-color 	        :black;
+$searchbar-md-input-search-icon-color 	:black;
+$searchbar-md-input-background-color 	  :#FFF;
+$searchbar-md-input-placeholder-color 	:black;
+$searchbar-md-input-border-radius       :	8px;
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
