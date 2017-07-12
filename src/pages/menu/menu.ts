@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Slides, Content, ToastController, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { Content, ToastController, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { FeedbackPage } from '../feedback/feedback';
@@ -18,27 +18,29 @@ import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 })
 export class MenuPage {
   home:HomePage;
-  @ViewChild(Slides) slides: Slides;  
-    
+  slide;  
   constructor(public loadingCtrl:LoadingController, public toastCtrl:ToastController, public authService:AuthServiceProvider, public navCtrl: NavController, public navParams: NavParams) {}
    
   //back button
   backToHome(){
-    this.navCtrl.setRoot(HomePage);
-    
+    this.navCtrl.setRoot(HomePage);    
   }
   
   goToSlide1() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.push(HomePage,{
+      slide: "0"});
   }
   goToSlide2() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.push(HomePage,{
+      slide: "1"});
   }
   goToSlide3() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage,{
+      slide: "2"});
   }
   goToSlide4() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage,{
+      slide: "3"});
   }
 
   openMap(){
