@@ -9,12 +9,13 @@ import { InboxPage } from '../pages/inbox/inbox';
 import { LoginPage } from '../pages/login/login';
 import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { RegisterPage } from '../pages/register/register';
+import { ScreenPage } from '../pages/screen/screen';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = ScreenPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

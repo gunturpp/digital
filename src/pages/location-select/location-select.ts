@@ -67,7 +67,6 @@ export class LocationSelectPage {
     selectPlace(place) {
 
         this.places = [];
-
         let location = {
             lat: null,
             lng: null,
@@ -92,10 +91,6 @@ export class LocationSelectPage {
         });
 
     }
-    close() {
-        localStorage.removeItem('koordinat');
-        this.viewCtrl.dismiss();
-    }
 
     search(place) {
 
@@ -103,6 +98,21 @@ export class LocationSelectPage {
     
 
     cari(place) {
+        if(place =='gas_station'){
+            this.query = 'SPBU';
+        }
+        else if(place =='car_rental'){
+            this.query = 'BENGKEL';
+        }
+        else if(place == 'car_dealer'){
+            this.query = 'DEALER';
+        }
+        else if(place == 'police'){
+            this.query = 'POS POLISI';
+        }
+        else if(place == 'hospital'){
+            this.query = 'RUMAH SAKIT';
+        }
         this.showList = false;
         this.saveDisabled = true;
         this.CallLoading();

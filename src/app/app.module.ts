@@ -14,6 +14,7 @@ import { ConnectivityServiceProvider } from '../providers/connectivity-service/c
 import { Locations } from '../providers/locations';
 import { MyApp } from './app.component';
 
+import { ScreenPage } from '../pages/screen/screen';
 import { LocationSelectPage } from '../pages/location-select/location-select';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -43,7 +44,8 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    LocationSelectPage
+    LocationSelectPage,
+    ScreenPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     MyprofilePage,
     ProductDetailPage,
     ReviewsDetailPage,
-    LocationSelectPage
+    LocationSelectPage,
+    ScreenPage
   ],
   providers: [
     StatusBar,

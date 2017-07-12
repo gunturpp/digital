@@ -14,3 +14,13 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ @font-face {
+  font-family: 'weww';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../assets/fonts/SignPainter-HouseScript.eot');
+  src: url('../assets/fonts/SignPainter-HouseScript.eot?#iefix') format('embedded-opentype'),
+       local('Akzidenz-Grotesk Next'),
+       local('Akzidenz-Grotesk Next'),
+       url('../assets/fonts/SignPainter-HouseScript') format('woff')
+}
