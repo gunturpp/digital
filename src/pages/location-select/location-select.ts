@@ -4,7 +4,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { MenuPage } from '../menu/menu';
 declare var google: any;
-JSON.parse(localStorage.getItem('koordinat'));
 
 @Component({
     selector: 'page-location-select',
@@ -15,6 +14,7 @@ export class LocationSelectPage {
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
+    showList: boolean= false;
     latitude: number;
     longitude: number;
     autocompleteService: any;
@@ -23,7 +23,8 @@ export class LocationSelectPage {
     places: any = [];
     searchDisabled: boolean;
     saveDisabled: boolean;
-    locations: any;
+    locations:any;
+
 
     constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
         this.searchDisabled = true;
@@ -34,9 +35,23 @@ export class LocationSelectPage {
         this.viewCtrl.dismiss();
         this.navCtrl.setRoot(MenuPage);
     }
+    getItems(ev:any){
+      // set val to the value of the searchbar
+      let val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        // Filter the items
+      
+        // Show the results
+        this.showList = true;
+      } else {  
+        // hide the results when the query is empty
+        this.showList = false;
+      }
+    }
 
     ionViewDidLoad(): void {
-        console.log('spbu', this.maps.spbu);
         console.log('spbu2', JSON.parse(localStorage.getItem('koordinat')));
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
             this.autocompleteService = new google.maps.places.AutocompleteService();
@@ -77,10 +92,6 @@ export class LocationSelectPage {
         });
 
     }
-
-    filterProduct() {
-        console.log("eaaaa");
-    }
     close() {
         localStorage.removeItem('koordinat');
         this.viewCtrl.dismiss();
@@ -92,6 +103,7 @@ export class LocationSelectPage {
     
 
     cari(place) {
+        this.showList = false;
         this.saveDisabled = true;
         this.CallLoading();
         if (place.length > 0 && !this.searchDisabled) {

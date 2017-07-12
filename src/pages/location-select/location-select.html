@@ -3,14 +3,26 @@
         <ion-buttons left>
             <button ion-button (click)="backButton()">Cancel</button>
         </ion-buttons>
-        <ion-buttons right>
-        <button  (click)="filterProduct()" ion-button icon-only>
+        <!--<ion-buttons left>
+        <button  (click)="backButton()" ion-button icon-only>
             <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
         </button>
         </ion-buttons>
-
+        -->
     </ion-navbar>
-     <ion-segment>
+    <ion-navbar color="blacks-trans">     
+        <ion-searchbar [(ngModel)]="query" (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-navbar>
+        <ion-list *ngIf="showList">
+          <div class="popupsearch">
+            <p (touchstart)="cari('gas_station')" style="text-align:center;border-bottom:solid grey">SPBU</p>
+            <p (touchstart)="cari('car_rental')" style="text-align:center;border-bottom:solid grey">BENGKEL</p>
+            <p (touchstart)="cari('car_dealer')" style="text-align:center;border-bottom:solid grey">DEALER</p>
+            <p (touchstart)="cari('police')" style="text-align:center;border-bottom:solid grey">POS POLISI</p>
+            <p (touchstart)="cari('hospital')" style="text-align:center;border-bottom:solid grey">RUMAH SAKIT</p>
+          </div>
+        </ion-list>
+     <!--<ion-segment>
         <ion-segment-button value="SPBU" (ionSelect)="cari('gas_station')">
             SPBU
         </ion-segment-button>
@@ -20,7 +32,7 @@
         <ion-segment-button value="RUMAH SAKIT" (ionSelect)="cari('hospital')">
             RUMAH SAKIT
         </ion-segment-button>
-  </ion-segment>
+      </ion-segment>-->
 </ion-header>
  
  

@@ -39,7 +39,7 @@ export class HomePage {
     searchTermTypeProduct: string = '';
     searchTermBike: string = '';
     searchTermTypeBike: string = '';
-    items: any;
+    items:any;
     reviews:any;
     bikes:any;
     products:any;
