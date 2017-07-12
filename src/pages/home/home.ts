@@ -30,7 +30,6 @@ declare var google;
 
 export class HomePage {
     @ViewChild(Content) content: Content;
-
     @ViewChild(Slides) slides: Slides;  
     @ViewChild('map') mapElement: ElementRef;
     @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
@@ -45,29 +44,20 @@ export class HomePage {
     rundowns:any;
     date;
     x:number= 0;
-    slide1:any;
     test:any;
     // for token login
     loading: any;
     isLoggedIn: boolean = false;
-    tangkap: any;
+    slideno: any;
     menu:MenuPage;
 
   constructor(public http: Http, public loadingCtrl: LoadingController,public popoverCtrl:PopoverController, public app:App, public toastCtrl:ToastController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,  public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController, public authService: AuthServiceProvider, public alertCtrl:AlertController,  public dataService: DataProvider) {
         // auth token
         let token = localStorage.getItem('token');
         console.log('token home',token);
-        this.tangkap = this.navParams.get('cacad');
-        console.log(this.tangkap);
-
-
-        /*  
-        let loading = this.loadingCtrl.create({
-            content: 'Tunggu sebentar...'
-        });
-        loading.present();
-       */
-
+        this.slideno = this.navParams.get('slide');
+        console.log("slide :"+this.slideno);
+    
         if(token == null) {
           this.isLoggedIn = false;
           this.navCtrl.setRoot(LoginPage);
@@ -91,8 +81,8 @@ export class HomePage {
             localStorage.removeItem('token');
             this.authService.logout();      
             this.isLoggedIn = false;
-            this.viewCtrl.dismiss();
             this.navCtrl.setRoot(LoginPage);
+            this.viewCtrl.dismiss();
             localStorage.clear();
             }
         });
@@ -138,11 +128,11 @@ export class HomePage {
         this.setFilteredItemsTypeProduct() 
       }
 
-
-     slideChanged() {
-    // this.slides.scrollTop();
-    // console.log('Current index is', currentIndex);
-  }
+    slideChanged() {
+      let currentIndex = this.slides.getActiveIndex();
+      this.slides.slideTo(currentIndex);
+      console.log('Current index is', currentIndex);
+    }
   goToLocation(){
     window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
   }
@@ -150,6 +140,15 @@ export class HomePage {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
     }
+    
+    ionViewDidEnter():void{
+        if(this.slideno!=null){
+          
+        }else {
+            this.slides.slideTo(this.slideno);
+        } 
+    }
+
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
     }
@@ -164,16 +163,16 @@ export class HomePage {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }
     goToSlide1() {
-    this.slides.slideTo(0, 200);
+      this.slides.slideTo(0, 200);
     }
     goToSlide2() {
-    this.slides.slideTo(1, 200);
+      this.slides.slideTo(1, 200);
     }
     goToSlide3() {
-    this.slides.slideTo(2, 200);
+      this.slides.slideTo(2, 200);
     }
     goToSlide4() {
-    this.slides.slideTo(3, 200);
+      this.slides.slideTo(3, 200);
     }
   goToProductDetail(productName: any) {
     this.navCtrl.push(ProductDetailPage, {

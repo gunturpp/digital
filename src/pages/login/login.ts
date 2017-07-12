@@ -53,7 +53,7 @@ export class LoginPage {
           loading.dismiss();
           if(response.status == true) {
             localStorage.setItem('userReturn',JSON.stringify(response));
-            this.viewCtrl.dismiss();  
+            this.viewCtrl.dismiss();              
             this.navCtrl.push(HomePage);
             this.showAlert('Selamat Datang ' + response.user.name);
 
