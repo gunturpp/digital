@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, ViewController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { NgForm } from '@angular/forms';
 import { HomePage } from '../home/home';
@@ -23,7 +23,7 @@ export class LoginPage {
   token:any;
   name:any;
   statusnya:any;
-  constructor(public storage:Storage, public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(public storage:Storage, public viewCtrl: ViewController, public http: Http, public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
     this.token = localStorage.getItem('token');
      if(localStorage.getItem('token')) {
       this.navCtrl.setRoot(HomePage);
@@ -53,7 +53,7 @@ export class LoginPage {
           loading.dismiss();
           if(response.status == true) {
             localStorage.setItem('userReturn',JSON.stringify(response));
-  
+            this.viewCtrl.dismiss();  
             this.navCtrl.push(HomePage);
             this.showAlert('Selamat Datang ' + response.user.name);
 
