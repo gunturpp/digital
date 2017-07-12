@@ -135,9 +135,9 @@ export class HomePage {
       this.slides.slideTo(currentIndex);
       console.log('Current index is', currentIndex);
     }
-  goToLocation(){
-    window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
-  }
+  // goToLocation(){
+  //   window.open('https://www.google.co.id/maps/search/margo+city/@-6.3729669,106.8322465,17z/data=!3m1!4b1', '_system')
+  // }
     ionViewDidLoad(): void {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
@@ -187,6 +187,7 @@ export class HomePage {
       this.searchTermProduct = type;
       this.setFilteredItems();
       this.showList = false;
+      console.log(type);
      }
      selectBike(type){
       this.searchTermBike = type;
@@ -204,14 +205,14 @@ export class HomePage {
         this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeProduct);
     }
     setFilteredItemsBike(){
-        this.bikes = this.dataService.filterItemsProduct(this.searchTermBike);
+        this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }
     
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }
     setFilteredItemsTypeBike() {
-        this.bikes = this.dataService.filterItemsTypeProduct(this.searchTermTypeBike);
+        this.bikes = this.dataService.filterItemsTypeBike(this.searchTermTypeBike);
     }
 
     goToSlide1() {

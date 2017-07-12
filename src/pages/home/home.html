@@ -91,7 +91,7 @@
         -->
         <ion-toolbar color="blacks-trans">     
           <ion-title style="text-align:center">BEST DEAL</ion-title>
-          <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="getItemsForProduct($event)"></ion-searchbar>
+          <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="getItemsForProduct($event)"></ion-searchbar>
         </ion-toolbar>
         <ion-list *ngIf="showList">
           <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
@@ -102,7 +102,7 @@
             <p (touchstart)="selectProduct('glove')" style="text-align:center;border-bottom:solid grey">Glove</p>
             <p (touchstart)="selectProduct('shoes')" style="text-align:center;border-bottom:solid grey">Shoes</p>
             <p (touchstart)="selectProduct('tshirt')" style="text-align:center;border-bottom:solid grey">T shirt</p>
-            <p (touchstart)="selectProduct('accessories')" style="text-align:center;border-bottom:solid grey">accessories</p>
+            <p (touchstart)="selectProduct('accessories')" style="text-align:center;border-bottom:solid grey">Accessories</p>
             <p (touchstart)="selectProduct('nolan')" style="text-align:center;border-bottom:solid grey">Nolan</p>
           </div>
       </ion-list>
