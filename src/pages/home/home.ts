@@ -142,9 +142,32 @@ export class HomePage {
        this.setFilteredItemsProduct();
        this.setFilteredItemsBikes();
     }
-<<<<<<< HEAD
-    getItems(ev:any){
+    
+    ionViewDidEnter():void{
+        if(this.slideno!=null){
+          
+        }else {
+            this.slides.slideTo(this.slideno);
+        } 
+    }
+    getItemsForProduct(ev:any){
       this.setFilteredItems();
+      // set val to the value of the searchbar
+      let val = ev.target.value;
+
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        // Filter the items
+      
+        // Show the results
+        this.showList = true;
+      } else {  
+        // hide the results when the query is empty
+        this.showList = false;
+      }
+    }
+    getItemsForBike(ev:any){
+      this.setFilteredItemsBike();
       // set val to the value of the searchbar
       let val = ev.target.value;
 
@@ -171,17 +194,6 @@ export class HomePage {
       console.log(type);
       this.showList = false;
      }
-=======
-    
-    ionViewDidEnter():void{
-        if(this.slideno!=null){
-          
-        }else {
-            this.slides.slideTo(this.slideno);
-        } 
-    }
-
->>>>>>> bacf3dd20f71deaabead04925c8d75aa1708abd8
     setFilteredItems(){
         this.products = this.dataService.filterItemsProduct(this.searchTermProduct);
     }
@@ -192,14 +204,14 @@ export class HomePage {
         this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeProduct);
     }
     setFilteredItemsBike(){
-        this.products = this.dataService.filterItemsProduct(this.searchTermBike);
+        this.bikes = this.dataService.filterItemsProduct(this.searchTermBike);
     }
     
     setFilteredItemsBikes() {
         this.bikes = this.dataService.filterItemsBikes(this.searchTermBike);
     }
     setFilteredItemsTypeBike() {
-        this.products = this.dataService.filterItemsTypeProduct(this.searchTermTypeBike);
+        this.bikes = this.dataService.filterItemsTypeProduct(this.searchTermTypeBike);
     }
 
     goToSlide1() {
@@ -235,110 +247,110 @@ export class HomePage {
 
 
 //=========================================
-filterProduct() {
-    let alert = this.alertCtrl.create();
-    alert.setTitle('Filter');
+// filterProduct() {
+//     let alert = this.alertCtrl.create();
+//     alert.setTitle('Filter');
 
-    alert.addInput({
-      type: 'radio',
-      label: 'All',
-      value: '',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Helmet',
-      value: 'Helm',
-      checked: true
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Jacket',
-      value: 'jacket',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Glove',
-      value: 'glove',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Shoes',
-      value: 'shoes',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'T-shirt',
-      value: 'T-shirt',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Accessories',
-      value: 'Accessories',
-      checked: false
-    });
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-          this.searchTermProduct=data;
-          console.log(this.searchTermProduct)
-          this.setFilteredItemsProduct() 
-          this.products = this.dataService.filterItemsProduct(data);
-      }
-    });
-    alert.present();
-  }
-filterBikes() {
-    let alert = this.alertCtrl.create();
-    alert.setTitle('Filter');
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'All',
+//       value: '',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Helmet',
+//       value: 'Helm',
+//       checked: true
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Jacket',
+//       value: 'jacket',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Glove',
+//       value: 'glove',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Shoes',
+//       value: 'shoes',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'T-shirt',
+//       value: 'T-shirt',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Accessories',
+//       value: 'Accessories',
+//       checked: false
+//     });
+//     alert.addButton('Cancel');
+//     alert.addButton({
+//       text: 'OK',
+//       handler: data => {
+//           this.searchTermProduct=data;
+//           console.log(this.searchTermProduct)
+//           this.setFilteredItemsProduct() 
+//           this.products = this.dataService.filterItemsProduct(data);
+//       }
+//     });
+//     alert.present();
+//   }
+// filterBikes() {
+//     let alert = this.alertCtrl.create();
+//     alert.setTitle('Filter');
 
-    alert.addInput({
-      type: 'radio',
-      label: 'DUCATI DIAVEL',
-      value: 'ducati',
-      checked: true
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'BIKE A',
-      value: 'BIKE A',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'YAMAHA',
-      value: 'yamaha',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Honda',
-      value: 'honda',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Suzuki',
-      value: 'suzuki',
-      checked: false
-    });
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-          this.searchTermBike=data;
-          console.log(this.searchTermBike)
-          this.setFilteredItemsBikes() 
-          this.bikes = this.dataService.filterItemsBikes(data);
-      }
-    });
-    alert.present();
-  }
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'DUCATI DIAVEL',
+//       value: 'ducati',
+//       checked: true
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'BIKE A',
+//       value: 'BIKE A',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'YAMAHA',
+//       value: 'yamaha',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Honda',
+//       value: 'honda',
+//       checked: false
+//     });
+//     alert.addInput({
+//       type: 'radio',
+//       label: 'Suzuki',
+//       value: 'suzuki',
+//       checked: false
+//     });
+//     alert.addButton('Cancel');
+//     alert.addButton({
+//       text: 'OK',
+//       handler: data => {
+//           this.searchTermBike=data;
+//           console.log(this.searchTermBike)
+//           this.setFilteredItemsBikes() 
+//           this.bikes = this.dataService.filterItemsBikes(data);
+//       }
+//     });
+//     alert.present();
+//   }
     
     showLoader(){
     this.loading = this.loadingCtrl.create({
