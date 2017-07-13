@@ -13,7 +13,7 @@ export class ScreenPage {
         
         setTimeout(() => {
             this.navCtrl.setRoot(LoginPage);
-        }, 6000);
+        }, 3000);
 
 
     }
