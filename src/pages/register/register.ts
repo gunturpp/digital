@@ -20,6 +20,12 @@ export class RegisterPage {
     goToSlide1() {
     this.slides.slideTo(1, 200);
     }
+    goToSlide0() {
+    this.slides.slideTo(0, 200);
+    }
+    backButton() {
+      this.navCtrl.push(LoginPage);
+    }
 
    onSignup(form: NgForm) {
       this.submitted = true;
@@ -42,7 +48,6 @@ export class RegisterPage {
           password: this.user.password,
           role: this.user.role="user",
         };
-        this.navCtrl.setRoot(LoginPage);
 
         var data = {matric:21};
         this.http.post("http://188.166.188.11/signup", input, contentHeader).subscribe(data => {
@@ -51,7 +56,7 @@ export class RegisterPage {
               if(response.status == 200){
                 let user=response.data;
                 // this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender);
-                    this.navCtrl.setRoot(LoginPage);
+                    this.navCtrl.push(LoginPage);
 
               }
               this.showAlert(response.message);

@@ -1,20 +1,23 @@
 <ion-content padding class="background">
     <ion-list class="listing">
       <form #LoginForm="ngForm" novalidate>
-        <ion-item>
-          <ion-input [(ngModel)]="user.email" name="email" type="text" placeholder="Email" #email="ngModel" required></ion-input>
-        </ion-item>
-
+        <div class="forms">
+          <ion-item>
+          <ion-input class="border-bottom" [(ngModel)]="user.email" name="email" type="text" placeholder="Nama/Email" #email="ngModel" required></ion-input>
+          </ion-item>
         <ion-item>
           <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password" #password="ngModel" required></ion-input>
         </ion-item>
-
-        <button ion-button full round (click)="doLogin(LoginForm)" type="submit" ion-button icon-only round color="grays">Masuk</button>
+        </div>
+        <div class="forms">
+        <p style="text-align: center" (click)="doLogin(LoginForm)" type="submit">Masuk</p>
+        </div>
       </form>
         <br>
-        <ion-label (click)="forgotPassword()" style="text-align:left">Lupa Password</ion-label>
+        <ion-label (click)="forgotPassword()" style="font-size:10px;text-align:left"><i>Lupa Password</i></ion-label>
         <br><br>
-        <button ion-button full round (click)="register()" ion-button icon-only round color="grays">Daftar Baru</button>
-
+        <div class="forms">
+        <p style="text-align: center" (click)="register()">Daftar Baru</p>
+        </div>
     </ion-list>
 </ion-content>

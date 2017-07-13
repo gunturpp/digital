@@ -22,7 +22,7 @@
             </div>
             <br>
             <ion-label class="text-more">MORE INFO</ion-label>      -->
-            <div class="black">
+            <div class="imageee">
               <img src="assets/img/Home-image-Cover.jpg">
               <img src="assets/img/Home-image-About-Event.jpg">
               <img src="assets/img/Home-image-Exhibition.jpg">
@@ -90,20 +90,20 @@
         </ion-toolbar>
         -->
         <ion-toolbar color="blacks-trans">     
-          <ion-title style="text-align:center">BEST DEAL</ion-title>
+          <ion-label class="css-label-bestdeal">BEST DEAL</ion-label>
           <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="getItemsForProduct($event)"></ion-searchbar>
         </ion-toolbar>
         <ion-list *ngIf="showList">
           <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
           <div class="popupsearch">
-            <p (touchstart)="selectProduct('all')" style="text-align:center;border-bottom:solid grey">All</p>
-            <p (touchstart)="selectProduct('helmet')" style="text-align:center;border-bottom:solid grey">Helmet</p>
-            <p (touchstart)="selectProduct('jacket')" style="text-align:center;border-bottom:solid grey">Jacket</p>
-            <p (touchstart)="selectProduct('glove')" style="text-align:center;border-bottom:solid grey">Glove</p>
-            <p (touchstart)="selectProduct('shoes')" style="text-align:center;border-bottom:solid grey">Shoes</p>
-            <p (touchstart)="selectProduct('tshirt')" style="text-align:center;border-bottom:solid grey">T shirt</p>
-            <p (touchstart)="selectProduct('accessories')" style="text-align:center;border-bottom:solid grey">Accessories</p>
-            <p (touchstart)="selectProduct('nolan')" style="text-align:center;border-bottom:solid grey">Nolan</p>
+            <p (touchstart)="selectProduct('all')" class="p-popup">All</p>
+            <p (touchstart)="selectProduct('helmet')" class="p-popup">Helmet</p>
+            <p (touchstart)="selectProduct('jacket')" class="p-popup">Jacket</p>
+            <p (touchstart)="selectProduct('glove')" class="p-popup">Glove</p>
+            <p (touchstart)="selectProduct('shoes')" class="p-popup">Shoes</p>
+            <p (touchstart)="selectProduct('tshirt')" class="p-popup">T shirt</p>
+            <p (touchstart)="selectProduct('accessories')" class="p-popup">Accessories</p>
+            <p (touchstart)="selectProduct('nolan')" class="p-popup">Nolan</p>
           </div>
       </ion-list>
       </ion-header>    
@@ -111,8 +111,7 @@
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
               <div   class="card-detail">
-                <img style="height:200px;" class="card-image" src="http://188.166.188.11{{product.picture}}">
-                <ion-label>{{tangkap}}</ion-label>
+                <img style="height:120px;" class="card-image" src="http://188.166.188.11{{product.picture}}">
                 <ion-label  class="text">{{ product.name }}</ion-label>
                 <ion-label  class="text">IDR {{ product.price}}</ion-label>
                 <button class="btn-color" ion-button (click)=" goToProductDetail(product)">Pre Order</button>
@@ -136,21 +135,21 @@
         
         <ion-toolbar color="blacks-trans">     
           <!--<ion-title style="text-align:center">Bikes</ion-title>-->
-            <ion-searchbar [(ngModel)]="searchTermBikes" (ionInput)="getItemsForBike($event)"></ion-searchbar>
+            <ion-searchbar [(ngModel)]="searchTermBike" (ionInput)="getItemsForBike($event)"></ion-searchbar>
           <ion-list *ngIf="showList">
             <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
             <div class="popupsearch">
-              <p (touchstart)="selectBike('ducatidiavel')" style="text-align:center;border-bottom:solid grey">DUCATI DIAVEL</p>
-              <p (touchstart)="selectBike('yamahar6')" style="text-align:center;border-bottom:solid grey">YAMAHA R6</p>
-              <p (touchstart)="selectBike('kawasakier6n')" style="text-align:center;border-bottom:solid grey">KAWASAKI ER-6n</p>
-              <p (touchstart)="selectBike('ktmduke660')" style="text-align:center;border-bottom:solid grey">KTM DUKE 660</p>
-              <p (touchstart)="selectBike('benellibn600')" style="text-align:center;border-bottom:solid grey">BENELLI BN600</p>
-              <p (touchstart)="selectBike('suzukivstorm650')" style="text-align:center;border-bottom:solid grey">SUZUKI V-STORM 650</p>
-              <p (touchstart)="selectBike('kawasakizx6r')" style="text-align:center;border-bottom:solid grey">KAWASAKI ZX-6R</p>
-              <p (touchstart)="selectBike('ninja650abs')" style="text-align:center;border-bottom:solid grey">NINJA 650 ABS</p>
-              <p (touchstart)="selectBike('ktm690smc')" style="text-align:center;border-bottom:solid grey">KTM 690 SMC</p>
-              <p (touchstart)="selectBike('bmwg650s')" style="text-align:center;border-bottom:solid grey">BMW G 650S</p>
-              <p (touchstart)="selectBike('ktm690eduro')" style="text-align:center;border-bottom:solid grey">KTM 690 Enduro</p>
+              <p (touchstart)="selectBike('ducatidiavel')" class="p-popup">DUCATI DIAVEL</p>
+              <p (touchstart)="selectBike('yamahar6')" class="p-popup">YAMAHA R6</p>
+              <p (touchstart)="selectBike('kawasakier6n')" class="p-popup">KAWASAKI ER-6n</p>
+              <p (touchstart)="selectBike('ktmduke660')" class="p-popup">KTM DUKE 660</p>
+              <p (touchstart)="selectBike('benellibn600')" class="p-popup">BENELLI BN600</p>
+              <p (touchstart)="selectBike('suzukivstorm650')" class="p-popup">SUZUKI V-STORM 650</p>
+              <p (touchstart)="selectBike('kawasakizx6r')" class="p-popup">KAWASAKI ZX-6R</p>
+              <p (touchstart)="selectBike('ninja650abs')" class="p-popup">NINJA 650 ABS</p>
+              <p (touchstart)="selectBike('ktm690smc')" class="p-popup">KTM 690 SMC</p>
+              <p (touchstart)="selectBike('bmwg650s')" class="p-popup">BMW G 650S</p>
+              <p (touchstart)="selectBike('ktm690eduro')" class="p-popup">KTM 690 Enduro</p>
             </div>
           </ion-list>
 
@@ -181,15 +180,15 @@
     <ion-slide class="black">
       <ion-header>
         <ion-toolbar color="blacks-trans">
-          <br>
-          <ion-title style="text-align:center">EDITOR REVIEWS</ion-title>
           <ion-buttons left>
             <button  (click)="presentMenu()" ion-button icon-only>
               <img class="circle-top-left"  src="assets/img/Menu-double-circle-top-left.png">
             </button>
-          </ion-buttons>        
+          </ion-buttons>                  
         </ion-toolbar>
       </ion-header>
+    
+      <ion-label class="css-editor-review">EDITOR REVIEWS</ion-label>
       <div class="scroll-y-slide4">
         <ion-card class="border-radius"  *ngFor="let review of reviews">
           <div class="img-slide4">

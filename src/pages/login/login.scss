@@ -3,29 +3,24 @@
     background-repeat: no-repeat;
     background-size:cover;
 }
-ion-label, h1 {
+p {
     color: white;
 }
 // warna untuk latar input
-.item.item-input, .button {
-    background-color: rgba(178,178,178,0.2);
+.item.item-input {
+    background-color: rgba(0,0,0,0.2);
     border-radius: 15px;
 }
 .listing {
-    margin-top: 300px;
+    padding-top: 150px;
 }
-// warna untuk place holder
-.text-input::-moz-placeholder {
-  color: white;
-  text-align: center;
+.forms {
+    border: solid 0.3px grey;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.6);
+    margin-top: 10px;
+    position: relative;
 }
-
-.text-input:-ms-input-placeholder {
-  color: white;
-  text-align: center;
-}
-
-.text-input::-webkit-input-placeholder {
-  color: white;
-  text-align: center;
+.border-bottom {
+    border-bottom: solid 0.3px grey;
 }

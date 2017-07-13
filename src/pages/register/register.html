@@ -1,5 +1,14 @@
 <ion-slides class="a">
     <ion-slide>
+      <ion-header>
+         <ion-toolbar color="blacks">
+          <ion-buttons left>
+            <button  (click)="backButton()" ion-button icon-only>
+              <ion-icon name="arrow-back"></ion-icon> 
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
     <form #signupForm="ngForm" novalidate>
         <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
 
@@ -17,7 +26,7 @@
     </ion-item>
 
       <ion-item class="ions">
-        <ion-datetime class="ions2" placeholder="TGL LAHIR" [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
+        <ion-datetime class="ions2-select" placeholder="TGL LAHIR" [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
       </ion-item>
     <ion-item class="ions">
         <ion-select type="text" name="status_kawin" class="ions2-select" placeholder="STATUS" [(ngModel)]="user.status_kawin">
@@ -30,15 +39,24 @@
         <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input>
 
           <br><br><br>
-      <button ion-button full large type="submit" (click)="goToSlide1()" color="grays"><img src="assets/img/arrow-right.png"></button>
+      <img style="height:50px;width:30px;" (click)="goToSlide1()" src="assets/img/arrow-right.png">
     </form>    
     </ion-slide>
     <ion-slide>
-        <ion-label>Buat Password</ion-label>
+        <ion-header>
+         <ion-toolbar color="blacks">
+          <ion-buttons left>
+            <button  (click)="goToSlide0()" ion-button icon-only>
+              <ion-icon name="arrow-back"></ion-icon> 
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+        <ion-label >Buat Password</ion-label>
         <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="PASSWORD"></ion-input>
 
       <br><br><br>  
-      <button ion-button full large type="submit" (click)="onSignup(signupForm)" color="blacks"><img src="assets/img/arrow-right.png"></button>
+      <img style="height:50px;width:30px;" (click)="onSignup(signupForm)" src="assets/img/arrow-right.png">
 
     </ion-slide>
   </ion-slides>

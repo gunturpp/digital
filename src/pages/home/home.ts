@@ -144,19 +144,16 @@ export class HomePage {
         } 
     }
     getItemsForProduct(ev:any){
-      this.setFilteredItems();
+      this.setFilteredItemsProduct();
       // set val to the value of the searchbar
       let val = ev.target.value;
 
       // if the value is an empty string don't filter the items
       if (val && val.trim() != '') {
-        // Filter the items
-      
-        // Show the results
-        this.showList = true;
+        this.showList = false;
       } else {  
         // hide the results when the query is empty
-        this.showList = false;
+        this.showList = true;
       }
     }
     getItemsForBike(ev:any){
@@ -166,19 +163,16 @@ export class HomePage {
 
       // if the value is an empty string don't filter the items
       if (val && val.trim() != '') {
-        // Filter the items
-      
-        // Show the results
-        this.showList = true;
+        this.showList = false;
       } else {  
         // hide the results when the query is empty
-        this.showList = false;
+        this.showList = true;
       }
     }
 
     selectProduct(type){
       this.searchTermProduct = type;
-      this.setFilteredItems();
+      this.setFilteredItemsTypeProduct();
       this.showList = false;
       console.log(type);
      }

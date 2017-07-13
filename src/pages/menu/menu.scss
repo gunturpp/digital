@@ -1,19 +1,26 @@
 page-menu {
-    
+    .card-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
     ion-label.text {
         text-align: center;
         color: gray;
+         margin-top: 10px;
     }
     h1 {
         color: black;
         text-align: left;
     }
+    
     .symbol-detail img {
-        height: 100px;
+        height: 60px;
         width: 130px;
-        margin-left: 15px;
-        margin-right: 5px;
-        margin-top: 0px;
+    }
+    .huaaah {
+        overflow: auto;
+        height: 300px;
     }
 }
 
