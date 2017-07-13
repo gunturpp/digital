@@ -106,7 +106,8 @@
             <p (touchstart)="selectProduct('nolan')" class="p-popup">Nolan</p>
           </div>
       </ion-list>
-      </ion-header>    
+      </ion-header>   
+      <ion-label class="css-separator"></ion-label>
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
@@ -170,6 +171,7 @@
           </div>-->
         </ion-toolbar>
       </ion-header>
+      <ion-label class="css-separator"></ion-label>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
                 <img src="http://188.166.188.11{{bike.picture}}">

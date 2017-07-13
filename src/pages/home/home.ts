@@ -73,12 +73,12 @@ export class HomePage {
          },
           error => {
             console.log(error); 
-            if(error.statusText=="Unauthorized"){
+            if(error.statusText=="Unauthorized" || error.statusText=="Bad Request" ){
             localStorage.removeItem('token');
             this.authService.logout();      
             this.isLoggedIn = false;
             this.navCtrl.setRoot(LoginPage);
-            this.viewCtrl.dismiss();
+            this.navCtrl.push(LoginPage);
             localStorage.clear();
             }
         });
