@@ -14,9 +14,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  
 
-  // user: {email?: string, password?: string} = {};
   submitted = false;
   user = { email:'', password:'',status:'0' };
   data: any;
@@ -54,9 +52,9 @@ export class LoginPage {
           if(response.status == true) {
             localStorage.setItem('userReturn',JSON.stringify(response));
             this.viewCtrl.dismiss();              
-            this.navCtrl.push(HomePage);
             this.showAlert('Selamat Datang ' + response.user.name);
-
+            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.push(HomePage);
             console.log('statusnya3',response.status);
             localStorage.setItem('token', response .token);
             console.log('cektokenn',localStorage.getItem('token'));

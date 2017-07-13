@@ -144,8 +144,7 @@ export class HomePage {
     }
     
     ionViewDidEnter():void{
-        if(this.slideno!=null){
-          
+        if(typeof (this.slideno)==undefined){
         }else {
             this.slides.slideTo(this.slideno);
         } 
