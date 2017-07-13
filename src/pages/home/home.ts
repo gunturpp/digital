@@ -60,12 +60,6 @@ export class HomePage {
         this.slideno = this.navParams.get('slide');
         console.log("slide :"+this.slideno);
     
-        if(token == null) {
-          this.isLoggedIn = false;
-          this.navCtrl.setRoot(LoginPage);
-          this.viewCtrl.dismiss();
-        }        
-
         let headers = new Headers({
          'Authorization': 'Bearer ' + token,
         });

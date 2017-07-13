@@ -51,10 +51,9 @@ export class LoginPage {
           loading.dismiss();
           if(response.status == true) {
             localStorage.setItem('userReturn',JSON.stringify(response));
+            this.navCtrl.setRoot(HomePage);
             this.viewCtrl.dismiss();              
             this.showAlert('Selamat Datang ' + response.user.name);
-            this.navCtrl.setRoot(HomePage);
-            this.navCtrl.push(HomePage);
             console.log('statusnya3',response.status);
             localStorage.setItem('token', response .token);
             console.log('cektokenn',localStorage.getItem('token'));
