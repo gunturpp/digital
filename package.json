@@ -31,7 +31,7 @@
         "cordova-android": "^6.2.3",
         "cordova-fetch": "^1.1.0",
         "cordova-ios": "^4.4.0",
-        "cordova-plugin-app-event": "file:node_modules\\cordova-plugin-app-event",
+        "cordova-plugin-app-event": "cordova-plugin-app-event",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
