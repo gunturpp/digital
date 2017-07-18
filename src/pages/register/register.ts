@@ -1,22 +1,27 @@
-import { Component, ViewChild } from '@angular/core';
-import { AlertController, NavController, NavParams, LoadingController, ToastController, Slides } from 'ionic-angular';
+import { Injectable, Component, ViewChild } from '@angular/core';
+import { ModalController, AlertController, NavController, NavParams, LoadingController, ToastController, Slides } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { NgForm } from '@angular/forms';
-import { Http, RequestOptions } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { LoginPage } from '../login/login';
+import { GenderPage } from "../gender/gender";
+import { StatusnikahPage } from "../statusnikah/statusnikah";
+import { LahirPage } from "../lahir/lahir";
+import { DomisiliPage } from "../domisili/domisili";
 
+@Injectable()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
+  providers: [GenderPage]
 })
-export class RegisterPage {
+export class RegisterPage {  
 
-  @ViewChild(Slides) slides: Slides;  
-
+  @ViewChild(Slides) slides: Slides;
+  gendernya:any;
   user: {name?: string, email?: string, gender?: string, password?: string, role?:string,hp?:string,status_kawin?:string,domisili?:string,birthdate?:string} = {};
   submitted = false;
-  constructor(public alertCtrl: AlertController, public http: Http,public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
-
+  constructor(private genders : GenderPage,public modalCtrl:ModalController, public alertCtrl: AlertController, public http: Http,public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
     goToSlide1() {
     this.slides.slideTo(1, 200);
     }
@@ -40,7 +45,7 @@ export class RegisterPage {
         let input = {
           name: this.user.name,
           email: this.user.email,
-          gender: this.user.gender,
+//          gender: this.genders.functGender(),
           status_kawin: this.user.status_kawin,
           hp: this.user.hp,
           domisili: this.user.domisili,
@@ -56,10 +61,12 @@ export class RegisterPage {
               if(response.status == 200){
                 let user=response.data;
                 // this.authService.login(user.email,user.name,user.domisili,user.hp,user.status,user.role,user.birthdate,user.gender);
-                    this.navCtrl.push(LoginPage);
+                    // this.navCtrl.push(LoginPage);
 
               }
               this.showAlert(response.message);
+              this.navCtrl.push(LoginPage);
+
               console.log(input);
         }, err => {
            loading.dismiss();
@@ -67,6 +74,9 @@ export class RegisterPage {
         });
     }
   }
+   ionViewDidLoad(): void {
+
+     }
   showError(err: any){
     err.status==0?
     this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda"):
@@ -107,6 +117,24 @@ export class RegisterPage {
   back(){
     this.navCtrl.setRoot(LoginPage);
   }
+
+  presentMenuGender() {
+      let modal = this.modalCtrl.create(GenderPage);
+      modal.present();
+    }
+  presentMenuStatus() {
+      let modal = this.modalCtrl.create(StatusnikahPage);
+      modal.present();
+    }
+  presentMenuLahir() {
+      let modal = this.modalCtrl.create(LahirPage);
+      modal.present();
+    }
+  presentMenuDomisili() {
+      let modal = this.modalCtrl.create(DomisiliPage);
+      modal.present();
+    }
+  
 
 
 }
