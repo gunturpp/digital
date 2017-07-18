@@ -28,6 +28,10 @@ import { MyprofilePage } from '../pages/myprofile/myprofile';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
+import { StatusnikahPage } from '../pages/statusnikah/statusnikah';
+import { LahirPage } from '../pages/lahir/lahir';
+import { GenderPage } from '../pages/gender/gender';
+import { DomisiliPage } from '../pages/domisili/domisili';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     ProductDetailPage,
     ReviewsDetailPage,
     LocationSelectPage,
-    ScreenPage
+    ScreenPage,
+    GenderPage,
+    StatusnikahPage,
+    LahirPage,
+    DomisiliPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +76,11 @@ import { ReviewsDetailPage } from '../pages/reviews-detail/reviews-detail';
     ProductDetailPage,
     ReviewsDetailPage,
     LocationSelectPage,
-    ScreenPage
+    ScreenPage,
+    GenderPage,
+    StatusnikahPage,
+    LahirPage,
+    DomisiliPage
   ],
   providers: [
     StatusBar,
