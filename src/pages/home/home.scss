@@ -18,13 +18,15 @@
     margin-top: 80px;
 }
 .p-popup {
-    text-align:center;border-bottom:solid grey;
+    text-align:center;
+    border-bottom:solid 0.1px rgba(200,200,200,0.8) ;
     color: grey;
+    height: 30px;
 }
 .popupsearch {
     height: auto;
     padding-bottom: 0.1px;
-    width:150px;
+    width:200px;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
@@ -119,10 +121,11 @@ ion-slides .swiper-pagination-bullet {
     font-size:35px;
     margin-bottom:-2px;
     margin-top:-11px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: sans-serif;
+    color: white;
 }
 .scroll-y-slide2 {
-    margin-top: 140px;
+    margin-top: 100px;
     width:auto;
     height: 500px;
     overflow:auto;
@@ -172,6 +175,14 @@ ion-select {
    border: solid grey 1px;
    border-radius: 15px;
    
+}
+.searchbar-search-icon {
+background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><path%20fill='fff'%20d='M337.509,305.372h-17.501l-6.571-5.486c20.791-25.232,33.922-57.054,33.922-93.257C347.358,127.632,283.896,64,205.135,64C127.452,64,64,127.632,64,206.629s63.452,142.628,142.225,142.628c35.011,0,67.831-13.167,92.991-34.008l6.561,5.487v17.551L415.18,448L448,415.086L337.509,305.372z%20M206.225,305.372c-54.702,0-98.463-43.887-98.463-98.743c0-54.858,43.761-98.742,98.463-98.742c54.7,0,98.462,43.884,98.462,98.742C304.687,261.485,260.925,305.372,206.225,305.372z'/></svg>") !important;
+margin-left:300px;
+}
+
+.searchbar-md .searchbar-input {
+color: #fff;
 }
 .select-slide3 {
     text-align: center;
@@ -239,12 +250,12 @@ ion-card div ion-card-content div p{
     height: 85px;
     overflow:hidden;
 }
- .swiper-pagination-progress .swiper-pagination-progressbar {
-  background:red;
-  margin: 3px;
-
-}
-.logoHaikers {
+//  .swiper-pagination-progress .swiper-pagination-progressbar {
+//   background:red;
+//   margin: 3px;
+// }
+img.logoHaikers {
+    width: 110px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -265,6 +276,7 @@ ion-card div ion-card-content div p{
 button.btn-color {
     background-color: #149f35;
     border-radius: 7px;
+    font-family: sans-serif;
 }
 .card-image {
     max-height: 50%;
