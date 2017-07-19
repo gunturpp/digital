@@ -1,24 +1,24 @@
 <ion-slides class="a">
     <ion-slide>
-      <ion-header>
-         <ion-toolbar color="blacks">
-          <ion-buttons left>
-            <button  (click)="backButton()" ion-button icon-only>
-              <ion-icon name="arrow-back"></ion-icon> 
-            </button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
+<ion-header>
+  <ion-toolbar color="blacks">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backButton()">
+        <img class="css-image" src="assets/img/Arrow-left-back.png">
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
     <form #signupForm="ngForm" novalidate>
         <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
 
         <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
 
         <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
-        <ion-label style="border:white" (click)="presentMenuGender()">PRIA/WANITA</ion-label>
-        <ion-label style="border:white" (click)="presentMenuLahir()">TGL LAHIR</ion-label>
-        <ion-label style="border:white" (click)="presentMenuStatus()">STATUS</ion-label>
-        <ion-label style="border:white" (click)="presentMenuDomisili()">DOMISILI</ion-label>
+        <ion-label class="xxx" (click)="presentMenuGender()">PRIA/WANITA</ion-label>
+        <ion-label class="xxx" (click)="presentMenuLahir()">TGL LAHIR</ion-label>
+        <ion-label class="xxx" (click)="presentMenuStatus()">STATUS</ion-label>
+        <ion-label class="xxx" (click)="presentMenuDomisili()">DOMISILI</ion-label>
         <br><br><br>
         <img style="height:50px;width:30px;" (click)="goToSlide1()" src="assets/img/arrow-right.png">
         <!--<ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>-->
@@ -48,15 +48,16 @@
     </ion-slide>
     <ion-slide>
         <ion-header>
-         <ion-toolbar color="blacks">
-          <ion-buttons left>
-            <button  (click)="goToSlide0()" ion-button icon-only>
-              <ion-icon name="arrow-back"></ion-icon> 
-            </button>
-          </ion-buttons>
-        </ion-toolbar>
+          <ion-toolbar color="blacks">
+            <ion-buttons left>
+              <button ion-button icon-only (click)="goToSlide0()">
+                <img class="css-image" src="assets/img/Arrow-left-back.png">
+              </button>
+            </ion-buttons>
+          </ion-toolbar>
       </ion-header>
-        <ion-label >Buat Password</ion-label>
+        <ion-label stacked>Buat Password</ion-label>
+        <br>
         <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="PASSWORD"></ion-input>
 
       <br><br><br>  

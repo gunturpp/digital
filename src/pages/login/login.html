@@ -2,12 +2,8 @@
     <ion-list class="listing">
       <form #LoginForm="ngForm" novalidate>
         <div class="forms">
-          <ion-item>
           <ion-input class="border-bottom" [(ngModel)]="user.email" name="email" type="text" placeholder="Nama/Email" #email="ngModel" required></ion-input>
-          </ion-item>
-        <ion-item>
-          <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password" #password="ngModel" required></ion-input>
-        </ion-item>
+          <ion-input  class="border-bottom2" [(ngModel)]="user.password" name="password" type="password" placeholder="Password" #password="ngModel" required></ion-input>
         </div>
         <div class="forms">
         <p style="text-align: center" (click)="doLogin(LoginForm)" type="submit">Masuk</p>

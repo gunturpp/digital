@@ -8,7 +8,7 @@ import { RegisterPage } from "../register/register";
   templateUrl: 'gender.html',
 })
 export class GenderPage {
-
+  value:string;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -17,8 +17,17 @@ export class GenderPage {
     console.log('ionViewDidLoad GenderPage');
   }
   
-  functGender(gendernya){
-    console.log(gendernya);
+  functGender(){
+    this.value = 'female';
+    console.log(this.value);
+    this.navCtrl.setRoot(RegisterPage)
+    return this.value;
+  }
+  functGender2(){
+    this.value = 'male';
+    console.log(this.value);
     this.navCtrl.setRoot(RegisterPage);
+    return this.value;
+
   }
 }

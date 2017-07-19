@@ -45,7 +45,7 @@ export class RegisterPage {
         let input = {
           name: this.user.name,
           email: this.user.email,
-//          gender: this.genders.functGender(),
+         gender: this.genders.functGender(),
           status_kawin: this.user.status_kawin,
           hp: this.user.hp,
           domisili: this.user.domisili,

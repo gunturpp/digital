@@ -2,6 +2,11 @@ page-feedback {
     .blacks {
         background-color: #000;
     }
+    .css-image {
+        margin-left: 30px;
+        height: 30px;
+        width: 20px;
+    }
     .white {
         background-color: #fff;
         border-radius: 10px
@@ -10,4 +15,32 @@ page-feedback {
         color:black;
         font-size: 14px;
     }
+    ion-input {
+        color: black;
+        text-align: left;
+    }
+    div.s{
+        border-radius: 10px;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        padding-top: 10px;
+    }
+    div.d {
+        margin-top: 20px;
+    }
+    div.d ion-label {
+        text-align: center;
+        border: solid;
+        border-radius: 10px;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 40px;
+        padding-top: 7px;
+    }
+
+    
 }

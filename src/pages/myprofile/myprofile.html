@@ -1,11 +1,19 @@
 <ion-header>
+  <ion-toolbar color="blacks">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="popTo()">
+        <img class="css-image" src="assets/img/Arrow-left-back.png">
+      </button>
+    </ion-buttons>
+    <ion-title style="text-align:center;font-family:sans-serif">My Profile</ion-title>
+    <ion-buttons right>
+       <button ion-button icon-only>
+        Edit
+      </button>
+    </ion-buttons>
 
-  <ion-navbar color="blacks">
-    <ion-title style="text-align:center">My Profile</ion-title>
-  </ion-navbar>
-
+  </ion-toolbar>
 </ion-header>
-
 
 <ion-content padding class="blacks">
     <div class="img-content">
@@ -13,7 +21,7 @@
     </div>
     <div class="profile-content">
       <ion-label>{{profile.name|uppercase}}</ion-label>
-      <ion-label>{{profile.email|uppercase}}</ion-label>
+      <ion-label>{{profile.email}}</ion-label>
       <ion-label>{{profile.hp|uppercase}}</ion-label>
       <ion-label>{{profile.gender|uppercase}}</ion-label>
       <ion-label>{{profile.birthdate|uppercase}}</ion-label>
