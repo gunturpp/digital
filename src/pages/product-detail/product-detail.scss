@@ -1,15 +1,10 @@
 page-product-detail {
-    
-    
-    button {
-        color:red;
-    }
     .css-card, {
         padding-top: 30px;
         margin-top:20px;
         border-radius: 5px;
         background-color: white;
-        height: 400px;
+        height: 350px;
         width:230px;
         margin-left: auto;
         margin-right: auto;
@@ -17,15 +12,65 @@ page-product-detail {
     .btn-css {
         background-color: white;
         border-radius: 5px;
-        height: auto;
+        height: 30px;
         width:230px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 15px;
     }
-    button {
-        font-family:red;
-    }
+    button.btn-color {
+    background-color: white;
+    border-radius: 7px;
+    font-family: sans-serif;
+    color: #00b2ee;
 }
-     .speaker-detail {
+    .speaker-detail {
         background-color: #000;
     }
+    ion-label {
+        text-align: center;
+    }
+    .css-name {
+        margin-top: -8px;
+        font-size:14px;
+        color:black;
+    }
+    .css-price {
+        margin-top: -6px;
+        color:black;
+        font-size:14px;
+    }
+    .css-merchant {
+        margin-top: -8px;
+        color:black;
+        font-size:10px;
+    }
+    .css-user {
+        margin-top: -8px;
+        color:black;
+        font-size:14px;
+    }
+    .css-promo {
+        margin-top: -8px;
+        color:black;
+        color: red;
+    }
+    .css-ket1{
+        margin-top: -6px;
+        color:black;
+        font-size:10px;
+    }
+    .css-ket2{
+        margin-top:25px;
+        text-align:center;
+        font-size:8px;
+        color:black;
+    }
+    .css-ket3{
+        margin-top: -8px;
+        text-align:center;
+        font-size:8px;
+        color:black;
+    }
+
+}

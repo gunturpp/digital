@@ -17,10 +17,10 @@
   <ion-card class="css-inbox" *ngFor="let inbox of inboxs">
       <ion-card-content>
         <ion-row>
-          <ion-col col-3>
+          <ion-col col-4>
             <img class="css-img" src="http://188.166.188.11{{inbox.product.picture}}"/>
           </ion-col>
-          <ion-col>
+          <ion-col class="css-col2">
             <h2><b>Pre Order {{inbox.product.name}}</b></h2>
             <p>IDR {{inbox.product.price}} mio</p>
             <p>Merchant: Raja Helm</p>
