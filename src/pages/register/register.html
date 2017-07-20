@@ -10,11 +10,12 @@
   </ion-toolbar>
 </ion-header>
     <form #signupForm="ngForm" novalidate>
-        <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
+      
+        <ion-input class="input" [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
 
         <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
-
         <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
+
         <ion-label class="xxx" (click)="presentMenuGender()">PRIA/WANITA</ion-label>
         <ion-label class="xxx" (click)="presentMenuLahir()">TGL LAHIR</ion-label>
         <ion-label class="xxx" (click)="presentMenuStatus()">STATUS</ion-label>
