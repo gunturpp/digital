@@ -8,6 +8,7 @@ import { RegisterPage } from "../register/register";
   templateUrl: 'statusnikah.html',
 })
 export class StatusnikahPage {
+  value: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -16,8 +17,23 @@ export class StatusnikahPage {
     console.log('ionViewDidLoad StatusnikahPage');
   }
 
-  functNikah(statusNikahnya){
-    console.log(statusNikahnya);
-    this.navCtrl.setRoot(RegisterPage);
+  
+    functNikah(){
+    this.value = 'SINGLE';
+    console.log(this.value);
+    this.navCtrl.push(RegisterPage,{
+      status: this.value})
+    return this.value;
   }
+  functNikah2(){
+    this.value = 'MARRIED';
+    console.log(this.value);
+    
+    this.navCtrl.push(RegisterPage,{
+      status: this.value});
+
+    return this.value;
+
+  }
+
 }

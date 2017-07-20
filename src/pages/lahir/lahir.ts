@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { RegisterPage } from "../register/register";
 
 /**
  * Generated class for the LahirPage page.
@@ -25,6 +26,6 @@ export class LahirPage {
   }
 
   grabDate(){
-
+    this.navCtrl.push(RegisterPage);
   }
 }
