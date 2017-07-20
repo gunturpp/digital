@@ -24,6 +24,21 @@ p {
     margin-top: 10px;
     position: relative;
 }
+
+.text-input::-moz-placeholder {
+    color: white;
+    text-align: center;
+ }
+ 
+ .text-input:-ms-input-placeholder {
+   color: white;
+   text-align: center;
+}
+ .text-input::-webkit-input-placeholder {
+   color: white;
+   text-align: center;
+ }
+
 .border-bottom {
     border-bottom: solid 0.3px grey;
     margin-left: auto;
