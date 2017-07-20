@@ -9,7 +9,9 @@
             </button>
           </ion-buttons>
         </ion-toolbar>
+        <div class="div-homeimg">
           <img class="logoHaikers" src="assets/img/Home-logo-Haikers2.png">
+        </div>
       </ion-header>
       <div class="bg">
         <div>
@@ -28,7 +30,7 @@
               <img src="assets/img/Home-image-Exhibition.jpg">
               <img src="assets/img/Home-image-Meet-Greet-Vlogger.jpg">
               <img src="assets/img/Home-image-Bazaar.jpg">
-              <img src="assets/img/Home-image-RoundDown.jpg">           
+              <img (click)="goToLocation()" src="assets/img/Home-image-RoundDown.jpg">           
               <img src="assets/img/MediaPartner-List.jpg">
             </div>
             <!--<div>
@@ -136,7 +138,7 @@
         
         <ion-toolbar color="blacks-trans">     
           <!--<ion-title style="text-align:center">Bikes</ion-title>-->
-            <ion-searchbar class="css-search-bikes" [(ngModel)]="searchTermBike" (ionInput)="getItemsForBike($event)"></ion-searchbar>
+            <div><ion-searchbar class="css-search-bikes" [(ngModel)]="searchTermBike" (ionInput)="getItemsForBike($event)"></ion-searchbar></div>
           <ion-list *ngIf="showList">
             <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
             <div class="popupsearch">
@@ -194,9 +196,9 @@
       <div class="scroll-y-slide4">
         <ion-card class="border-radius"  *ngFor="let review of reviews">
           <div class="img-slide4">
-          <ion-slides pager="true" paginationType="bullets">
-              <ion-slide>
-                <img   class="css-img-slide4" src="http://188.166.188.11{{review.picture}}"/>
+          <ion-slides class="rev-slides" pager="true" paginationType="bullets">
+              <ion-slide class="css-img-slide4" >
+                <img src="http://188.166.188.11{{review.picture}}"/>
               </ion-slide>
               <ion-slide  class="css-img-slide4">
                 <img src="http://188.166.188.11{{review.picture}}"/>

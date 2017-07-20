@@ -32,7 +32,9 @@ inboxs:any;
 
   }
 
-
+  popTo(){
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
 
   }

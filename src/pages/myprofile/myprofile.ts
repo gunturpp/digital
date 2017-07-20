@@ -19,7 +19,9 @@ export class MyprofilePage {
     let profiles = JSON.parse(localStorage.getItem('userReturn'));
     this.profile=profiles.user;
   }
-  
+  popTo(){
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
     console.log( this.profile);
     

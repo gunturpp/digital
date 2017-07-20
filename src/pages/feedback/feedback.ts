@@ -57,7 +57,9 @@ export class FeedbackPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedbackPage');
   }
-
+  popTo(){
+    this.navCtrl.pop();
+  }
 
   showError(err: any){
     err.status==0?

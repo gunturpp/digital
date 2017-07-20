@@ -20,5 +20,8 @@ export class SettingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingPage');
   }
+  popTo(){
+    this.navCtrl.pop();
+  }
 
 }
