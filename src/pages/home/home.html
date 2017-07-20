@@ -113,7 +113,7 @@
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
-              <div   class="card-detail">
+              <div class="card-detail">
                 <img style="height:120px;" class="card-image" src="http://188.166.188.11{{product.picture}}">
                 <ion-label  class="text">{{ product.name }}</ion-label>
                 <ion-label  class="text">IDR {{ product.price}}</ion-label>
@@ -138,7 +138,9 @@
         
         <ion-toolbar color="blacks-trans">     
           <!--<ion-title style="text-align:center">Bikes</ion-title>-->
+          
             <div><ion-searchbar class="css-search-bikes" [(ngModel)]="searchTermBike" (ionInput)="getItemsForBike($event)"></ion-searchbar></div>
+          
           <ion-list *ngIf="showList">
             <!--<ion-item *ngFor="let product of products" (touchstart)="selectProduct(productss)"><p>{{product.name}}<p></ion-item>-->
             <div class="popupsearch">
