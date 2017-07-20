@@ -137,24 +137,21 @@ ion-searchbar.css-search-bikes {
     margin-left: auto;
     margin-right: auto;
 }
-form div ::-moz-placeholder, img, ion-label {
+::-moz-placeholder, img, ion-label {
   color: grey;
   text-align: center;
-  font-size: 14px;
 }
 
-form div .ms-input-placeholder {
+.ms-input-placeholder {
   color: grey;
   text-align: center;
-  font-size: 14px;
 }
-form div::-webkit-input-placeholder {
+::-webkit-input-placeholder {
   color: grey;
   text-align: center;
-  font-size: 14px;
 }
-roll-y-slide3 {
-    margin-top: 60px;
+.scroll-y-slide3 {
+    margin-top: 120px;
     width:auto;
     height: 550px;
     overflow:auto;

@@ -9,13 +9,13 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-list>
     <form #signupForm="ngForm" novalidate>
-      
-        <ion-input class="input" [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
+    
+        <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
 
         <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
         <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
-
         <ion-label class="xxx" (click)="presentMenuGender()">PRIA/WANITA</ion-label>
         <ion-label class="xxx" (click)="presentMenuLahir()">TGL LAHIR</ion-label>
         <ion-label class="xxx" (click)="presentMenuStatus()">STATUS</ion-label>
@@ -23,7 +23,9 @@
         <br><br><br>
         <img style="height:50px;width:30px;" (click)="goToSlide1()" src="assets/img/arrow-right.png">
         <!--<ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>-->
+    
     </form>
+</ion-list>
     <!-- <ion-item class="ions">
         <ion-select type="text" name="gender" class="ions2-select" placeholder="PRIA/WANITA" [(ngModel)]="user.gender">
           <ion-option value="Pria">PRIA</ion-option>

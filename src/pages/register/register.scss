@@ -39,18 +39,18 @@ ion-label {
   font-size: 20px;
 }
 // warna untuk place holder
-::-moz-placeholder, img, ion-label {
+ion-list form ::-moz-placeholder {
   color: grey;
   text-align: left;
   font-size: 24px;
 }
 
-.ms-input-placeholder {
+ion-list form .ms-input-placeholder {
   color: grey;
   text-align: left;
   font-size: 24px;
 }
-::-webkit-input-placeholder {
+ion-list form ::-webkit-input-placeholder {
   color: grey;
   text-align: left;
   font-size: 24px;

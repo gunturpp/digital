@@ -34,18 +34,18 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
-form div ::-moz-placeholder, img, ion-label {
+ion-list form div ::-moz-placeholder, img, ion-label {
   color: grey;
   text-align: center;
   font-size: 14px;
 }
 
-form div .ms-input-placeholder {
+ion-list form div .ms-input-placeholder {
   color: grey;
   text-align: center;
   font-size: 14px;
 }
-form div::-webkit-input-placeholder {
+ion-list form div::-webkit-input-placeholder {
   color: grey;
   text-align: center;
   font-size: 14px;
