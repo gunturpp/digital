@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Haikers</name>
     <description>For Community</description>
-    <author email="gppratama17@gmail.com" href="http://instagram.com/gunturputprat">Ionic Developer</author>
+    <author email="muh.wahyu.sal@gmail.com" href="http://instagram.com/gunturputprat">Ionic Developer</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
