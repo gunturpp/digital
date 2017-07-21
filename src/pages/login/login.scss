@@ -49,3 +49,19 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+ion-list form div ::-moz-placeholder, img, ion-label {
+  color: grey;
+  text-align: center;
+  font-size: 14px;
+}
+
+ion-list form div .ms-input-placeholder {
+  color: grey;
+  text-align: center;
+  font-size: 14px;
+}
+ion-list form div::-webkit-input-placeholder {
+  color: grey;
+  text-align: center;
+  font-size: 14px;
+}

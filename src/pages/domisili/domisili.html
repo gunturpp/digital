@@ -8,6 +8,8 @@
 
 <ion-content padding class="css-padding">
   <ion-list *ngFor="let domisil of domisili">
-    <ion-label>{{domisil}}</ion-label>
+      <p (click)="takeDomisili(city)">{{domisil.kota}}</p>
+
+      <p (click)="takeDomisili(city)">{{domisil.kab}}</p>
   </ion-list>
 </ion-content>

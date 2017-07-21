@@ -18,17 +18,17 @@ export class GenderPage {
   }
   
   functGender(){
-    this.value = 'female';
+    this.value = 'WANITA';
     console.log(this.value);
-    this.navCtrl.setRoot(RegisterPage,{
+    this.navCtrl.push(RegisterPage,{
       gender: this.value})
     return this.value;
   }
   functGender2(){
-    this.value = 'male';
+    this.value = 'PRIA';
     console.log(this.value);
     
-    this.navCtrl.setRoot(RegisterPage,{
+    this.navCtrl.push(RegisterPage,{
       gender: this.value});
 
     return this.value;
