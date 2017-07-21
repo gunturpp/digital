@@ -39,22 +39,6 @@ ion-label {
   font-size: 20px;
 }
 // warna untuk place holder
-::-moz-placeholder, img, ion-label {
-  color: grey;
-  text-align: left;
-  font-size: 24px;
-}
-
-:-ms-input-placeholder {
-  color: grey;
-  text-align: left;
-  font-size: 24px;
-}
-::-webkit-input-placeholder {
-  color: grey;
-  text-align: left;
-  font-size: 24px;
-}
 
 .css-image {
     margin-left: 10px;
