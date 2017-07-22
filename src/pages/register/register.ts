@@ -19,29 +19,45 @@ export class RegisterPage {
 gender: any;
 status: any;
 domisili: any;
+birthdate: any;
+
   @ViewChild(Slides) slides: Slides;
   gendernya:any;
   value:any;
+  valuebirthdate:any;
   valuestatus:any;
 
   
   user: {name?: string, email?: string, gender?: string, password?: string, role?:string,hp?:string,status_kawin?:string,domisili?:string,birthdate?:string} = {};
   submitted = false;
   constructor(private genders : GenderPage,public modalCtrl:ModalController, public alertCtrl: AlertController, public http: Http,public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
-    this.domisili = this.navParams.data.kota;
+
+      this.domisili = this.navParams.data.kota;
       console.log("kota :"+this.domisili);
-    this.gender= this.navParams.get('gender');
+
+      this.birthdate = this.navParams.get('birthdate');
+      console.log("tgl lahir :"+this.birthdate);
+
+      this.gender= this.navParams.get('gender');
       console.log("gender :"+this.gender);
-    this.status= this.navParams.get('status');
+
+      this.status= this.navParams.get('status');
       console.log("status :"+this.status);
-    this.value= "PRIA/WANITA";
-    this.valuestatus= "STATUS";
-    if(this.gender != null){
-      this.value= this.gender;
-    }
-    if(this.status != null){
-      this.valuestatus= this.status;
-    }
+
+      this.value= "PRIA/WANITA";
+      this.valuestatus= "STATUS";
+      
+      if(this.gender != null){
+        this.value= this.gender;
+      }
+
+      if(this.status != null){
+        this.valuestatus= this.status;
+      }
+      
+      if(this.valuebirthdate != null){
+        this.valuebirthdate= this.birthdate;
+      }
 
   }
 

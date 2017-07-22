@@ -24,6 +24,7 @@ export class GenderPage {
       gender: this.value})
     return this.value;
   }
+  
   functGender2(){
     this.value = 'PRIA';
     console.log(this.value);

@@ -14,10 +14,11 @@ import { RegisterPage } from "../register/register";
   templateUrl: 'lahir.html',
 })
 export class LahirPage {
-  tanggals:string;
-  bulans:string;
-  tahuns:string;
-  
+  tanggals: any;
+  bulans: any;
+  tahuns: any;
+  birthdate: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -25,7 +26,11 @@ export class LahirPage {
     console.log('ionViewDidLoad LahirPage');
   }
 
-  grabDate(){
-    this.navCtrl.push(RegisterPage);
+  grabDate() {
+    this.birthdate = this.tanggals + this.bulans + this.tahuns;
+    this.navCtrl.push(RegisterPage, {
+      birthdate: this.birthdate
+    });
+
   }
 }
