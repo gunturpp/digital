@@ -6,7 +6,7 @@ import {  Headers,RequestOptions } from '@angular/http';
 import { AuthServiceProvider } from "../auth-service/auth-service";
 import { ToastController, LoadingController, NavController, NavParams } from 'ionic-angular';
 
-
+let dataJson = 'assets/data/data.json';
 let apiURL = 'http://188.166.188.11/';
 /*
   Generated class for the DataProvider provider.
@@ -19,6 +19,7 @@ export class DataProvider {
   
   itemsProduct:any=[]; // api product
   itemsBikes:any=[]; // api bikes
+  itemsDomisili:any=[]; // api bikes
   constructor(public http: Http, public authService: AuthServiceProvider) {
     let token = localStorage.getItem('token');
                 let headers = new Headers({
@@ -51,11 +52,26 @@ export class DataProvider {
             console.log(this.itemsBikes);
           });
 
+         this.http.get(dataJson)
+        .map(res => this.itemsDomisili= res.json())
+        .subscribe(domisili => {
+            this.itemsDomisili = domisili['provinsi'];
+            // for(let i=0; i<this.domisili.length;i++){
+            // console.log(this.domisili[i]);
+            // }
+            console.log(this.itemsDomisili);
+
+          });
  
   }
   filterItemsProduct(searchTerm){ 
         return this.itemsProduct.filter((product) => {
             return product.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });      
+  }
+  filterDomisili(searchTerm){ 
+        return this.itemsDomisili.filter((provinsi) => {
+            return provinsi.kota.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });      
   }
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { RegisterPage } from "../register/register";
-let dataJson = 'assets/data/indonesia.json';
+let dataJson = 'assets/data/data.json';
 
 
 @Component({
@@ -17,10 +17,9 @@ export class DomisiliPage {
      this.http.get(dataJson)
         .map(res => this.domisili= res.json())
         .subscribe(domisili => {
-            this.domisili = domisili['domisili'];
+            this.domisili = domisili['provinsi'];
             for(let i=0; i<this.domisili.length;i++){
             console.log(this.domisili[i]);
-
             }
           });
   }
