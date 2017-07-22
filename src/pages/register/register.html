@@ -11,9 +11,9 @@
     </ion-header>
     <form #signupForm="ngForm" novalidate>
       <div class="xyz">
-        <ion-input [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
-        <ion-input [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
-        <ion-input [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
+        <ion-input class="xx" [(ngModel)]="user.name" name="name" type="text" placeholder="NAMA"></ion-input>
+        <ion-input class="xx" [(ngModel)]="user.email" name="email" type="email" placeholder="EMAIL"></ion-input>
+        <ion-input class="xx" [(ngModel)]="user.hp" name="hp" type="text" placeholder="HP"></ion-input>
       </div>
       <ion-label class="xxx" (click)="presentMenuGender()">{{value}}</ion-label>
       <ion-list *ngIf="showGender">
