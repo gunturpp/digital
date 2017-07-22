@@ -20,42 +20,46 @@
         <div class="css-gender">
           <ion-row>
             <ion-col>
-              <img class="gas-img" src="assets/img/Register-icon-gender-female.png" (click)="functGender('Wanita')">
+              <img class="gas-img1" src="assets/img/Register-icon-gender-female.png" (click)="functGender('Wanita')">
             </ion-col>
             <ion-col>
-              <img class="gas-img" src="assets/img/Register-icon-gender-male.png" (click)="functGender('Pria')">
+              <img class="gas-img2" src="assets/img/Register-icon-gender-male.png" (click)="functGender('Pria')">
             </ion-col>
           </ion-row>
         </div>
       </ion-list>
     </form>
     <ion-label class="xxx" (click)="presentMenuLahir()">{{valueBirthday}}</ion-label>
-    <div *ngIf="showLahir" class="css-lahir">
-      <ion-row>
-        <ion-col class="date">
-          <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="dates.tahuns" placeholder="DD/MMM/YYY"></ion-datetime>
-        </ion-col>
-        <ion-col class="date2" col-4>
-          <div class="gas-img-lahir">
-            <img src="assets/img/Register-icon-check-list-green.png" (click)="functBorn()">
-          </div>
-        </ion-col>
-      </ion-row>
+    <div *ngIf="showLahir" class="parent-css-lahir">
+      <div class="css-lahir">
+        <ion-row>
+          <ion-col class="date">
+            <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="dates.tahuns" placeholder="DD/MMM/YYY"></ion-datetime>
+          </ion-col>
+          <ion-col class="date2" col-4>
+            <div class="gas-img-lahir">
+              <img src="assets/img/Register-icon-check-list-green.png" (click)="functBorn()">
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
     </div>
     <form #signupForm="ngForm" novalidate>
       <ion-label class="xxx" (click)="presentMenuStatus()">{{valuestatus}}</ion-label>
       <ion-list *ngIf="showStatus">
-        <div class="css-status">
-          <ion-row>
-            <ion-col>
-              <img class="gas-img-status" src="assets/img/Register-icon-status-single.png" (click)="functNikah('Single')">
-              <ion-label class="css-status-label">Single</ion-label>
-            </ion-col>
-            <ion-col>
-              <img class="gas-img-status" src="assets/img/Register-icon-status-married.png" (click)="functNikah('Married')">
-              <ion-label class="css-status-label">Married</ion-label>
-            </ion-col>
-          </ion-row>
+        <div class="parent-css-status">
+          <div class="css-status">
+            <ion-row>
+              <ion-col>
+                <img class="gas-img-status" src="assets/img/Register-icon-status-single.png" (click)="functNikah('Single')">
+                <ion-label class="css-status-label">Single</ion-label>
+              </ion-col>
+              <ion-col>
+                <img class="gas-img-status" src="assets/img/Register-icon-status-married.png" (click)="functNikah('Married')">
+                <ion-label class="css-status-label">Married</ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
         </div>
       </ion-list>
     </form>
