@@ -51,20 +51,24 @@ export class RegisterPage {
   user: { name?: string, email?: string, gender?: string, password?: string, role?: string, hp?: string, status_kawin?: string, domisili?: string, birthdate?: string } = {};
   submitted = false;
   constructor(public dataService: DataProvider, private genders: GenderPage, public modalCtrl: ModalController, public alertCtrl: AlertController, public http: Http, public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+
     this.http.get(dataJson)
       .map(res => this.domisili = res.json())
       .subscribe(domisili => {
         this.domisili = domisili['provinsi'];
         console.log(this.domisili);
       });
+
+
     this.http.get(tanggalJson)
-      .map(res => this.domisili = res.json())
+      .map(res => this.tanggalpicker = res.json())
       .subscribe(tanggalpicker => {
         this.tanggalpicker = tanggalpicker['datepicker'];
         console.log(this.tanggalpicker);
       });
+
     this.http.get(bulanJson)
-      .map(res => this.domisili = res.json())
+      .map(res => this.bulanpicker = res.json())
       .subscribe(bulanpicker => {
         this.bulanpicker = bulanpicker['datepicker'];
         console.log(this.bulanpicker);
