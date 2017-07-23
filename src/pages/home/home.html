@@ -76,21 +76,6 @@
           </ion-buttons>
 
         </ion-toolbar>
-        <!--
-        <ion-toolbar color="blacks-trans">     
-          <div class="css-select4">
-              <ion-select #d (ionChange)="onProductChange(d.value)" class="select-slide3" placeholder="All">
-                  <ion-option value="all">All</ion-option>
-                  <ion-option value="helmet">Helmet</ion-option>
-                  <ion-option value="jacket">Jacket</ion-option>
-                  <ion-option value="golve">Golve</ion-option>
-                  <ion-option value="shoes">Shoes</ion-option>
-                  <ion-option value="tshirt">T Shirt</ion-option>
-                  <ion-option value="accesories">Accesories</ion-option>
-              </ion-select>
-          </div>
-        </ion-toolbar>
-        -->
         <ion-toolbar color="blacks-trans">     
           <ion-label class="css-label-bestdeal">BEST DEAL</ion-label>
           <ion-searchbar [(ngModel)]="searchTermProduct" (ionInput)="getItemsForProduct($event)"></ion-searchbar>
@@ -109,7 +94,7 @@
           </div>
       </ion-list>
       </ion-header>   
-      <ion-label class="css-separator"></ion-label>
+      <br>
       <div class="scroll-y-slide2">
           <ion-row>
             <ion-col *ngFor="let product of products"  col-6 class="cards">
@@ -173,7 +158,7 @@
           </div>-->
         </ion-toolbar>
       </ion-header>
-      <ion-label class="css-separator">&nbsp; </ion-label>
+      <br>
       <div class="scroll-y-slide3" >
         <ion-card class="card-slide3" *ngFor="let bike of bikes">
                 <img src="http://188.166.188.11{{bike.picture}}">
