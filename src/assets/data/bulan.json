@@ -1,0 +1,15 @@
+{
+    "datepicker": [{
+        "bulan": "JAN" },{
+        "bulan": "FEB" },{
+        "bulan": "MAR" },{
+        "bulan": "APR" },{
+        "bulan": "MEI" },{
+        "bulan": "JUN" },{
+        "bulan": "JUL" },{
+        "bulan": "AGU" },{
+        "bulan": "SEP" },{
+        "bulan": "OKT" },{
+        "bulan": "NOV" },{
+        "bulan": "DES" }]
+}

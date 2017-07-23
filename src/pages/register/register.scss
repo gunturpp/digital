@@ -119,46 +119,71 @@ ion-label.css-status-label {
   padding-top: 150px;
 }
 .css-lahir {
-  height: 200px;
-  width: 300px;
-  margin-left: 50px;
-  background-color:black;
-  position: fixed;
+  width: 227px;
+  margin-left: auto;
+  margin-right: auto;
+  // background-color:red;
 }
 .gas-img-lahir {
     width: 40px;
     height: 20px;
-    margin-top: 5px;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
 }
-ion-col.date {
-  border: solid 0.3ch white;
+
+div.last-hope1 {
+  border: solid 0.2ch white;
   border-radius: 100%;
-  height: 150px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
-ion-col.date2 {
-  border: solid 0.3ch white;
+
+div.last-hope2 {
+  border: solid 0.2ch white;
   border-radius: 100%;
-  margin-top: 50px;
-  height: 50px;
-  width: 10px;
+  margin-top: 10px;
+  height: 80px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ion-label.x-label-tgl {
+  padding-left: 45px;
+  padding-top: 20px;
+}
+ion-label.x-label-bln {
+  padding-left: 30px;
+  padding-top: 17px;
+}
+ion-label.x-label-thn {
+  padding-top: 20px;
+}
+.css-tgl{
+  margin-top: -73px;
+  margin-left: -2px;
+  height: 110px;
+  width: 120px;
+  background-color: grey;
+  position: relative;
+  overflow:auto;
+  padding-top: 25px;
+  padding-left: 20px;
+}
+.css-bln{
+  margin-top: -73px;
+  margin-left: -2px;
+  height: 110px;
+  width: 120px;
+  background-color:grey;
+  position: relative;
+  overflow:auto;
 }
 ion-row {
-  border: solid 0.3ch black;
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-}
-ion-datetime {
-  color:white;
-  background-color: transparent;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 18px;
 }
 .css-domisili {
   margin-top: -370px;
@@ -170,8 +195,16 @@ ion-datetime {
   overflow: auto;
   padding-left: 20px;
 }
-p.doms {
+ion-label.doms {
   color: white;
   font-family: sans-serif;
 }
-
+ion-datetime {
+  color:white;
+  background-color: transparent;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 18px;
+}

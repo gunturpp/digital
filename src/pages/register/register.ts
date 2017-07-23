@@ -10,6 +10,8 @@ import { LahirPage } from "../lahir/lahir";
 import { DomisiliPage } from "../domisili/domisili";
 import { DataProvider } from "../../providers/data/data";
 let dataJson = 'assets/data/data.json';
+let tanggalJson = 'assets/data/tanggal.json';
+let bulanJson = 'assets/data/bulan.json';
 @Injectable()
 @Component({
   selector: 'page-register',
@@ -21,6 +23,8 @@ export class RegisterPage {
   gender: any;
   status: any;
   domisili: any;
+  tanggalpicker:any;
+  bulanpicker:any;
 
   @ViewChild(Slides) slides: Slides;
   gendernya: any;
@@ -28,6 +32,9 @@ export class RegisterPage {
   valueBirthday: any;
   valuestatus: any;
   valueDomisili: any;
+  valueTgl: any;
+  valueBln: any;
+  valueThn: any;
 
   searchDomisili: string = '';
 
@@ -35,22 +42,33 @@ export class RegisterPage {
   showStatus: boolean = false;
   showLahir: boolean = false;
   showDomisili: boolean = false;
+  showTgl: boolean = false;
+  showBln: boolean = false;
+  showThn: boolean = false;
 
-  dates: { tanggals?: string, bulans?: string,tahuns?: string} ={};
+  dates: { tanggals?: string, bulans?: string, tahuns?: string } = {};
   birthdate: string;
   user: { name?: string, email?: string, gender?: string, password?: string, role?: string, hp?: string, status_kawin?: string, domisili?: string, birthdate?: string } = {};
   submitted = false;
-  constructor(public dataService: DataProvider,private genders: GenderPage, public modalCtrl: ModalController, public alertCtrl: AlertController, public http: Http, public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
-      this.http.get(dataJson)
-        .map(res => this.domisili= res.json())
-        .subscribe(domisili => {
-            this.domisili = domisili['provinsi'];
-            // for(let i=0; i<this.domisili.length;i++){
-            // console.log(this.domisili[i]);
-            // }
-            console.log(this.domisili);
-
-          });
+  constructor(public dataService: DataProvider, private genders: GenderPage, public modalCtrl: ModalController, public alertCtrl: AlertController, public http: Http, public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+    this.http.get(dataJson)
+      .map(res => this.domisili = res.json())
+      .subscribe(domisili => {
+        this.domisili = domisili['provinsi'];
+        console.log(this.domisili);
+      });
+    this.http.get(tanggalJson)
+      .map(res => this.domisili = res.json())
+      .subscribe(tanggalpicker => {
+        this.tanggalpicker = tanggalpicker['datepicker'];
+        console.log(this.tanggalpicker);
+      });
+    this.http.get(bulanJson)
+      .map(res => this.domisili = res.json())
+      .subscribe(bulanpicker => {
+        this.bulanpicker = bulanpicker['datepicker'];
+        console.log(this.bulanpicker);
+      });
     // this.domisili = this.navParams.data.kota;
     // console.log("kota :" + this.domisili);
 
@@ -67,6 +85,9 @@ export class RegisterPage {
     this.valuestatus = "STATUS";
     this.valueBirthday = "TGL LAHIR";
     this.valueDomisili = "DOMISILI";
+    this.valueTgl = "1";
+    this.valueBln = "Jan";
+    this.valueThn = "1945";
     // if (this.gender != null) {
     //   this.value = this.gender;
     // }
@@ -141,52 +162,65 @@ export class RegisterPage {
     this.valuestatus = status;
     this.showStatus = false;
   }
+  functTgl(tanggal) {
+    this.valueTgl = tanggal;
+    console.log(this.valueTgl)
+    this.showTgl = false;
+  }
+  functBln(bulan) {
+    this.valueBln = bulan;
+    this.showBln = false;
+  }
+  functThn(tahun) {
+    this.valueThn = tahun;
+    this.showThn = false;
+  }
   functBorn() {
-    // this.birthdate = this.tanggals + this.bulans + this.tahuns;
-    if(this.dates.tahuns != null){
-      this.valueBirthday = this.dates.tahuns;
-    }
-    else {
-      this.valueBirthday = 'empty';
-    }
-    this.showLahir = false;
-    // console.log( this.tanggals + this.bulans + this.tahuns);
-    console.log('tgl', this.dates.tanggals);
-    console.log('bl', this.dates.bulans);
-    console.log('th', this.dates.tahuns);
+   this.valueBirthday = this.valueTgl+"/"+this.valueBln+"/"+this.valueThn;
     console.log('value', this.valueBirthday);
+    this.showLahir = false;
   }
   functDomisili(city) {
     this.valueDomisili = city;
     this.showDomisili = false;
   }
-  ionViewDidLoad() {
-    // if (this.gender != null) {
-    //   this.value = this.gender;
-    // }
-    // if (this.status != null) {
-    //   this.valuestatus = this.status;
-    // }
-    // if (this.status != null) {
-    //   this.valueBirthday = this.birthdate;
-    // }
-  }
-      setFilteredDomisili() {
-        this.domisili = this.dataService.filterDomisili(this.searchDomisili);
-      }
-      getDomisili(ev:any){
-        this.domisili;
-      this.setFilteredDomisili();
-      // set val to the value of the searchbar
-      let val = ev.target.value;
-
-      // if the value is an empty string don't filter the items
-      if (val && val.trim() != '') {
-        this.domisili
-      } else {  
-        // hide the results when the query is empty
-      }
+  presentTgl() {
+    let status: boolean = true;
+    if (status == true) {
+      this.showTgl = true;
+      this.showBln = false;
     }
+  }
+  presentBln() {
+    let status: boolean = true;
+    if (status == true) {
+      this.showBln = true;
+      this.showTgl = false;
+    }
+  }
+  presentThn() {
+    let status: boolean = true;
+    if (status == true) {
+      this.showThn = true;
+    }
+  }
+  ionViewDidLoad() {
+    this.domisili;
+  }
+  setFilteredDomisili() {
+    this.domisili = this.dataService.filterDomisili(this.searchDomisili);
+  }
+  getDomisili(ev: any) {
+    this.setFilteredDomisili();
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+    } else {
+      // hide the results when the query is empty
+    }
+  }
   showError(err: any) {
     err.status == 0 ?
       this.showAlert("Tidak ada koneksi. Cek kembali sambungan Internet perangkat Anda") :

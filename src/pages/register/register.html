@@ -33,12 +33,38 @@
     <div *ngIf="showLahir" class="parent-css-lahir">
       <div class="css-lahir">
         <ion-row>
-          <ion-col class="date">
-            <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="dates.tahuns" placeholder="DD/MMM/YYY"></ion-datetime>
+          <ion-col>
+            <div class="last-hope1">
+              <ion-label class="x-label-tgl" (click)="presentTgl()">{{valueTgl}}</ion-label>
+              <div *ngIf="showTgl" class="css-tgl">
+                <ion-list *ngFor="let tgl of tanggalpicker">
+                  <ion-label class="label-tgl" (click)="functTgl(tgl.Tanggal)">{{tgl.Tanggal}}</ion-label>
+                </ion-list>
+              </div>
+            </div>
           </ion-col>
-          <ion-col class="date2" col-4>
-            <div class="gas-img-lahir">
-              <img src="assets/img/Register-icon-check-list-green.png" (click)="functBorn()">
+          <ion-col>
+            <div class="last-hope1">
+              <ion-label class="x-label-bln" (click)="presentBln()">{{valueBln}}</ion-label>
+              <div *ngIf="showBln" class="css-bln">
+                <ion-list *ngFor="let tgl of bulanpicker">
+                  <ion-label class="label-bln" (click)="functBln(tgl.bulan)">{{tgl.bulan}}</ion-label>
+                </ion-list>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="last-hope1">
+               <ion-datetime displayFormat="YYYY" [(ngModel)]="valueThn">{{valueThn}}</ion-datetime>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="last-hope2">
+              <div class="gas-img-lahir">
+                <img src="assets/img/Register-icon-check-list-green.png" (click)="functBorn()">
+              </div>
             </div>
           </ion-col>
         </ion-row>
@@ -67,33 +93,12 @@
     <div *ngIf="showDomisili" class="css-domisili">
       <ion-searchbar [(ngModel)]="searchDomisili" (ionInput)="getDomisili($event)"></ion-searchbar>
       <ion-list *ngFor="let domisil of domisili">
-        <p class="doms" (click)="functDomisili(domisil.kota)">{{domisil.kota}}</p>
+        <ion-label class="doms" (click)="functDomisili(domisil.kota)">{{domisil.kota}}</ion-label>
       </ion-list>
     </div>
     <br><br><br>
     <img style="height:50px;width:30px;" (click)="goToSlide1()" src="assets/img/arrow-right.png">
-    <!--<ion-input [(ngModel)]="user.gender" name="gender" type="text" placeholder="PRIA/WANITA"></ion-input>-->
-    <!-- <ion-item class="ions">
-        <ion-select type="text" name="gender" class="ions2-select" placeholder="PRIA/WANITA" [(ngModel)]="user.gender">
-          <ion-option value="Pria">PRIA</ion-option>
-          <ion-option value="Wanita">WANITA</ion-option>
-        </ion-select>
-    </ion-item> -->
-
-    <!-- <ion-item class="ions">
-        <ion-datetime class="ions2-select" placeholder="TGL LAHIR" [(ngModel)]="user.birthdate" displayFormat="YYYY/MM/DD" pickerFormat="YYYY MM DD"></ion-datetime>
-      </ion-item> -->
-    <!-- <ion-label style="border:white" (click)="presentMenuLahir()">TGL LAHIR</ion-label>
-      <ion-label style="border:white" (click)="presentMenuStatus()">STATUS</ion-label> -->
-    <!-- <ion-item class="ions">
-        <ion-select type="text" name="status_kawin" class="ions2-select" placeholder="STATUS" [(ngModel)]="user.status_kawin">
-          <ion-option value="Pria">SINGLE</ion-option>
-          <ion-option value="Married">MARRIED</ion-option>
-        </ion-select>
-    </ion-item> -->
     <form #signupForm="ngForm" novalidate>
-      <!--<ion-input [(ngModel)]="user.status_kawin" name="status_kawin" type="text" placeholder="STATUS"></ion-input>-->
-      <!-- <ion-input [(ngModel)]="user.domisili" name="domisili" type="text" placeholder="DOMISILI"></ion-input> -->
     </form>
   </ion-slide>
   <ion-slide>
