@@ -56,10 +56,7 @@ export class DataProvider {
         .map(res => this.itemsDomisili= res.json())
         .subscribe(domisili => {
             this.itemsDomisili = domisili['provinsi'];
-            // for(let i=0; i<this.domisili.length;i++){
-            // console.log(this.domisili[i]);
-            // }
-            console.log(this.itemsDomisili);
+            // console.log(this.itemsDomisili);
 
           });
  

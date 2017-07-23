@@ -9,7 +9,7 @@ page-menu {
         color: gray;
          margin-top: 10px;
     }
-    h1 {
+    h2 {
         color: black;
         text-align: left;
     }
@@ -21,6 +21,11 @@ page-menu {
     .huaaah {
         overflow: auto;
         height: 300px;
+    }
+    ion-row{
+        border: hidden;
+        margin-top: 0px;
+        // padding-bottom: -5px;
     }
 }
 

@@ -1,45 +1,37 @@
 <ion-content padding>
-    <img src="assets/img/arrow-atas.png" (click)="backToHome()">
+  <img src="assets/img/arrow-atas.png" (click)="backToHome()">
 
-    <ion-row>
-      <ion-col   class="symbol-detail">
-       
-          <img class="card-image" src="assets/img/Menu-icon-Home-Event.png" (click)="goToSlide1()">
-          <ion-label class="text">EVENTS</ion-label>
-        
-      </ion-col>
-      <ion-col  class="symbol-detail">
-          <img class="card-image" src="assets/img/Menu-icon-Best-Deals.png" (click)="goToSlide2()">
-          <ion-label class="text">BEST DEALS</ion-label>
-      </ion-col>
-      <ion-col  class="symbol-detail">
-          <img class="card-image" src="assets/img/Menu-icon-Bikes.png" (click)="goToSlide3()">
-          <ion-label class="text">BIKES</ion-label>
-      </ion-col>
-      <ion-col  class="symbol-detail">
-          <img class="card-image" src="assets/img/Menu-icon-Reviews.png" (click)="goToSlide4()">
-          <ion-label class="text">REVIEWS</ion-label>
-      </ion-col>
-      <ion-col  class="symbol-detail">
-          <img class="card-image" src="assets/img/Menu-icon-Direction.png" (click)="openMap()">
-          <ion-label class="text">DIRECTION</ion-label>
-      </ion-col>
-      <ion-col  class="symbol-detail">
-      </ion-col>
-      <!--<ion-col col-4  class="symbol-detail">
-        <div>
-          <img class="card-image" src="assets/img/Menu-icon-Home-Event.png" (click)="getHeroes()">
-          <ion-label class="text">wew</ion-label>
-        </div>
-      </ion-col>-->
-    </ion-row>  
+  <ion-row class="what">
+    <ion-col class="symbol-detail">
+      <img class="card-image" src="assets/img/Menu-icon-Home-Event.png" (click)="goToSlide1()">
+      <ion-label class="text">EVENTS</ion-label>
+    </ion-col>
+    <ion-col class="symbol-detail">
+      <img class="card-image" src="assets/img/Menu-icon-Best-Deals.png" (click)="goToSlide2()">
+      <ion-label class="text">BEST DEALS</ion-label>
+    </ion-col>
+    <ion-col class="symbol-detail">
+      <img class="card-image" src="assets/img/Menu-icon-Bikes.png" (click)="goToSlide3()">
+      <ion-label class="text">BIKES</ion-label>
+    </ion-col>
+    <ion-col class="symbol-detail">
+      <img class="card-image" src="assets/img/Menu-icon-Reviews.png" (click)="goToSlide4()">
+      <ion-label class="text">REVIEWS</ion-label>
+    </ion-col>
+    <ion-col class="symbol-detail">
+      <img class="card-image" src="assets/img/Menu-icon-Direction.png" (click)="openMap()">
+      <ion-label class="text">DIRECTION</ion-label>
+    </ion-col>
+    <ion-col class="symbol-detail">
+    </ion-col>
+  </ion-row>
 
 
-<div class="huaaah">
+  <div class="huaaah">
     <button ion-item (click)="profilePage()">
-      <ion-row>
+      <ion-row class="whot">
         <ion-col>
-          <h1>MY PROFILE</h1>
+          <h2>MY PROFILE</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
@@ -50,7 +42,7 @@
     <button ion-item (click)="inboxPage()">
       <ion-row>
         <ion-col>
-          <h1>INBOX</h1>
+          <h2>INBOX</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
@@ -61,7 +53,7 @@
     <button ion-item (click)="aboutPage()">
       <ion-row>
         <ion-col>
-          <h1>ABOUT HIKERS</h1>
+          <h2>ABOUT HIKERS</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
@@ -72,7 +64,7 @@
     <button ion-item (click)="settingPage()">
       <ion-row>
         <ion-col>
-          <h1>SETTING</h1>
+          <h2>SETTING</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
@@ -83,7 +75,7 @@
     <button ion-item (click)="feedbackPage()">
       <ion-row>
         <ion-col>
-          <h1>SEND FEEDBACK</h1>
+          <h2>SEND FEEDBACK</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
@@ -95,12 +87,12 @@
     <button ion-item (click)="logout()">
       <ion-row>
         <ion-col>
-          <h1>SIGNOUT</h1>
+          <h2>SIGNOUT</h2>
         </ion-col>
         <ion-col style="text-align:right;">
           <img src="assets/img/arrow-right-small.png">
         </ion-col>
       </ion-row>
     </button>
-</div>
+  </div>
 </ion-content>
