@@ -3,7 +3,24 @@ page-location-select {
   ion-list {
     margin: 0 !important;
   }
- 
+ .p-popup {
+    text-align:center;
+    border-bottom:solid 0.1px rgba(200,200,200,0.8) ;
+    color: grey;
+    height: 30px;
+    padding-top: 4px;
+}
+.popupsearch {
+    height: auto;
+    padding-bottom: 0.01px;
+    width:200px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+}
+
   #please-connect {
     position: absolute;
     background-color: #000;
@@ -42,17 +59,5 @@ page-location-select {
 #listnya {
     height: 50%;
     overflow: auto;
-}
-.popupsearch {
-    height: auto;
-    margin-top: 50px;
-    padding-top: 0.1px;
-    padding-bottom: 0.1px;
-    width:150px;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px;
-
 }
 }
