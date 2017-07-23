@@ -171,7 +171,7 @@ export class HomePage {
     }
 
     selectProduct(type){
-      this.searchTermProduct = type;
+      this.searchTermTypeProduct = type;
       this.setFilteredItemsTypeProduct();
       this.showList = false;
       console.log(type);
